@@ -14,32 +14,32 @@
   subtitle: [Home task solution]
 )
 
-#include "../source/course_note/s02ht01.typ"
+#include "../source/home_task/s02ht01.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s02ht02.typ"
+#include "../source/home_task/s02ht02.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s02ht03.typ"
+#include "../source/home_task/s02ht03.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s02ht05.typ"
+#include "../source/home_task/s02ht05.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s02ht06.typ"
+#include "../source/home_task/s02ht06.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s02ht07.typ"
+#include "../source/home_task/s02ht07.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s02ht09.typ"
+#include "../source/home_task/s02ht09.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s02ht11.typ"
+#include "../source/home_task/s02ht11.typ"

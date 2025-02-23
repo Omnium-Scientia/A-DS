@@ -14,56 +14,56 @@
   subtitle: [Home task solution]
 )
 
-#include "../source/course_note/s01ht01.typ"
+#include "../source/home_task/s01ht01.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht02.typ"
+#include "../source/home_task/s01ht02.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht03.typ"
+#include "../source/home_task/s01ht03.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht04.typ"
+#include "../source/home_task/s01ht04.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht05.typ"
+#include "../source/home_task/s01ht05.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht06.typ"
+#include "../source/home_task/s01ht06.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht07.typ"
+#include "../source/home_task/s01ht07.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht08.typ"
+#include "../source/home_task/s01ht08.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht09.typ"
+#include "../source/home_task/s01ht09.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht10.typ"
+#include "../source/home_task/s01ht10.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht11.typ"
+#include "../source/home_task/s01ht11.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht12.typ"
+#include "../source/home_task/s01ht12.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht13.typ"
+#include "../source/home_task/s01ht13.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s01ht14.typ"
+#include "../source/home_task/s01ht14.typ"

@@ -14,20 +14,20 @@
   subtitle: [Home task solution]
 )
 
-#include "../source/course_note/s03ht01-2.typ"
+#include "../source/home_task/s03ht01-2.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s03ht03-4.typ"
+#include "../source/home_task/s03ht03-4.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s03ht05-6.typ"
+#include "../source/home_task/s03ht05-6.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s03ht07-8.typ"
+#include "../source/home_task/s03ht07-8.typ"
 
 #pagebreak()
 
-#include "../source/course_note/s03ht09_10-2.typ"
+#include "../source/home_task/s03ht09_10-2.typ"
