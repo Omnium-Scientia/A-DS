@@ -10,8 +10,12 @@
 #import "../source/template/semester.typ": semester
 
 #show: semester.with(
-  title: [Semester 4], 
-  subtitle: [Home task solution]
+  title: [Bonus], 
+  subtitle: [Course notes]
 )
 
-#include "../source/course_note/s04ht01.typ"
+#include "../source/course_note/b01.typ"
+
+#pagebreak()
+
+#include "../source/course_note/b02.typ"
