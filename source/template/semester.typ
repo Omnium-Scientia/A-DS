@@ -20,7 +20,7 @@
     justify: true, 
     leading: 0.60em,
     spacing: 1.2em,
-    first-line-indent: 20pt,
+    first-line-indent: 0pt,
   ) 
 
   set heading(
