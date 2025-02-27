@@ -458,7 +458,7 @@ $b$ contain the same number as $a$ but in sorted order.
 
 ==== Algorithm
 
-The principle is easy, swap the $i"-th"$ element with the previous element while the $i"-th"$ is lesser. 
+The principle is easy, swap the $i^"th"$ element with the previous element while the $i^"th"$ is lesser. 
 
  Let's schematize the insertion sort with the array $a[3,1,4,2]$. 
 
@@ -504,15 +504,15 @@ Let's prove that this algorithm works using for invariant.
 
 Let's prove that after each iterations we have sorted $a[0..i]$. 
 
-By induction: at the $i"-th"$, we have $a[0..i-1]$ sorted. 
+By induction: at the $i^"th"$, we have $a[0..i-1]$ sorted. 
 
-We are swapping the $j"-th"$ element until $a[j] > a[j-1]$ and from the previous while iteration we have $a[j] < a[j+1]$. 
+We are swapping the $j^"th"$ element until $a[j] > a[j-1]$ and from the previous while iteration we have $a[j] < a[j+1]$. 
 
 So, we finally have: 
 
 #align(center, diagram(
   let (a, j, o, e, c, i, cc) = (
-    (0,0), (2, 0.3), (0.5, 0), (4, 0), (2, 0), (3, 0.3), (3, 0)  
+    (0,0), (2, 0.3), (0.35, 0), (4, 0), (2, 0), (3, 0.3), (3, 0)  
   ),
   
   node(a, $a$),
@@ -523,9 +523,9 @@ So, we finally have:
   node(cc,$circle.small$), 
   node(e, $$),
  
-  edge(o, c, "-", stroke: 10pt),
-  edge(c, cc, "-", stroke: 10pt),
-  edge(cc, e, "-", stroke: 10pt),
+  edge(o, c, "|==|"),
+  edge(c, cc, "|==|"),
+  edge(cc, e, "|==|"),
 
   edge((0.6, -0.2), (1.7, -0.5), "->"),
   edge((2.1, -0.2), (2.9, -0.5), "->")
