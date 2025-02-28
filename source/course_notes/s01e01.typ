@@ -442,7 +442,7 @@ In our case:
 $
 f(n) &= Omicron(3^(log_2 n)) \
      &= Omicron(n^(log_2 3)) \
-     &approx Omicron(n^1.7)
+     &tilde.eq Omicron(n^1.7)
 $
 
 == Sorting 

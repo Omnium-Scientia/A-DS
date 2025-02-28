@@ -136,22 +136,20 @@ Why it is important ?
 Because if we do not do that, for example, in the worst case (when each time the random $x$ that we chose is the current minimum) in our quick sort, the complexity is $Omicron(n^2)$ and we are going to prove that our expected value is $Omicron(n log n)$. 
 
 $
-T(n) &= && 1/n sum_(k=0)^(n-1) (n + T(k) + T(n - k)) \
-     &<= && underbrace(1/3 (T(n/3) + T((2n)/3))) + &&& underbrace(2/3 T(n)) + n \ 
-     & "" && "good split " x approx "midlle" &&& "bad split   " \ \
+T(n) &= 1/n sum_(k=0)^(n-1) (n + T(k) + T(n - k)) \
+     &<= underbrace(1/3 (T(n/3) + T((2n)/3)), #text($"good split " \ x tilde.eq "middle"$)) + underbrace(2/3 T(n), "bad split") + n \ 
 
-1/3 T(n) &<= && 1/3 (T(n/3) + T((2n)/3)) + n \ \
+1/3 T(n) &<= 1/3 (T(n/3) + T((2n)/3)) + n \ \
 
-T(n) & <= && 3n + T(n/3) + T((2n)/3)
+T(n) & <= 3n + T(n/3) + T((2n)/3)
 $
 
 Now let's prove that $T(n) <= c dot n log n$
 
 $
-T(n) &<= 3n + c dot n /3 log n/3 + c dot (2n)/3 && log (2n)/3 \
-     &<= 3n + c dot n/3 (log n - log 3) &&+ c dot (2n)/3 (log n - log 3/2) \ 
-     &<= n (1/3c dot log n + 2/3log n + &&underbrace(3 - 1/3c dot log 3 - 2/3 c dot log 3/2)) \
-     & && "                  " Omicron(1) \ 
+T(n) &<= 3n + c dot n /3 log n/3 + c dot (2n)/3 log (2n)/3 \
+     &<= 3n + c dot n/3 (log n - log 3) + c dot (2n)/3 (log n - log 3/2) \ 
+     &<= n (1/3c dot log n + 2/3log n + underbrace(3 - 1/3c dot log 3 - 2/3 c dot log 3/2, #text($Omicron(n)$))) \ 
      &= Omicron(n log n)
 $
 
@@ -208,8 +206,8 @@ Here we are able to achieve a better complexity than $Omicron(n log n)$ because 
 We have $Omicron(n)$: 
 
 $
-& approx (n + 2/3 n + 4/9 n + dots.h.c) \
-& approx 3n 
+& tilde.eq (n + 2/3 n + 4/9 n + dots.h.c) \
+& tilde.eq 3n 
 $
 
 When we make a good split. 
@@ -292,11 +290,8 @@ We take the median of each block. After that, we take the median of those median
 To find the median of all the median, we call recursively the algorithm that make the block in the array & take their median. 
 
 $
-T(n) &= &&underbrace(n) + &&&underbrace(T(n/5)) + &&&&underbrace(T((7n)/10))_(#text(blue, $*$)#text(red, $*$)) \ 
-     &  && "Make  
-blocks "  &&& #text(green,"Find    
-median  ") &&&& #text($"Recursion
-call"$)
+T(n) = underbrace(n, "Make\ngroups") + underbrace(T(n/5), #text(green, "Find\nmedian")) + underbrace(T((7n)/10), "Recursion\ncalls")^(#text(blue, $*$)#text(red, $*$)) \ 
+     
 $
 
 Let's show that $T(n) <= c dot n$:
