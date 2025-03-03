@@ -23,7 +23,12 @@ For each semester I will make two tagged release:
 - 1 for the course notes
 - 1 for the home tasks
 
-Each release will contain the compiled pdf of each course notes or home tasks achieved. 
+The tag will done as follow: 
+- The first number will be the last available semester
+- The second will be the last home task disponible
+- Third is left for the revision
+
+For example: v3.2.7 mean that the course note are up to the third semester and the home task up to the second semester. 
 
 ## Contribution 
 
