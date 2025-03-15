@@ -6,7 +6,7 @@
 
 = Binary search 
 
-== Version 1: naive version 
+== Naive version 
 
 This is the basic technique to search an element in a list of elements. 
 
@@ -83,7 +83,7 @@ def bin_search(a, x)
 
 If we have a more complex problem, this is not the more suitable version of binary search. 
 
-== Version 2: Lower and upper bound 
+== Lower and upper bound 
 
 === Greater or equal
 
@@ -163,7 +163,7 @@ def bin_search(a, x)
     return m
 ```
 
-== Version 3: 2 Integer problem
+== Integer problem
 
 Common problems for binary search are: 
 - you take $ZZ$
@@ -235,7 +235,7 @@ def bin_search()
     return r
 ```
 
-== Version 4: Double problem
+== Double problem
 
 Let's consider the following problem, we have a line and $n$ people are living on this line at $x_i$. 
 
@@ -331,7 +331,7 @@ def bin_search()
     return r 
 ```
 
-== Version 5: Ternary search
+== Ternary search
 
 === Example 
 
