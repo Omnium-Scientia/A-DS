@@ -11,7 +11,7 @@
 
 #show: semester.with(
   title: [Semester 3], 
-  subtitle: [Course notes]
+  subtitle: [Lecture notes]
 )
 
 #include "../source/course_note/s03e01.typ"

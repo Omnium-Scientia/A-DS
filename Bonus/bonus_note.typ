@@ -11,7 +11,7 @@
 
 #show: semester.with(
   title: [Bonus], 
-  subtitle: [Course notes]
+  subtitle: [Lecture notes]
 )
 
 #include "../source/course_note/b01.typ"

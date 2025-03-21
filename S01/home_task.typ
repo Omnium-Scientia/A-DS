@@ -11,7 +11,7 @@
 
 #show: semester.with(
   title: [Semester 1], 
-  subtitle: [Home task solution]
+  subtitle: [Home-task solution]
 )
 
 #include "../source/home_task/s01ht01.typ"
