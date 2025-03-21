@@ -2,6 +2,15 @@
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
 
+#import "../template/lesson.typ": lesson
+
+#show: lesson.with(
+  semester: "1", 
+  chapter_number: "4", 
+  video_link: "https://www.youtube.com/watch?v=lJB_kwONQKY&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=4", 
+  title: "Lower bound for sorting, Radix sort, Sorting networks"
+)
+
 
 = Lower bound for sorting, Radix sort, Sorting networks
 
@@ -270,7 +279,7 @@ Let's schematize those call over the time:
   edge(t0, tinf, "->", text(black,$"Time"$), label-side: right), 
 ))
 
-Let's do it now with an array of % elements: 
+Let's do it now with an array of 5 elements: 
 
 #linebreak()
 
