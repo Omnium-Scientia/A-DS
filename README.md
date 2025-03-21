@@ -18,7 +18,7 @@ This repository contain the `Typst` code source of all my notes.
 
 To get the PDF compiled version of this notes see the release. One will be made each I finish all the Lecture of a semester and each time I finish all the Home-task of a semester. 
 
-When I will have completed all the Lecture and Home-task. I will make a release each year through the August month for people to have an up-to-date version each academic year. 
+When I will have completed all the Lecture and Home-task. I will make a release each year through the June/July month for people to have an up-to-date version each academic year, since some country have school beginning between February / April ... if the project grow and change rapidly enough, two release (January/February and June/July) will be made so that every one can begin is academic year with an up-to-date project. 
 
 ## Contribution 
 
