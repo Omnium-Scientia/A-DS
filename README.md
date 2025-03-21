@@ -28,6 +28,8 @@ If some of you speak another languages than english and want to tranlate my note
 
 If you want to contribute to devellop the future devellopment for this course please do so. 
 
+To contribute, you have two choices, import the project in the Typst web app or just put the project in local and use your IDE to make your modifications. If you have VSC you can use the [Tinymist typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) extension. 
+
 ## Future 
 
 In the future: 
