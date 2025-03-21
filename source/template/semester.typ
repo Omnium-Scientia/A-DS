@@ -1,5 +1,3 @@
-// This is the template for a complete semester pdf // 
-
 #let semester(
   title: none, 
   subtitle: none, 
@@ -27,10 +25,17 @@
     depth: 4,
     numbering: "1.1"
   )
-  
-  align(center, text(24pt, title))
-  align(center, text(20pt, subtitle))
 
+  line(length: 100%)
+  
+  align(center, text(24pt)[#title: #subtitle])
+
+  line(length: 100%)
+
+  
+  
+  line(length: 100%)  
+  
   outline(
     title: [Summary],
     depth: 2
@@ -39,11 +44,6 @@
   pagebreak()
 
   counter(page).update(1)
-  
-  set page(
-    numbering: "1 / 1", 
-    number-align: center+bottom,
-  )
-  
+
   body
 }
