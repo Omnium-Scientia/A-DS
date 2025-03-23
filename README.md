@@ -36,5 +36,7 @@ In the future:
 * I would like to make this course evolve, add some detail to the course note from other source than the A&DS courses from Pavel Marvin.
 * I would also like to add another PDF that compile Further Reading for each chapter so that people can dive into a subject.
 * I would like to make slides of this course so that Professor can have a support if they want to present it or a part of it.
-* I would like to make specialize part of this course, for example make a semester dedicated.
-* Add in this repository or another one, implementation of the presented data structures and algorithms in some languages. 
+* I would like to make specialize part of this course, for example make a semester dedicated to ML, multi-threading, ... algorithms .
+* Add in this repository or another one, implementation of the presented data structures and algorithms in some languages.
+
+See issues
