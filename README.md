@@ -44,7 +44,7 @@ Contributing can be done from many manners:
   * Assign the issue to you and begin to work.  
 
 If you never worked with typst: 
-* This is an alternative to LateX made to be more powerful and simpler to use.
+* This is an alternative to LateX made to simpler to use for newcomer.
 * [Documentation](https://typst.app/docs/)
 * [Forum](https://forum.typst.app/)
 * To contribute, you have two choices, import the project in the Typst web app or just put the project on your machine and use your IDE to make your modifications. If you have VSC you can use the [Tinymist typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) extension. 
