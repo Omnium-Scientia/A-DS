@@ -1,5 +1,19 @@
 # Algorithm & Data Structure
 
+<!-- TOC -->
+* [What is this project ?](#what-is-this-project--)
+* [Presentation of the source material](#presentation-of-the-source-material-)
+* [Release](#release-)
+* [Contribution](#contribution-)
+* [Future goals](#future-goals-)
+  * [Detail, add information and further reading <detail>](#detail-add-information-and-further-reading-detail)
+  * [Slides](#slides)
+  * [Exercises, problem sets and home tasks](#exercises-problem-sets-and-home-tasks)
+  * [Implementation and real world applications](#implementation-and-real-world-applications)
+  * [Specialisation](#specialisation)
+  * [Translations](#translations)
+<!-- TOC -->
+
 ## What is this project ? 
 
 At the beginning, thhis repository was just a gathering of my notes of the wonderfull course [Algorithm and Data Structure](https://www.youtube.com/playlist?list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4) from Pavel Marvin. The course is on youtube and home-tasks are given in a CodeForces blog entry that is available from the description. 
@@ -53,74 +67,50 @@ If you never worked with typst:
 
 After all the lectures and home tasks from the source material will have been included in the project. 
 
-### Detail, add information and further reading 
+### Detail, add information and further reading <detail>
+  - #### Goal
+    Add details and other information that would enhance the source material course of Pavel Marvin and add further reading to allow people / students to dive and go deeper into a subject easily.
+  - #### Why?
+    There is always room for improvement and more explanations in a course.
+  
+  _See the enhancement and further reading tagged issues (and projects)._
 
-#### Goal 
+### Slides
+  - #### Goal
+    Make slides for each lecture of this course
+  - #### Why?
+    This would allow professors to have a presentation that goes with the lecture notes of this repository.
 
-Add details and other information that would enhance the source material course of Pavel Marvin and add further reading to allow people / students to dive and go deeper into a subject easily. 
+  _See slides tagged issues (and project)._ 
 
-#### Why? 
+### Exercises, problem sets and home tasks
+  - #### Goal
+    Add more problem sets and exercises in supplement of the ones from the source material
+  - #### Why?
+    Practice is necessary and having multiple exercises coming from different people and point of view is better.
 
-There is always room for improvement and more explanations in a course. 
+  _See exercises tagged issues (and projects)._
 
-_See the enhancement and further reading tagged issues (and projects)._
+### Implementation and real world applications
+  - #### Goal 
+    Having implementations and real world usage for the algorithms and data structures presented in the course.
+  - #### Why? 
+    Because in order to learn, having examples can reveal to be very useful. 
 
-### Slides 
+  _No issues or project defined for this for now as it is for later in the roadmap (for when the community around the project will not be just me)._
 
-#### Goal 
+### Specialisation
+  - #### Goal
+    Make semester course on precise and specialized topic of algorithmics (ML, multi-threading ...). 
+  - #### Why? 
+    Some people might want to learn algorithms for a precise purpose and when the first four semesters are made for learning algorithms and data structures in general having specialized semester could be useful. 
 
-Make slides for each lecture of this course
+  _No issues or project defined for this for now as it is for later in the roadmap (for when the community around the project will not be just me)._
 
-#### Why? 
+### Translations
+  - #### Goal
+    Translate the course in other languages than English.
+  - #### Why? 
+    Because not everyone is a good English speaker. 
 
-This would allow professors to have a presentation that goes with the lecture notes of this repository.
-
-_See slides tagged issues (and project)._ 
-
-### Exercises, problem sets and home tasks 
-
-#### Goal 
-
-Add more problem sets and exercises in supplement of the ones from the source material 
-
-#### Why? 
-
-Practice is necessary and having multiple exercises coming from different people and point of view is better.
-
-_See exercises tagged issues (and projects).
-
-### Implementation and real world applications 
-
-#### Goal 
-
-Having implementations and real world usage for the algorithms and data structures presented in the course. 
-
-#### Why? 
-
-Because in order to learn, having examples can reveal to be very useful. 
-
-_No issues or project defined for this for now as it is for later in the roadmap (for when the community around the project will not be just me)._
-
-### Specialisation 
-
-#### Goal 
-
-Make semester course on precise and specialized topic of algorithmics (ML, multi-threading ...). 
-
-#### Why? 
-
-Some people might want to learn algorithms for a precise purpose and when the first four semesters are made for learning algorithms and data structures in general having specialized semester could be useful. 
-
-_No issues or project defined for this for now as it is for later in the roadmap (for when the community around the project will not be just me)._
-
-### Translations 
-
-#### Goal 
-
-Translate the course in other languages than English. 
-
-#### Why? 
-
-Because not everyone is a good English speaker. 
-
-_No issues or project defined for this for now as it is for later in the roadmap (for when the community around the project will not be just me)._
+  _No issues or project defined for this for now as it is for later in the roadmap (for when the community around the project will not be just me)._
