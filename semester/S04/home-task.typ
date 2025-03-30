@@ -7,15 +7,11 @@
         number-format: none, 
       )
 
-#import "../source/template/semester.typ": semester
+#import "../../template/semester.typ": semester
 
 #show: semester.with(
-  title: [Bonus], 
-  subtitle: [Lecture notes]
+  title: [Semester 4],
+  subtitle: [Home-task solution]
 )
 
-#include "../source/course_note/b01.typ"
-
-#pagebreak()
-
-#include "../source/course_note/b02.typ"
+#include "../../home_task/s04ht01.typ"
