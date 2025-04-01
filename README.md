@@ -16,7 +16,7 @@
 
 ## What is this project ? 
 
-At the beginning, thhis repository was just a gathering of my notes of the wonderfull course [Algorithm and Data Structure](https://www.youtube.com/playlist?list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4) from Pavel Marvin. The course is on youtube and home-tasks are given in a CodeForces blog entry that is available from the description. 
+At the beginning, this repository was just a gathering of my notes of the wonderfull course [Algorithm and Data Structure](https://www.youtube.com/playlist?list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4) from Pavel Marvin. The course is on youtube and home-tasks are given in a CodeForces blog entry that is available from the videos description. 
 _Note: that since I am not a Russian speaker, I followed the english course but it is also available in Russian if you want to check it for yourself. Which is highly recommended._ 
 
 But as my notes corpus were getting bigger I thought of using my notes from the course as a source material to make a collaborative algorithms and data structures course. 
