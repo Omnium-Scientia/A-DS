@@ -1744,6 +1744,6 @@ $phi.alt$ definition:
 $phi.alt = $ number of fat nodes (nodes with 2 versions)
 
 If you are making $k$ copy: 
-- $T = k, delta phi.alt = -k + 2$ ($+2$ for the nodes on the left and the right). 
+- $T = k, Delta phi.alt = -k + 2$ ($+2$ for the nodes on the left and the right). 
 
 We then have: $ tilde(T) &= 2 \ &= Omicron(1) $
