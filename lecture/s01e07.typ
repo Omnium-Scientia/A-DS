@@ -1516,6 +1516,8 @@ How to apply this idea in a real pointer machine?
   node((0.75,2.25), [version]),
 ))
 
+#pagebreak()
+
 - With 2 $X$ nodes and a version node: 
 
 #align(center, diagram(
@@ -1746,4 +1748,4 @@ $phi.alt = $ number of fat nodes (nodes with 2 versions)
 If you are making $k$ copy: 
 - $T = k, Delta phi.alt = -k + 2$ ($+2$ for the nodes on the left and the right). 
 
-We then have: $ tilde(T) &= 2 \ &= Omicron(1) $
+We then have: $ tilde(T) = 2 = Omicron(1) $

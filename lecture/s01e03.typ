@@ -22,7 +22,7 @@
 
   node((0,0), $"Input data"$, name: <I>),
   node((+1,0), $"Algorithm"$, name: <A>),
-  node((1,0.75), $"Random In"$, name: <R>), 
+  node((1,0.75), $"Random Input"$, name: <R>), 
   node((+2,0), $"Output data"$, name: <O>),
 
   edge(<I>, "->", <A>), 
@@ -158,7 +158,7 @@ Now let's prove that $T(n) <= c dot n log n$
 $
 T(n) &<= 3n + c dot n /3 log n/3 + c dot (2n)/3 log (2n)/3 \
      &<= 3n + c dot n/3 (log n - log 3) + c dot (2n)/3 (log n - log 3/2) \ 
-     &<= n (1/3c dot log n + 2/3log n + underbrace(3 - 1/3c dot log 3 - 2/3 c dot log 3/2, #text($Omicron(n)$))) \ 
+     &<= n (1/3c dot log n + 2/3log n + underbrace(3 - 1/3c dot log 3 - 2/3 c dot log 3/2, #text($Omicron(1)$))) \ 
      &= Omicron(n log n)
 $
 

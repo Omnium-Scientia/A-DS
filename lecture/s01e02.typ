@@ -305,6 +305,8 @@ Let's create a basic heap sort that we will improve after. The idea of heap sort
 - First we need to create a binary heap using the $"insert"$ function. (we insert each element in an array using insert)
 - Secondly we remove the minimum with the associated function n times and store the result in an array. 
 
+#pagebreak()
+
 There is an implementation of: 
 
 #codly(
@@ -373,12 +375,15 @@ We still have room for improvement. Indeed we can heapify (the first for-loop in
 
 Let's decompose why the complexity of this first for-loop is $Omicron(n log n)$ in order to improve it. 
 
+#linebreak()
+
 #align(center, diagram(
+  let y = 0.75,
   let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
     (-1.5,0), 
-    (-2.75,1),(-0.25, 1), 
-    (-3.25, 2),(-2.25, 2),(-0.75, 2),(0.25, 2), 
-    (-3.5, 3),(-3, 3),(-2.5, 3),(-2, 3),(-1, 3),(-0.5, 3),(0, 3),(0.5, 3)
+    (-2.75,y),(-0.25,y), 
+    (-3.25,2*y),(-2.25,2*y),(-0.75,2*y),(0.25,2*y), 
+    (-3.5,3*y),(-3,3*y),(-2.5,3*y),(-2,3*y),(-1,3*y),(-0.5,3*y),(0,3*y),(0.5,3*y)
   ),
 
   node(N, $circle$),
@@ -402,11 +407,11 @@ Let's decompose why the complexity of this first for-loop is $Omicron(n log n)$ 
 
   node((1.5, -0.5), text(red, "For each node:")),
   node((1.5, 0), text(red, $0 "call to sift_up"$)),
-  node((1.5, 1), text(red, $1 "call "$)),
-  node((1.5, 2), text(red, $2 "calls "$)),
-  node((1.5, 3), text(red, $log n "calls "$)),
+  node((1.5,y), text(red, $1 "call "$)),
+  node((1.5,2*y), text(red, $2 "calls "$)),
+  node((1.5,3*y), text(red, $log n "calls "$)),
 
-  edge((1.5, 2), (1.5, 3), "--", stroke: red)
+  edge((1.5,2*y), (1.5,3*y), "--", stroke: red)
 ))
 
 #pagebreak()
@@ -420,11 +425,12 @@ $
 To improve this complexity, we are going to use $"sift_down"$ instead of $"sift_up"$ in the first for-loop. Which gives us this situation. 
 
 #align(center, diagram(
+  let y = 0.75,
   let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
     (-1.5,0), 
-    (-2.75,1),(-0.25, 1), 
-    (-3.25, 2),(-2.25, 2),(-0.75, 2),(0.25, 2), 
-    (-3.5, 3),(-3, 3),(-2.5, 3),(-2, 3),(-1, 3),(-0.5, 3),(0, 3),(0.5, 3)
+    (-2.75,y),(-0.25,y), 
+    (-3.25,2*y),(-2.25,2*y),(-0.75,2*y),(0.25,2*y), 
+    (-3.5,3*y),(-3,3*y),(-2.5,3*y),(-2,3*y),(-1,3*y),(-0.5,3*y),(0,3*y),(0.5,3*y)
   ),
 
   node(N, $circle$),
@@ -438,21 +444,21 @@ To improve this complexity, we are going to use $"sift_down"$ instead of $"sift_
 
   edge(N, H, "-"), edge(N, I, "-"),
 
-  edge(H, Q, "--"), edge(H, R, "--"),
-  edge(I, S, "--"), edge(I, T, "--"),
+  edge(H, Q, "-"), edge(H, R, "-"),
+  edge(I, S, "-"), edge(I, T, "-"),
 
-  edge(Q, L, "-"), edge(Q, M, "-"),
-  edge(R, O, "-"), edge(R, P, "-"),
-  edge(S, U, "-"), edge(S, V, "-"),
-  edge(T, W, "-"), edge(T, Y, "-"),
+  edge(Q, L, "--"), edge(Q, M, "--"),
+  edge(R, O, "--"), edge(R, P, "--"),
+  edge(S, U, "--"), edge(S, V, "--"),
+  edge(T, W, "--"), edge(T, Y, "--"),
 
   node((1.5, -0.5), text(red, "For each node:")),
   node((1.5, 0), text(red, $log n "calls to sift_down"$)),
-  node((1.5, 1), text(red, $log n-1 "calls "$)),
-  node((1.5, 2), text(red, $1 "call "$)),
-  node((1.5, 3), text(red, $0 "call "$)),
+  node((1.5,y), text(red, $log n-1 "calls "$)),
+  node((1.5,2*y), text(red, $1 "calls "$)),
+  node((1.5,3*y), text(red, $0 "calls "$)),
 
-  edge((1.5, 1), (1.5, 2), "--", stroke: red)
+  edge((1.5,y), (1.5,2*y), "--", stroke: red)
 ))
 
 #linebreak()
@@ -476,7 +482,7 @@ then $(1)$ become:
 
 $
 sum_h^(log n) 2^(log n - h) dot h &= n dot sum_h^(log n) h/2^h &&\ 
-                                  &= Omicron(n) &&"because " sum_k^infinity k / 2^k = 2
+                                  &= Omicron(n) &&#text(fill:rgb(130, 130, 130))[$"because " sum_k^infinity k / 2^k = 2$]
 $
 
-_Note: if you want a more visual prove counting the number of swaps, see the lecture video of Pavel Martin._
+_Note: if you want a more visual prove counting the number of swaps, see the lecture video of Pavel Martin (link below)._

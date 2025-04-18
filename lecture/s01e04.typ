@@ -66,7 +66,7 @@ If we look at the tree, we see that the height of the tree is the number of comp
 
 The height is then therefore the complexity of our algorithm. 
 
-The number of possible output is $n!$ 
+The number of possible output is $n!$:
 
 $
 T(n) &>= log_2 n! \
@@ -660,7 +660,7 @@ So we can apply the same process as before but recursively:
     (2.5,1.9), (2.5, 2.6), 
     (2.5,2.9), (2.5, 3.6), 
   ),
-  let (n0, n1, n2) = (
+  let (n0, n1, n2) = ( 
     (-0.5,0.75),
     (-0.5,2.75),
     (-1,1.75),

@@ -563,6 +563,8 @@ We have proven multiple times that $tilde(T)("push") = Omicron(1)$, lets now pro
 
 We need to save coins to create our new array while popping. We are going to save them when we do our fast pop. 
 
+#pagebreak()
+
 ```
 def pop()
     ans = stack[--n]
@@ -610,7 +612,7 @@ We also have constant amortized cost.
 
 Sometime we have more coins than necessary and $tilde(T)$ become negative, this is not a problem, just like for the potential function it means that $tilde(T) = Omicron(1)$.
 
-== Queue from 2 stacks 
+== Queue from 2 stacks <2-stack>
 
 We are given two stacks: 
 

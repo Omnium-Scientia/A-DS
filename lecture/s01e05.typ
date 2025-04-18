@@ -391,9 +391,7 @@ But if we can only compute the value of the given point:
   - in $l$ the function is increasing
   - in $r$ the function is decreasing 
 - we pick 2 middle points $m_1$ and $m_2$
-
   - $m_1 = l + 1 / 3 (r - l)$
-
   - $m_1 = l + 2 / 3 (r - l)$
 - now we compute $f(m_1)$ and $f(m_2)$
   - if $f(m_1) >= f(m_2)$

@@ -174,7 +174,6 @@ for i = 0..n-1
     for j = 0..n-1
 ```
 
-
 #codly(
   annotation-format: none,    
   annotations: (
@@ -236,7 +235,7 @@ To compute the complexity of $f(n)$ we need to compute the number of time we cal
   annotations: (
     (
       start: 2, end: none,
-      content: $" " Omicron(1) "                                                                                              "$,
+      content: text(fill:red)[$" " Omicron(1) "                                                                                              "$],
     ),
   )
 )
@@ -256,7 +255,7 @@ The number of operation is constant. The number of call is $n$. Therefore comple
   annotations: (
     (
       start: 2, end: none,
-      content: $" " Omicron(1) "                                                                                              "$,
+      content: text(fill:red)[$" " Omicron(1) "                                                                                              "$],
     ),
   )
 )
@@ -287,7 +286,7 @@ which make $log n$ recursive call. Overall the complexity of $f$ is $Omicron(log
   annotations: (
     (
       start: 2, end: none,
-      content: $" " Omicron(1) "                                                                                              "$,
+      content: text(fill:red)[$" " Omicron(1) "                                                                                              "$],
     ),
   )
 )
