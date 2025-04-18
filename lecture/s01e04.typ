@@ -325,16 +325,15 @@ Let's do it now with an array of 5 elements:
 
 Here we make #text(red,$Omicron(n^2)$) concurrent call.  
 
-We want to optimize 2 parameters here: 
+#pagebreak()
 
+We want to optimize 2 parameters here: 
 - The number of comparator 
 - The length of the network 
 
 We are allowed to call simultaneously the unrelated comparators. 
 
 If we do that the previous example become: 
-
-#linebreak()
 
 #align(center, diagram(
   let (a0, a1, a2, a3, a4) = (

@@ -72,7 +72,7 @@ An exponential complexity is not usable in real life. Lets try to understand why
   edge(H, Q, "->"), edge(H, R, "->"),
   edge(I, S, "->"), edge(I, T, "->"),
 
-  edge(Q, L, "--"), edge(Q, M, "--"),
+  edge(Q, L, "->"), edge(Q, M, "--"),
   edge(R, O, "--"), edge(R, P, "--"),
   edge(S, U, "--"), edge(S, V, "--"),
   edge(T, W, "--"), edge(T, Y, "--"),
