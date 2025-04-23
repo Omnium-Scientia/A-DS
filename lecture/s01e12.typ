@@ -16,7 +16,7 @@
 
 Knapsack problem is a fundamental problem in computer science. You can encounter it in many situation and real life problem. 
 
-It is then an important thing to know how to regognize those problems and know what are the options to solve it. 
+It is then an important thing to know how to recognize those problems and know what are the options to solve it. 
 
 == Problem statement
 
@@ -26,7 +26,7 @@ Each items has a weight and a cost: $forall i in bracket.double.l 0,n-1 bracket.
 
 You also have a knapsack of capacity $S$. 
 
-Your objective is to put items in the knapsack in order to maximize its cost while not exceding its capacity: 
+Your objective is to put items in the knapsack in order to maximize its cost while not exciding its capacity: 
 
 $
 sum_i w_i <= S \ sum_i c_i "is maximized"
@@ -203,7 +203,7 @@ $
 x inter y <-> x \& y 
 $
 
-Elements that in $x$ and $y$. The $i^"th"$  bit of our resullting set is set to $1$ if both $i^"th"$ bit are set to $1$ for $x$ and $y$. This is the bitwise and. 
+Elements that in $x$ and $y$. The $i^"th"$  bit of our resulting set is set to $1$ if both $i^"th"$ bit are set to $1$ for $x$ and $y$. This is the bitwise and. 
 
 === Difference 
 
@@ -253,11 +253,11 @@ $
 )
 $
 
-We do not want to iterate over all $x$ and $y$ or our optimisation will be worth nothing. 
+We do not want to iterate over all $x$ and $y$ or our optimization will be worth nothing. 
 
 We want the optimal $y$ for each $x$. 
 
-Lets see, if we fix trhe value of $x$, what constrain do we have on $y$ from $(1)$.  
+Lets see, if we fix the value of $x$, what constrain do we have on $y$ from $(1)$.  
 
 $
 (2) cases(
@@ -266,7 +266,7 @@ $
 )
 $
 
-Our new objective is to solve $(2)$ for $y$ without going throught every possible $y$. To achieve that, we make a sorted array of $y$, sorted by $sum_(i in y) w_i$. We can then separate this array into two part: 
+Our new objective is to solve $(2)$ for $y$ without going through every possible $y$. To achieve that, we make a sorted array of $y$, sorted by $sum_(i in y) w_i$. We can then separate this array into two part: 
 
 $
 [Y_0, ... , Y_i, Y_(i+1), ... , Y_(n-1)] -> forall j in bracket.double.l 0,i bracket.double.r, sum_(k in Y_j) w_k <= S - sum_(k in X) w_k
@@ -276,7 +276,7 @@ We can find this prefix using binary search.
 
 Then we take the max value of $sum_(i in y) c_i$ from this prefix. 
 
-Whith this optimisation, our complexity is now $Omicron(2^(n/2) dot n)$.
+With this optimization, our complexity is now $Omicron(2^(n/2) dot n)$.
 
 == Multi-knapsack
 
@@ -326,9 +326,9 @@ def multi_knapsack(w,S)
                 D[X] = min(D[X], D[X-Y]+1)
 ```
 
-This algorihm runs in $Omicron(n^4)$. Which is bad. 
+This algorithm runs in $Omicron(n^4)$. Which is bad. 
 
-Lets optimize our algorihm by iterating only over the $Y$ that are a subset of $X$. 
+Lets optimize our algorithm by iterating only over the $Y$ that are a subset of $X$. 
 
 ```
 def multi_knapsack(w,S)
@@ -339,15 +339,15 @@ def multi_knapsack(w,S)
                 D[X] = min(D[X], D[X-Y]+1)
 ```
 
-Here we go throught all couple $(X,Y) "such as" Y subset X$
+Here we go through all couple $(X,Y) "such as" Y subset X$
 
 We only have 3 possible cases: 
 - the element is in neither $X$ or $Y$
 - the element is in $X$ but not $Y$
 - the element is in $X$ and $Y$
-We then have only $Omicron(n^3)$ possibilities to go throught. 
+We then have only $Omicron(n^3)$ possibilities to go through. 
 
-With this optimisation, our complexity goes from $Omicron(n^4)$ to $Omicron(n^3)$. 
+With this optimization, our complexity goes from $Omicron(n^4)$ to $Omicron(n^3)$. 
 
 The idea to iterate over all the subset of $X$ is to begin with $X = Y$ and then by decreasing $Y$ from $X$ to $0$, we get all the its subset. 
 
@@ -362,7 +362,7 @@ Y -> &1 0 0 1 0 1 1 0 \
      &0 0 0 0 0 0 0 0
 $
 
-To go from one iteration of $Y$ ot another: 
+To go from one iteration of $Y$ to another: 
 
 #let colorunderline(color: black, equation) = block(
   stroke: (bottom: 1pt + color), 
@@ -380,7 +380,7 @@ $
 Y' = (Y - 1) & X
 $
 
-Iterating with this fromula for $Y$ will give all the subset of $X$. 
+Iterating with this formula for $Y$ will give all the subset of $X$. 
 
 ```
 def multi_knapsack(w,S)
@@ -405,7 +405,7 @@ $
 D[X] eq.def (A,B)
 $
 
-- Here, we want to optimise both $A$ and $B$. Usually this is not possible. It is here because we want to minimize the pair. We optimise $A$ and then $B$. 
+- Here, we want to optimize both $A$ and $B$. Usually this is not possible. It is here because we want to minimize the pair. We optimize $A$ and then $B$. 
 
   Compare $(A_1,B_1)$ and $(A_2,B_2)$: 
   - $A_1 <= A_2, B_1 <= B_2 => (A_1,B_1) <= (A_2,B_2)$
@@ -413,7 +413,7 @@ $
     - Because $(A_1,B_1) <= (A_1 + 1, 0) <= (A_2,B_2)$
     // Do the schema
   
-  In short, we have two parameters to optimise but they do not have the same priority. 
+  In short, we have two parameters to optimize but they do not have the same priority. 
 
 In our transition we go from set $X \\ {i} -> X$: 
 - If $(B + w_i) <= S$ 
