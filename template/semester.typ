@@ -1,6 +1,7 @@
 #let semester(
   title: none, 
   subtitle: none, 
+  abstract: none, 
   body
 ) = {
   
@@ -23,7 +24,7 @@
 
   set heading(
     depth: 4,
-    numbering: "1.1"
+    numbering: "1.1 -"
   )
 
   line(length: 100%)
@@ -32,8 +33,9 @@
 
   line(length: 100%)
 
+  align(center+top, text()[#abstract])
   
-  
+  line(length: 100%)  
   line(length: 100%)  
   
   outline(
