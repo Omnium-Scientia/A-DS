@@ -88,7 +88,7 @@ $
 
 We need 4 operations to get from $A$ to $B$. This is what we call the Levenshtein distance (or the edit distance). 
 
-The set of operation is not necessarly immutable from one problem to an other. We just need to set it when we define it. 
+The set of operation is not necessarily immutable from one problem to an other. We just need to set it when we define it. 
 
 We now want to make an algorithm that compute that edit distance. 
 
@@ -98,7 +98,7 @@ $
 A : underbracket("                   ") x "  " B : underbracket("                   ") y
 $
 
-+ If the last character bewtween $A$ and $B$ is the same $(x = y)$, we can let it here and repeat the same problem on $A'$ and $B'$ where $A' = A[:-1]$ and $B' = B[:-1]$. 
++ If the last character between $A$ and $B$ is the same $(x = y)$, we can let it here and repeat the same problem on $A'$ and $B'$ where $A' = A[:-1]$ and $B' = B[:-1]$. 
 
   $
   A &: underbracket("                   ") \ B &: underbracket("                   ")
@@ -107,7 +107,7 @@ $
   We do the same as in the first dynamic programming lecture: repeat the same problem on a reduced input. 
 
 + If $(x eq.not y)$: 
-  - change $(x,y)$ so that both leter are the same and then we are in $1.$ situation. 
+  - change $(x,y)$ so that both letter are the same and then we are in $1.$ situation. 
 
   $
   A &: underbracket("                   ") y \ B &: underbracket("                   ") y
@@ -191,13 +191,13 @@ $
   )
 )
 
-Now, we want to not just getthe minimum number of change but also get the changelog of what operation need to be done. 
+Now, we want to not just get the minimum number of change but also get the change-log of what operation need to be done. 
 
-The changelog can be interpreted as the path from the beginning to the end. We need to recover it. 
+The change-log can be interpreted as the path from the beginning to the end. We need to recover it. 
 
 To do that when we make our if, we save what transition we used. 
 
-_Note: we there made the algorithm going from $A$ to $B$ but the distance is symetrical._
+_Note: we there made the algorithm going from $A$ to $B$ but the distance symmetric._
 
 === Levenshtein distance between 2 files
 
@@ -205,13 +205,13 @@ Now we can go back to our base problem, 2 files instead of 2 words.
 
 This is the same thing: a letter become a line of our file. 
 
-The algorihm we made as a complexity of $Omicron(bar.v\Abar.v dot bar.v\Bbar.v)$. It is sufficient for practical use: 
+The algorithm we made as a complexity of $Omicron(bar.v\Abar.v dot bar.v\Bbar.v)$. It is sufficient for practical use: 
 - if both of our file are not that long 
 
 If each file is really big: $bar.v\Abar.v tilde.eq bar.v\Bbar.v tilde.eq 10^6$, our algorithm will not be good enough.
 
 In a real world calculation, in git diff for example, we use additional heuristics to decrease complexity: 
-- If we have 2 big files with not to many difference, we arrange just to build the table arround the optimal path and not the whole things. 
+- If we have 2 big files with not to many difference, we arrange just to build the table around the optimal path and not the whole things. 
 - Sometimes it will not give you real optimal solution, we made a trade of between optimality and complexity. 
 - The algorithm  work "less" correctly if the files are really different. But usually, we use diff on file that have similarity. 
 
@@ -317,7 +317,7 @@ def word_justification(w)
 
 We have a complexity of #text(fill:red)[$Omicron(n^2)$]. 
 
-Here we only compute the total badness. In an actuall problem, we want to have the actuall answer. The path. We do the same as everytime, go from the end and retrace our step back. 
+Here we only compute the total badness. In an actual problem, we want to have the actual answer. The path. We do the same as every-time, go from the end and retrace our step back. 
 
 == Run length encoding (RLE)
 
@@ -338,7 +338,7 @@ Lets take a look at the first character of the string $S$:
 $
 S -> c_1(S[1..n-1])
 $
-+ it is part of a repeting group: 
++ it is part of a repeating group: 
 $
 S: underbrace(underline(l_0 ... l_(x-1)) "  "..."  "  underline(l_((K-1)\x) ... l_(K\x-1)), K "times the same group of length" x) "  "..."  " l_(n-1) -> K(S[0..x-1])(S[K\x..n-1])
 $ 
@@ -372,7 +372,7 @@ We use the 2 previously calculated state to get the new one:
   )
 )
 
-We see there that on the contrary of our previous algorihms, we need to compute our array from the bottom to up. 
+We see there that on the contrary of our previous algorithms, we need to compute our array from the bottom to up. 
 
 And we need to assess that the $K$ repetition of the group string are equal (use a string algorithm that we will see in the Semester 3). 
 
