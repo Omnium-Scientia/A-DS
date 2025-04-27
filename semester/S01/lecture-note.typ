@@ -76,7 +76,3 @@
 #pagebreak()
 
 #include "../../lecture/s01e15.typ"
-
-#pagebreak()
-
-#include "../../lecture/b01.typ"
