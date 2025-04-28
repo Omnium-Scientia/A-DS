@@ -315,7 +315,7 @@ This is the amortized analysis.
 
 $
 T(op) " " dash.em "real time" \
-tilde(T)(op) " " dash.em "real time"
+tilde(T)(op) " " dash.em "amortized time"
 $
 
 If we make $m$ operations: 
@@ -369,7 +369,7 @@ $
 For $m$ operations, we know that $m >= 2^k$ because otherwise we would not have expanded the list. 
 
 $
-m >= 2^k => 2^(k+1) <= m
+m >= 2^k => 2^(k+1) <= 2 dot m
 $
 
 So the total time spend on copying element to the new array is no more than $2 dot m$. 
@@ -425,7 +425,7 @@ tilde(T) = T + underbrace(Delta phi.alt, phi.alt_(i+1) - phi.alt_(i))
 $
 $
 => sum tilde(T)(o_i) & = sum (T(o_i) + Delta phi.alt) \
-                     & = sum T(o_i) + underbrace((phi.alt_m - phi.alt_0), <=0) \
+                     & = sum T(o_i) + underbrace((phi.alt_m - phi.alt_0), >=0) \
                      & >= sum T(o_i)
 $
 
@@ -470,9 +470,9 @@ In slow operation:
 
 We observe that between our two state, the number of element in the second half of our array goes from being full (containing $n / 2$ elements) to being empty (containing $0$ element). 
 
-We want $phi.alt_(i+1) - phi.alt_(i) tilde.eq n$: 
-- $phi.alt_(i+1)$ must be big
-- $phi.alt_(i)$ must be small
+We want $phi.alt_(i+1) - phi.alt_(i) tilde.eq -n$: 
+- $phi.alt_(i+1)$ must be small
+- $phi.alt_(i)$ must be big
 
 When we look at our observation, we see that when $phi.alt$ is big, the right part of the array is full and when $phi.alt$ is small the right part of the array is empty. 
 

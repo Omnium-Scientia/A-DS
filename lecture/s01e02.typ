@@ -130,7 +130,7 @@ Since the tree structure for a given number of node will always be the same, we 
 
 Indeed, if the index of a node is $i$, the index of its left child will be $2i + 1$ and is right child $2i + 2$. While its parent index will be $floor.l (i-1) / 2 floor.r$. 
 
-Given those construction rules, let's see the skeleton of the binary heap with teen node: 
+Given those construction rules, let's see the skeleton of the binary heap with ten node: 
 #linebreak()
 
 #let purpled(n) = text(purple, $" "#n$)
@@ -247,7 +247,7 @@ def insert(x)
         i = (i - 1) / 2
 ```
 
-The $"sift_up"$ operation is $Omicron(log n)$ because we go up at each iteration. At most, we go from the bottom layer to the first. And since there is at most $log_2 n$ layer in a binary the complexity is $Omicron(log n)$.
+The $"sift_up"$ operation takes a node $i$ and swap it with its parent until it respect the heap property, its complexity is $Omicron(log n)$ because we go up at each iteration. At most, we go from the bottom layer to the first. And since there is at most $log_2 n$ layer in a binary the complexity is $Omicron(log n)$.
 
 ==== Remove minimum 
 

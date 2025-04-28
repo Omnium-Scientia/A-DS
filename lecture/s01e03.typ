@@ -164,7 +164,7 @@ $
 
 === Improvement ? 
 
-We cannot improve asymptotically our algorithm but we can improve it by making our constant factor decrease. #strong()[Because constant factor are also important is performance are seeken.]
+We cannot improve asymptotically our algorithm but we can improve it by making our constant factor decrease. #strong()[Because constant factor is also important is you seek real-world performance.]
 
 To make it decrease, we need to raise the possibility of choosing a $x$ that is good. 
 
@@ -192,7 +192,7 @@ Because this is another reason to chose randomized algorithm, they can be as fas
 
 ==== Randomized: using quick-sort
 
-Basically the idea is to do a quick-sort but instead of make all the recursion, we do it only on the part that contain k until we find it. 
+Basically the idea is to do a quick-sort but instead of recursing on all array sub-part, we do it only on the part that contain k until we find it. 
 
 ```
 def find(l, r, k) 
@@ -282,8 +282,8 @@ We take the median of each block. After that, we take the median of those median
   node(a, $a$), 
   node(x, $x$),
   
-  node((8.3, -0.6), text(red, $"Less than" x$)),
-  node((8.3, 0.6), text(blue, $"Could be" \ "less than" x$)),
+  node((8, -0.6), text(red, $"Less than" x$)),
+  node((8, 0.6), text(blue, $"Could be" \ "less than" x$)),
 
   edge(bl, br), edge(ul,ur), edge(bl,ul), edge(br,ur), 
   edge(b1,u1),edge(b2,u2),edge(b3,u3),edge(b4,u4),edge(b5,u5),edge(b6,u6),
@@ -294,6 +294,12 @@ We take the median of each block. After that, we take the median of those median
   edge(mu4, u5, stroke: blue), edge(mu5, u6, stroke: blue), edge(mu6, ur, stroke: blue), edge(mu5, u4, stroke: blue), edge(mu6, u5, stroke: blue), edge(run, u6, stroke: blue),
 
   edge(lbn, b1, stroke: blue), edge(mb1, b2, stroke: blue), edge(mb2, b3, stroke: blue), edge(mb1, bl, stroke: blue), edge(mb2, b1, stroke: blue), edge(mb3, b2, stroke: blue),
+
+  let (a,y) = (0.75,-1.3),  
+  node((a,y),$a_0$),node((a+1,y),$a_5$),node((a+2,y),$...$),node((a+3,y),$a_i$),node((a+4,y),$...$),node((a+5,y),$a_(n-9)$),node((a+6,y),$a_(n-4)$),
+
+  let (a,y) = (0.8,1.3),  
+  node((a,y),$a_4$),node((a+1,y),$a_9$),node((a+2,y),$...$),node((a+3,y),$a_(i+5)$),node((a+4,y),$...$),node((a+5,y),$a_(n-5)$),node((a+6,y),$a_n$),
 ))
 
 To find the median of all the median, we call recursively the algorithm that make the block in the array & take their median. 

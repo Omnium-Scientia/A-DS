@@ -535,8 +535,7 @@ which is composed of 1 increasing interval (index 0 to 3) and 1 decreasing (inde
 
 Now let's build the sorting network that will sort the bitonic sequence. 
 
-To achieve this, we only need to sort a bitonic sequence of zeros and ones ($a[0;0;0;0;1;1;1;0;0;0]$). 
-
+To achieve this, we only need to sort a bitonic sequence of zeros and ones ($a[0;0;0;0;1;1;1;0;0;0]$). Where the $1$ represent the increasing part and the $0$ represent the decreasing part of the sequence.
 
 _Note: to achieve this with the RAM-model we just need to find the minimum and merge the 2 parts. Here the model is different and we cannot do that._
 
@@ -599,7 +598,7 @@ Let's prove that each part $a$ and $b$ are bitonic sequence and all element of $
 we have three possibilities: 
 
 - either there were only zeros in $a$ before the comparison:
-  - in that case no element can be greater s owe do not have any swap then after the comparison no element of a have changed. 
+  - in that case no element in the first half can be greater than the one of the second half, so, we do not have any swap then after the comparison no element of a have changed. 
 
   $
   [underbrace(0" "0" "0" "0, a)" "underbrace(0" "1" "1" "0, b)] -> [underbrace(0" "0" "0" "0, a)" "underbrace(0" "1" "1" "0, b)]

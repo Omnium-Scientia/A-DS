@@ -572,8 +572,8 @@ A singly linked list is sufficient to implement a stack because the only thing w
 ))
 
 ```
-def psuh(x)
-    x.nrxt = top 
+def push(x)
+    x.next = top 
     top = x
 ```
 

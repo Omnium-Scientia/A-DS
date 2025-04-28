@@ -104,8 +104,7 @@ $
 
 $ 
 &f(n) = Omicron(g(n)) \
-<==> &exists " " n_(0), c | forall n >= n_(0) \ 
-&f(n) <= c dot.op g(n)
+<==> &exists " " n_(0), c | forall n >= n_(0)," " f(n) <= c dot.op g(n)
 $
 
 Let's prove that: $2+5n = Omicron(n)$
@@ -132,6 +131,8 @@ Which mean $Omega$ is a lower bound of our complexity.
 
 For our sum example, we can show that $2 + 5n = Omega(n)$ with $n_0, c = 1$
 
+=== Big-$Theta$
+
 We have shown for our example that: 
 
 $ 
@@ -139,7 +140,7 @@ T(n) = Omicron(n) \
 T(n) = Omega(n)
 $
 
-Which mean that $T(n) = Theta(n)$
+If we have those two properties, we say that $T(n) = Theta(n)$. 
 
 When we invent a new algorithm we try to prove both $Omicron$ & $Omega$. Proving $Omicron$ is sufficient that we are fast enough. $Omega$ is useful to show that we are not faster than. 
 
@@ -402,41 +403,53 @@ def f(n)
 ```
 
 #align(center, diagram(
-  let (N, H,I,G, Q,R,S,T,E,F, L,M,O,P,U,V,W,Y,A,B,C,D) = (
+  let (N, H,I,G, Q,R,J,S,T,K,E,F,X, L,M,O,P,U,V,W,Y,A,B,C,D) = (
     (-0.75,0), 
     
+
     (-3,1),(-0.75, 1),(1.5, 1),
     
-    (-3.5, 2),(-2.5, 2),(-1.25, 2),(-0.25, 2),(1, 2),(2, 2),  
+
+    (-3.75, 2),(-2.25, 2),(-3, 2), 
+    (-1.5, 2),(0, 2),(-0.75, 2),
+    (0.75, 2),(2.25, 2),(1.5, 2),
     
-    (-3.75, 3),(-3.25, 3),(-2.75, 3),(-2.25, 3),
-    (-1.5, 3),(-1, 3),(-0.5, 3),(0, 3),
-    (0.75, 3),(1.25, 3),(1.75,3),(2.25,3),
+
+    (-4.25, 3),(-3.75, 3),
+    (-2.75, 3),(-2.25, 3),
+
+    (-1.5, 3),(-1, 3),
+    (-0.5, 3),(0, 3),
+
+    (0.75, 3),(1.25, 3),
+    (1.75,3),(2.25,3),
   ),
 
   node(N, $f(n)$),
   
   node(H, $f(n / 2)$), node(I, $f(n / 2)$), node(G, $f(n / 2)$), 
   
-  node(Q, $f(n / 4)$), node(R, $f(n / 4)$), node(S, $f(n / 4)$), 
-  node(T, $f(n / 4)$), node(E, $f(n / 4)$), node(F, $f(n / 4)$), 
-
-  node(L, $f(0)$), node(M, $f(0)$), node(O, $f(0)$), node(P, $f(0)$),
-  node(U, $f(0)$), node(V, $f(0)$), node(W, $f(0)$), node(Y, $f(0)$),
-  node(A, $f(0)$), node(B, $f(0)$), node(C, $f(0)$), node(D, $f(0)$),
+  node(Q, $f(n / 4)$), node(R, $f(n / 4)$), node(J, $f(n / 4)$), 
+  node(S, $f(n / 4)$), node(T, $f(n / 4)$), node(K, $f(n / 4)$),
+  node(E, $f(n / 4)$), node(F, $f(n / 4)$), node(X, $f(n / 4)$),
 
   edge(N, H, "->"), edge(N, I, "->"), edge(N, G, "->"), 
 
-  edge(H, Q, "->"), edge(H, R, "->"),
-  edge(I, S, "->"), edge(I, T, "->"),
-  edge(G, E, "->"), edge(G, F, "->"),
+  edge(H, Q, "->"), edge(H, R, "->"), edge(H, J, "->"),
+  edge(I, S, "->"), edge(I, T, "->"), edge(I, K, "->"),
+  edge(G, E, "->"), edge(G, F, "->"), edge(G, X, "->"),
 
-  edge(Q, L, "--"), edge(Q, M, "--"),
-  edge(R, O, "--"), edge(R, P, "--"),
-  edge(S, U, "--"), edge(S, V, "--"),
-  edge(T, W, "--"), edge(T, Y, "--"),
-  edge(E, A, "--"), edge(E, B, "--"),
-  edge(F, C, "--"), edge(F, D, "--"),
+  let dx = 0,
+  let y = 0.75,
+  edge(Q, (-3.75, 3), "--"), edge(R, (-3.75+2*y, 3), "--"), edge(J, (-3.75+y, 3), "--"), edge(S, (-3.75+3*y, 3), "--"), edge(T, (-3.75+5*y, 3), "--"), edge(K, (-3.75+4*y, 3), "--"), edge(E, (-3.75+6*y, 3), "--"), edge(F, (-3.75+8*y, 3), "--"), edge(X, (-3.75+7*y, 3), "--"),
+
+  let dx = 0.2,
+  let y = 0.75,
+  edge(Q, (-3.75+dx, 3), "--"), edge(R, (-3.75+2*y+dx, 3), "--"), edge(J, (-3.75+y+dx, 3), "--"), edge(S, (-3.75+3*y+dx, 3), "--"), edge(T, (-3.75+5*y+dx, 3), "--"), edge(K, (-3.75+4*y+dx, 3), "--"), edge(E, (-3.75+6*y+dx, 3), "--"), edge(F, (-3.75+8*y+dx, 3), "--"), edge(X, (-3.75+7*y+dx, 3), "--"),
+
+  let dx = -0.2,
+  let y = 0.75,
+  edge(Q, (-3.75+dx, 3), "--"), edge(R, (-3.75+2*y+dx, 3), "--"), edge(J, (-3.75+y+dx, 3), "--"), edge(S, (-3.75+3*y+dx, 3), "--"), edge(T, (-3.75+5*y+dx, 3), "--"), edge(K, (-3.75+4*y+dx, 3), "--"), edge(E, (-3.75+6*y+dx, 3), "--"), edge(F, (-3.75+8*y+dx, 3), "--"), edge(X, (-3.75+7*y+dx, 3), "--"),
 
   edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right)
 ))

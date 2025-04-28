@@ -46,7 +46,7 @@ Imagine that you have objects and these objects are separated in disjoint sets, 
 
 - Find: it take an element $x$ as input and return in which set the element is.
   - To do that, we use two type of object, the set and the element. 
-  - #text(fill:blue)[\*]To not be bothered by that, we are going to mark one element in each set. This element is unique and will represent the set so that our return type is also an element. 
+  - #text(fill:red)[\*]To not be bothered by that, we are going to mark one element in each set. This element is unique and will represent the set so that our return type is also an element. 
 
   #align(center, diagram(
     node-corner-radius: 4pt,
@@ -442,9 +442,9 @@ def union(X,Y)
         r[y]++ 
 ```
 
-Lets prove by induction that if we use this union function, find function as an $Omicron(n log n)$ complexity. 
+Lets prove by induction that if we use this union function, find function has an $Omicron(n log n)$ complexity. 
 
-A set with a reference element $X$ of rank $r[X]$ as at least $2^r[X]$ is our induction property. 
+Our introduction property is that a set with a reference element $X$ of rank $r[X]$ has at least $2^r[X]$ elements. 
 
 *Initialization:*
 - $r[X] = 0 -> $ then our set a only 1 element. $1 > 2^0$ so property is true for $r[X] = 0$. 

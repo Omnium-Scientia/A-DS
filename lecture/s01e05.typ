@@ -172,7 +172,7 @@ def bin_search(a, x)
     return m
 ```
 
-== Integer problem
+== Integer problem <good>
 
 Common problems for binary search are: 
 - you take $ZZ$
@@ -246,17 +246,17 @@ def bin_search()
 
 == Double problem
 
-Let's consider the following problem, we have a line and $n$ people are living on this line at $x_i$. 
+Let's consider the following problem, we have a line and $n$ people are living on this line at the position $x_i$. 
 
 For each person we know: 
-- is coordinate $x_i$
-- is maximum speed $v_i$ 
+- his coordinate $x_i$
+- his maximum moving speed $v_i$ on the line 
 
-Each person can move left or right. Our task is to find the minimum time we need to gather them at 1 point. 
+Each person can move left or right. Our task is to find the minimum time $(t)$ we need to gather them at 1 point. 
 
 The number $t$ is considered good when all the people can gather in $t$ seconds.
 
-It is our good property as in version 3. We now need to define our $"good"$ function. 
+It is our good property as in @good. We now need to define our $"good"$ function. 
 
 How to check if we can get to the same point in $t$ seconds. 
 
