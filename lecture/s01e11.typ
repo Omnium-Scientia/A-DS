@@ -86,7 +86,7 @@ $
   )
 )
 
-We need 4 operations to get from $A$ to $B$. This is what we call the Levenshtein distance (or the edit distance). 
+We need 3 operations to get from $A$ to $B$. This is what we call the Levenshtein distance (or the edit distance). 
 
 The set of operation is not necessarily immutable from one problem to an other. We just need to set it when we define it. 
 
@@ -130,7 +130,7 @@ $
 Lets define our dynamic programming state: 
 
 $
-D[i,j] eq.def "min munber of operation to produce" B[0..j-1] "from" A[0..j-1]
+D[i,j] eq.def "min munber of operation to produce" B[0..j-1] "from" A[0..i-1]
 $
 
 Lets define our transition value for each transition define before: 
@@ -197,7 +197,7 @@ The change-log can be interpreted as the path from the beginning to the end. We 
 
 To do that when we make our if, we save what transition we used. 
 
-_Note: we there made the algorithm going from $A$ to $B$ but the distance symmetric._
+_Note: The levensthein distance is symmetrical, the distance to get $A$ from $B$ or $B$ from $A$ is the same._
 
 === Levenshtein distance between 2 files
 

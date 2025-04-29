@@ -324,7 +324,7 @@ We do the same as before, split the different path in some sets.
 
 If you want to reach the $n^("th")$ cell then the last jump was: 
 + from $(n-1)^("th")$ cell
-+ from $(n-1)^("th")$ cell
++ from $(n-2)^("th")$ cell
 
 $
 D[n] eq.def "miminum cost to reach the cell" n
@@ -362,7 +362,7 @@ Lets see the result for our example:
       (0,y),(0.5,y),(1,y),(1.5,y),(2,y),(2.5,y),(3,y),(3.5,y),(4,y),(4.5,y),
     ),
 
-    node(n0,$0$),node(n1,$3$),node(n2,$5$),node(n3,$9$),node(n4,$12$),node(n5,$10$),node(n6,$15$),node(n7,$14$),node(n8,$17$),node(n9,$14$),
+    node(n0,$0$),node(n1,$3$),node(n2,$2$),node(n3,$8$),node(n4,$9$),node(n5,$9$),node(n6,$14$),node(n7,$14$),node(n8,$17$),node(n9,$14$),
 
     node((-0.25,y),$D[$),node((4.7,y),$]$),
   )
@@ -530,7 +530,7 @@ We will talk about them during the semester 3.
 == Grasshopper with jump restrictions
 
 Here we stay with the same base rule than before but we add constrain: 
-- if the $j^("th")$ jump was of length $k$ then $(j+1)^"th"$ jump must be of length at least $k$. 
+- if the $j^("th")$ jump was of length $k$ then $(j+1)^"th"$ jump must be of length at most $k$. 
 
 
 #align(
@@ -568,7 +568,7 @@ $
 def grasshopper(n,k)
     D[0] = 1
     for i = 1..n
-        for h = 1..i
+        for h = 1..k
             for j = 1..h 
                 D[i,h] += D[i-j,j]
 ```
