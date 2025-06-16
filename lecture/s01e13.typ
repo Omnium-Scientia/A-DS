@@ -405,7 +405,7 @@ We have an $n times m$ rectangle. We color each $1 times 1$ square in black or w
     stroke:0.5pt,
     columns: (1em,1em),
     rows: (1em,1em),
-    [$square.filled$],[$square.filled$],
+    align(center + top)[$square.filled$],align(center + top)[$square.filled$],
     [$square.filled$],[$square.filled$],
   )), 
   align(center,grid(
