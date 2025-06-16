@@ -307,7 +307,7 @@ Let's create a basic heap sort that we will improve after. The idea of heap sort
 
 #pagebreak()
 
-There is an implementation of: 
+There is an implementation of this algorithm: 
 
 #codly(
   annotation-format: none,    
