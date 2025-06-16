@@ -472,24 +472,24 @@ The first time we call find, we follow this path:
 
 #align(center, diagram(
     node-stroke: 1pt,
-    let (n1,n2,n3,n4) = ((0,0),(0,1),(0,2),(0,3)),
+    let (n1,n2,n3,n4) = ((0,0),(1,0),(2,0),(3,0)),
 
     node(n1,[X]),node(n2,$$),node(n3,$$),node(n4,$Y$),
     edge(n4,n3,"->"),edge(n3,n2,"->"),edge(n2,n1,"->"),edge(n1,n1,"->",bend:135deg,loop-angle:120deg),
 
-    edge((1,3),n4,"->"),node((1,3),[find],stroke:0pt),
+    edge((3,0.7),n4,"->"),node((3,0.6),[find],stroke:0pt),
 ))
 
-but, we change our pointer to: 
+but, we change our pointer to $X$: 
 
 #align(center, diagram(
     node-stroke: 1pt,
-    let (n1,n2,n3,n4) = ((0,0),(0,1),(0,2),(0,3)),
+    let (n1,n2,n3,n4) = ((0,0),(1,0),(2,0),(3,0)),
 
     node(n1,[X]),node(n2,$$),node(n3,$$),node(n4,$Y$),
     edge(n4,n1,"->",bend:40deg),edge(n3,n1,"->",bend:40deg),edge(n2,n1,"->"),edge(n1,n1,"->",bend:135deg,loop-angle:120deg),
 
-    edge((1,3),n4,"->"),node((1,3),[find],stroke:0pt),
+    edge((3,0.7),n4,"->"),node((3,0.6),[find],stroke:0pt),
 ))
 
 so that the next time we try to do a find for an element of this set it will be done in constant time.
@@ -529,8 +529,6 @@ $
 m = n => alpha(m,n) = log^* n 
 $
 
-#pagebreak()
-
 Where $log^*$ is the iterated logarithm function: 
 $
 log^* n eq.def cases(0 "if" n <= 1, 1 + log^* (log n))
@@ -551,12 +549,12 @@ We want $tilde(T)("find")$ so we want the sum of all path in my find call.
 
 #align(center, diagram(
     node-stroke: 1pt,
-    let (n1,n2,n3,n4,n5,n6) = ((0,0),(0,1),(0,2),(0,3),(0,4),(0,5)),
+    let (n1,n2,n3,n4,n5,n6) = ((0,0),(1,0),(2,0),(3,0),(4,0),(5,0)),
 
     node(n1,$Y$),node(n2,$$),node(n3,$$),node(n4,$$),node(n5,$$),node(n6,$X$),
     edge(n6,n5,"->"),edge(n5,n4,"->"),edge(n4,n3,"->"),edge(n3,n2,"->"),edge(n2,n1,"->",stroke:blue),edge(n1,n1,"->",bend:135deg,loop-angle:120deg),
 
-    edge((1,5),n6,"->"),node((1,5),[find],stroke:0pt),
+    edge((5,0.8),n6,"->"),node((5,0.8),[find],stroke:0pt),
 ))
 
 In each operation we have a last edge#text(fill:blue)[\*].
@@ -566,8 +564,6 @@ To calculate the other edge, we split them in two groups:
 - #text(fill:green)[\*]big jump: $r[p[X]] >= 1.9^r[X]$
 
 The number of big jump is $<= log^* n$ because $r[X] <= log n$.
-
-#pagebreak()
 
 Number of small jump: 
 
@@ -591,7 +587,7 @@ Number of small jump:
   ]
 )
 
-How many jump will it take for $Y$ to have a jump that is bug and not small?
+How many jump will it take for $Y$ to have a big jump and not a small one?
 - for $X$: $<= 1.9^r[X]$ operation until $X -> p[X]$ become a big jump. 
 $
 sum_x 1.9^r[X] = underbrace(sum_r "cnt"[r] dot 1.9^r, "we group the" X "by rank")
