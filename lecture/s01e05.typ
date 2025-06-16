@@ -81,7 +81,7 @@ We have our algorithm.
 ```
 def bin_search(a, x)
     l = 0, r = n - 1
-    while r - l + 1 > 1 
+    while r - l + 1 >= 1 
         if a[m] = x 
             return m 
         else if a[m] < x 
