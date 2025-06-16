@@ -162,8 +162,8 @@ $
 H eq.def {
   h_(p,A) cases(
     delim: bar, 
-    NN -> bracket.double.l 0,m-1 bracket.double.r, 
-    k |-> ((k dot A) % p) %m
+    NN -> bracket.double.l 0\,m-1 bracket.double.r, 
+    k |-> ((k dot A) % p) %m,
   ) : p "big random prime number", A in bracket.double.l 0,p-1 bracket.double.r
 }
 $
