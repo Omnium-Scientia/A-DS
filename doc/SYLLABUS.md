@@ -1,6 +1,6 @@
 # Algorithm & Data structure 
 
-This course as for goals to teach you the basics of algorithm and data structure. 
+This course has for goals to teach you the basics of algorithm and data structure. 
 How to use them, in a context what difference they make, you will also see how to evaluate the performance of them.
 
 ## This course will be composed of 4 semesters: 
