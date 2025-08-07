@@ -2,16 +2,23 @@
 #import "@preview/codly-languages:0.1.7": *
 #show: codly-init.with()
 
-#codly(languages: codly-languages,
-        zebra-fill: luma(250), 
-        number-format: none, 
-      )
+#codly(
+    languages: codly-languages,
+    zebra-fill: luma(250),
+    number-format: none,
+)
 
 #import "../../template/semester.typ": semester
 
 #show: semester.with(
-  title: [Semester 2],
-  subtitle: [Lecture notes]
+    title: [Semester 2],
+    subtitle: [Lecture notes],
+    abstract: [ 
+            In this semester, we continue to explore core concept: 
+        \   We will begin with trees, a lot of tree types to do many things, 
+        \   after that we will talk about when an algorithm need external memory
+        \   and finally a chapter on complexity classes. 
+    ],
 )
 
 #include "../../lecture/s02e01.typ"
