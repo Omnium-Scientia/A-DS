@@ -5,10 +5,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "1", 
-  video_link: "https://www.youtube.com/watch?v=oWgLjhM-6XE&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4", 
-  title: "Algorithm, Time complexity, Merge sort"
+    semester: "1", 
+    chapter_number: "1", 
+    video_link: "https://www.youtube.com/watch?v=oWgLjhM-6XE     list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4", 
+    title: "Algorithm, Time complexity, Merge sort"
 )
 
 
@@ -19,13 +19,12 @@
 Formalized way to solve some problems. 
 
 #align(center, diagram(
+    node((0,0), $"Input data"$, name: <I>),
+    node((+1,0), $"Algorithm"$, name: <A>),
+    node((+2,0), $"Output data"$, name: <O>),
 
-  node((0,0), $"Input data"$, name: <I>),
-  node((+1,0), $"Algorithm"$, name: <A>),
-  node((+2,0), $"Output data"$, name: <O>),
-
-  edge(<I>, "->", <A>), 
-  edge(<A>, "->", <O>)
+    edge(<I>, "->", <A>), 
+    edge(<A>, "->", <O>)
 ))
 
 Example: Sum of elements of an array 
@@ -57,10 +56,10 @@ A computational model is a mathematical abstraction that is a simplified version
 Ram: 
 
 #align(center, diagram(
-  node((0,0), $0$),
-  node((5,0), $n-1$),
+    node((0,0), $0$),
+    node((5,0), $n-1$),
 
-  edge((0,0), "-", (5,0), $i$), 
+    edge((0,0), "-", (5,0), $i$), 
 ))
 
 We can access an element $i$ of the memory in constant time (not the case in all computational model). 
@@ -68,27 +67,27 @@ We can access an element $i$ of the memory in constant time (not the case in all
 Example: let's take our previous example back 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start:3, end: 4,
-      content: "n times, 2 op in for declaration & 3 op in for body"
-    ),
-    (
-      start: 1, end: none,
-      content: "1 op",
-    ),
-    (
-      start: 6, end: none,
-      content: "1 op",
-    ),
-  )
+    annotation-format: none,
+    annotations: (
+        (
+            start:3, end: 4,
+            content: "n times, 2 op in for declaration & 3 op in for body"
+        ),
+        (
+            start: 1, end: none,
+            content: "1 op",
+        ),
+        (
+            start: 6, end: none,
+            content: "1 op",
+        ),
+    )
 )
 ```
 s = 0 
 
 for i = 0..n-1: 
-    s += a[i]     
+    s += a[i]
 
 print(s)
 ```
@@ -112,7 +111,7 @@ Let's prove that: $2+5n = Omicron(n)$
 $ 
 -> &f(n) = 2 + 5n \
 &g(n) = n \
-&n_(0) = 2 \  
+&n_(0) = 2 \
 &c = 6
 $
 
@@ -149,26 +148,26 @@ When we invent a new algorithm we try to prove both $Omicron$ & $Omega$. Proving
 For loop: 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 1, end: none,
-      content: text(red, $" " Omicron(n) "                                                                                            "$),
-    ),
-  )
+    annotation-format: none,
+    annotations: (
+        (
+            start: 1, end: none,
+            content: text(red, $" " Omicron(n) "                                                                                            "$),
+        ),
+    )
 )
 ```
 for i = 0..n-1 
 ```
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 1, end: 2,
-      content: text(red, $" " Omicron(n^2) "                                                                                           "$),
-    ),
-  )
+    annotation-format: none,
+    annotations: (
+        (
+            start: 1, end: 2,
+            content: text(red, $" " Omicron(n^2) "                                                                                             "$),
+        ),
+    )
 )
 ```
 for i = 0..n-1 
@@ -176,13 +175,13 @@ for i = 0..n-1
 ```
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 1, end: 2,
-      content: text(red, $" " Omicron(n^2) "                                                                                           "$),
-    ),
-  )
+    annotation-format: none,
+    annotations: (
+        (
+            start: 1, end: 2,
+            content: text(red, $" " Omicron(n^2) "                                                                                             "$),
+        ),
+    )
 )
 ```
 for i = 0..n-1 
@@ -194,13 +193,13 @@ for i = 0..n-1
 For loop are trivial, while loop can be trickier: 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 2, end: 3,
-      content: text(red, $" " Omicron(sqrt(n)) "                                                                                           "$),
-    ),
-  )
+    annotation-format: none,
+    annotations: (
+        (
+            start: 2, end: 3,
+            content: text(red, $" " Omicron(sqrt(n)) "                                                                                             "$),
+        ),
+    )
 )
 ```
 i = 0
@@ -209,18 +208,18 @@ while i * i < n
 ```
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 2, end: 3,
-      content: text(red, $" " Omicron(log_2n) " = " Omicron(log n) "                                                                       "$),
-    ),
-  )
+    annotation-format: none,
+    annotations: (
+        (
+            start: 2, end: 3,
+            content: text(red, $" " Omicron(log_2n) " = " Omicron(log n) "                                                                         "$),
+        ),
+    )
 )
 ```
 i = 1
 while i < n
-  i += 2
+    i += 2
 ```
 
 _Constant does not affect asymptotic time_.
@@ -232,13 +231,13 @@ To compute the complexity of $f(n)$ we need to compute the number of time we cal
 === Example: 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 2, end: none,
-      content: text(fill:red)[$" " Omicron(1) "                                                                                              "$],
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start: 2, end: none,
+            content: text(fill:red)[$" " Omicron(1) "                                                                                                "$],
+        ),
+    )
 )
 ```
 def f(n)
@@ -252,13 +251,13 @@ The number of operation is constant. The number of call is $n$. Therefore comple
 === Example 2: 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 2, end: none,
-      content: text(fill:red)[$" " Omicron(1) "                                                                                              "$],
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start: 2, end: none,
+            content: text(fill:red)[$" " Omicron(1) "                                                                                                "$],
+        ),
+    )
 )
 ```
 def f(n)
@@ -270,12 +269,12 @@ def f(n)
 Here the number of operation is still constant. But, we call: 
 
 #align(center, diagram(
-  $ 
+    $ 
     f(n) edge(->, shift: #0pt) 
-  & f(n / 2) edge(->, shift: #0pt) 
-  & ... edge(->, shift: #0pt) 
-  & f(0) 
-  $
+    & f(n / 2) edge(->, shift: #0pt) 
+    & ... edge(->, shift: #0pt) 
+    & f(0) 
+    $
 ))
 
 which make $log n$ recursive call. Overall the complexity of $f$ is $Omicron(log n)$. 
@@ -283,13 +282,13 @@ which make $log n$ recursive call. Overall the complexity of $f$ is $Omicron(log
 === Example 3: 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 2, end: none,
-      content: text(fill:red)[$" " Omicron(1) "                                                                                              "$],
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start: 2, end: none,
+            content: text(fill:red)[$" " Omicron(1) "                                                                                                "$],
+        ),
+    )
 )
 ```
 def f(n)
@@ -304,33 +303,33 @@ def f(n)
 Let's compute the number of call to $f$: 
 
 #align(center, diagram(
-  let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
-    (-1.5,0), 
-    (-2.75,1),(-0.25, 1), 
-    (-3.25, 2),(-2.25, 2),(-0.75, 2),(0.25, 2), 
-    (-3.5, 3),(-3, 3),(-2.5, 3),(-2, 3),(-1, 3),(-0.5, 3),(0, 3),(0.5, 3)
-  ),
+    let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
+        (-1.5,0), 
+        (-2.75,1),(-0.25, 1), 
+        (-3.25, 2),(-2.25, 2),(-0.75, 2),(0.25, 2), 
+        (-3.5, 3),(-3, 3),(-2.5, 3),(-2, 3),(-1, 3),(-0.5, 3),(0, 3),(0.5, 3)
+    ),
 
-  node(N, $f(n)$),
-  
-  node(H, $f(n / 2)$), node(I, $f(n / 2)$), 
-  
-  node(Q, $f(n / 4)$), node(R, $f(n / 4)$), node(S, $f(n / 4)$), node(T, $f(n / 4)$),
+    node(N, $f(n)$),
+    
+    node(H, $f(n / 2)$), node(I, $f(n / 2)$), 
+    
+    node(Q, $f(n / 4)$), node(R, $f(n / 4)$), node(S, $f(n / 4)$), node(T, $f(n / 4)$),
 
-  node(L, $f(0)$), node(M, $f(0)$), node(O, $f(0)$), node(P, $f(0)$),
-  node(U, $f(0)$), node(V, $f(0)$), node(W, $f(0)$), node(Y, $f(0)$),
+    node(L, $f(0)$), node(M, $f(0)$), node(O, $f(0)$), node(P, $f(0)$),
+    node(U, $f(0)$), node(V, $f(0)$), node(W, $f(0)$), node(Y, $f(0)$),
 
-  edge(N, H, "->"), edge(N, I, "->"),
+    edge(N, H, "->"), edge(N, I, "->"),
 
-  edge(H, Q, "->"), edge(H, R, "->"),
-  edge(I, S, "->"), edge(I, T, "->"),
+    edge(H, Q, "->"), edge(H, R, "->"),
+    edge(I, S, "->"), edge(I, T, "->"),
 
-  edge(Q, L, "--"), edge(Q, M, "--"),
-  edge(R, O, "--"), edge(R, P, "--"),
-  edge(S, U, "--"), edge(S, V, "--"),
-  edge(T, W, "--"), edge(T, Y, "--"),
+    edge(Q, L, "--"), edge(Q, M, "--"),
+    edge(R, O, "--"), edge(R, P, "--"),
+    edge(S, U, "--"), edge(S, V, "--"),
+    edge(T, W, "--"), edge(T, Y, "--"),
 
-  edge((1.5, 0), (1.5, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left)
+    edge((1.5, 0), (1.5, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left)
 ))
 
 #linebreak()
@@ -340,38 +339,38 @@ The height of the calling tree is $log_2 n$. The number of call to $f$ is the nu
 Explanation: 
 
 #align(center, diagram(
-  let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
-    (-1.5,0), 
-    (-2.75,1),(-0.25, 1), 
-    (-3.25, 2),(-2.25, 2),(-0.75, 2),(0.25, 2), 
-    (-3.5, 3),(-3, 3),(-2.5, 3),(-2, 3),(-1, 3),(-0.5, 3),(0, 3),(0.5, 3)
-  ),
+    let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
+        (-1.5,0), 
+        (-2.75,1),(-0.25, 1), 
+        (-3.25, 2),(-2.25, 2),(-0.75, 2),(0.25, 2), 
+        (-3.5, 3),(-3, 3),(-2.5, 3),(-2, 3),(-1, 3),(-0.5, 3),(0, 3),(0.5, 3)
+    ),
 
-  node(N, $circle$),
-  
-  node(H, $circle$), node(I, $circle$), 
-  
-  node(Q, $circle$), node(R, $circle$), node(S, $circle$), node(T, $circle$),
+    node(N, $circle$),
+    
+    node(H, $circle$), node(I, $circle$), 
+    
+    node(Q, $circle$), node(R, $circle$), node(S, $circle$), node(T, $circle$),
 
-  node(L, $circle$), node(M, $circle$), node(O, $circle$), node(P, $circle$),
-  node(U, $circle$), node(V, $circle$), node(W, $circle$), node(Y, $circle$),
+    node(L, $circle$), node(M, $circle$), node(O, $circle$), node(P, $circle$),
+    node(U, $circle$), node(V, $circle$), node(W, $circle$), node(Y, $circle$),
 
-  edge(N, H, "->"), edge(N, I, "->"),
+    edge(N, H, "->"), edge(N, I, "->"),
 
-  edge(H, Q, "->"), edge(H, R, "->"),
-  edge(I, S, "->"), edge(I, T, "->"),
+    edge(H, Q, "->"), edge(H, R, "->"),
+    edge(I, S, "->"), edge(I, T, "->"),
 
-  edge(Q, L, "--"), edge(Q, M, "--"),
-  edge(R, O, "--"), edge(R, P, "--"),
-  edge(S, U, "--"), edge(S, V, "--"),
-  edge(T, W, "--"), edge(T, Y, "--"),
+    edge(Q, L, "--"), edge(Q, M, "--"),
+    edge(R, O, "--"), edge(R, P, "--"),
+    edge(S, U, "--"), edge(S, V, "--"),
+    edge(T, W, "--"), edge(T, Y, "--"),
 
-  node((1.5, 0), text(red, $1 "call "$)),
-  node((1.5, 1), text(red, $2 "calls "$)),
-  node((1.5, 2), text(red, $4 "calls "$)),
-  node((1.5, 3), text(red, $2^H "calls "$)),
+    node((1.5, 0), text(red, $1 "call "$)),
+    node((1.5, 1), text(red, $2 "calls "$)),
+    node((1.5, 2), text(red, $4 "calls "$)),
+    node((1.5, 3), text(red, $2^H "calls "$)),
 
-  edge((1.5, 2), (1.5, 3), "--", stroke: red)
+    edge((1.5, 2), (1.5, 3), "--", stroke: red)
 ))
 
 Total number of nodes: 
@@ -403,55 +402,55 @@ def f(n)
 ```
 
 #align(center, diagram(
-  let (N, H,I,G, Q,R,J,S,T,K,E,F,X, L,M,O,P,U,V,W,Y,A,B,C,D) = (
-    (-0.75,0), 
+    let (N, H,I,G, Q,R,J,S,T,K,E,F,X, L,M,O,P,U,V,W,Y,A,B,C,D) = (
+        (-0.75,0), 
+        
+
+        (-3,1),(-0.75, 1),(1.5, 1),
+        
+
+        (-3.75, 2),(-2.25, 2),(-3, 2), 
+        (-1.5, 2),(0, 2),(-0.75, 2),
+        (0.75, 2),(2.25, 2),(1.5, 2),
+        
+
+        (-4.25, 3),(-3.75, 3),
+        (-2.75, 3),(-2.25, 3),
+
+        (-1.5, 3),(-1, 3),
+        (-0.5, 3),(0, 3),
+
+        (0.75, 3),(1.25, 3),
+        (1.75,3),(2.25,3),
+    ),
+
+    node(N, $f(n)$),
     
-
-    (-3,1),(-0.75, 1),(1.5, 1),
+    node(H, $f(n / 2)$), node(I, $f(n / 2)$), node(G, $f(n / 2)$), 
     
+    node(Q, $f(n / 4)$), node(R, $f(n / 4)$), node(J, $f(n / 4)$), 
+    node(S, $f(n / 4)$), node(T, $f(n / 4)$), node(K, $f(n / 4)$),
+    node(E, $f(n / 4)$), node(F, $f(n / 4)$), node(X, $f(n / 4)$),
 
-    (-3.75, 2),(-2.25, 2),(-3, 2), 
-    (-1.5, 2),(0, 2),(-0.75, 2),
-    (0.75, 2),(2.25, 2),(1.5, 2),
-    
+    edge(N, H, "->"), edge(N, I, "->"), edge(N, G, "->"), 
 
-    (-4.25, 3),(-3.75, 3),
-    (-2.75, 3),(-2.25, 3),
+    edge(H, Q, "->"), edge(H, R, "->"), edge(H, J, "->"),
+    edge(I, S, "->"), edge(I, T, "->"), edge(I, K, "->"),
+    edge(G, E, "->"), edge(G, F, "->"), edge(G, X, "->"),
 
-    (-1.5, 3),(-1, 3),
-    (-0.5, 3),(0, 3),
+    let dx = 0,
+    let y = 0.75,
+    edge(Q, (-3.75, 3), "--"), edge(R, (-3.75+2*y, 3), "--"), edge(J, (-3.75+y, 3), "--"), edge(S, (-3.75+3*y, 3), "--"), edge(T, (-3.75+5*y, 3), "--"), edge(K, (-3.75+4*y, 3), "--"), edge(E, (-3.75+6*y, 3), "--"), edge(F, (-3.75+8*y, 3), "--"), edge(X, (-3.75+7*y, 3), "--"),
 
-    (0.75, 3),(1.25, 3),
-    (1.75,3),(2.25,3),
-  ),
+    let dx = 0.2,
+    let y = 0.75,
+    edge(Q, (-3.75+dx, 3), "--"), edge(R, (-3.75+2*y+dx, 3), "--"), edge(J, (-3.75+y+dx, 3), "--"), edge(S, (-3.75+3*y+dx, 3), "--"), edge(T, (-3.75+5*y+dx, 3), "--"), edge(K, (-3.75+4*y+dx, 3), "--"), edge(E, (-3.75+6*y+dx, 3), "--"), edge(F, (-3.75+8*y+dx, 3), "--"), edge(X, (-3.75+7*y+dx, 3), "--"),
 
-  node(N, $f(n)$),
-  
-  node(H, $f(n / 2)$), node(I, $f(n / 2)$), node(G, $f(n / 2)$), 
-  
-  node(Q, $f(n / 4)$), node(R, $f(n / 4)$), node(J, $f(n / 4)$), 
-  node(S, $f(n / 4)$), node(T, $f(n / 4)$), node(K, $f(n / 4)$),
-  node(E, $f(n / 4)$), node(F, $f(n / 4)$), node(X, $f(n / 4)$),
+    let dx = -0.2,
+    let y = 0.75,
+    edge(Q, (-3.75+dx, 3), "--"), edge(R, (-3.75+2*y+dx, 3), "--"), edge(J, (-3.75+y+dx, 3), "--"), edge(S, (-3.75+3*y+dx, 3), "--"), edge(T, (-3.75+5*y+dx, 3), "--"), edge(K, (-3.75+4*y+dx, 3), "--"), edge(E, (-3.75+6*y+dx, 3), "--"), edge(F, (-3.75+8*y+dx, 3), "--"), edge(X, (-3.75+7*y+dx, 3), "--"),
 
-  edge(N, H, "->"), edge(N, I, "->"), edge(N, G, "->"), 
-
-  edge(H, Q, "->"), edge(H, R, "->"), edge(H, J, "->"),
-  edge(I, S, "->"), edge(I, T, "->"), edge(I, K, "->"),
-  edge(G, E, "->"), edge(G, F, "->"), edge(G, X, "->"),
-
-  let dx = 0,
-  let y = 0.75,
-  edge(Q, (-3.75, 3), "--"), edge(R, (-3.75+2*y, 3), "--"), edge(J, (-3.75+y, 3), "--"), edge(S, (-3.75+3*y, 3), "--"), edge(T, (-3.75+5*y, 3), "--"), edge(K, (-3.75+4*y, 3), "--"), edge(E, (-3.75+6*y, 3), "--"), edge(F, (-3.75+8*y, 3), "--"), edge(X, (-3.75+7*y, 3), "--"),
-
-  let dx = 0.2,
-  let y = 0.75,
-  edge(Q, (-3.75+dx, 3), "--"), edge(R, (-3.75+2*y+dx, 3), "--"), edge(J, (-3.75+y+dx, 3), "--"), edge(S, (-3.75+3*y+dx, 3), "--"), edge(T, (-3.75+5*y+dx, 3), "--"), edge(K, (-3.75+4*y+dx, 3), "--"), edge(E, (-3.75+6*y+dx, 3), "--"), edge(F, (-3.75+8*y+dx, 3), "--"), edge(X, (-3.75+7*y+dx, 3), "--"),
-
-  let dx = -0.2,
-  let y = 0.75,
-  edge(Q, (-3.75+dx, 3), "--"), edge(R, (-3.75+2*y+dx, 3), "--"), edge(J, (-3.75+y+dx, 3), "--"), edge(S, (-3.75+3*y+dx, 3), "--"), edge(T, (-3.75+5*y+dx, 3), "--"), edge(K, (-3.75+4*y+dx, 3), "--"), edge(E, (-3.75+6*y+dx, 3), "--"), edge(F, (-3.75+8*y+dx, 3), "--"), edge(X, (-3.75+7*y+dx, 3), "--"),
-
-  edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right)
+    edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right)
 ))
 
 #linebreak()
@@ -484,28 +483,28 @@ The principle is easy, swap the $i^"th"$ element with the previous element while
  Let's schematize the insertion sort with the array $a[3,1,4,2]$. 
 
 #align(center, diagram(
-  node-stroke: 1pt+red,
-  node-shape: rect,
-  
-  let (a,b,c,d, e,f,g,h, i,j,k,l, m,n,o,p) = (
-    (0,0),(0.5,0),(1,0),(1.5,0),
-    (0,1),(0.5,1),(1,1),(1.5,1),
-    (0,2),(0.5,2),(1,2),(1.5,2),
-    (0,3),(0.5,3),(1,3),(1.5,3),
-  ), 
+    node-stroke: 1pt+red,
+    node-shape: rect,
+    
+    let (a,b,c,d, e,f,g,h, i,j,k,l, m,n,o,p) = (
+        (0,0),(0.5,0),(1,0),(1.5,0),
+        (0,1),(0.5,1),(1,1),(1.5,1),
+        (0,2),(0.5,2),(1,2),(1.5,2),
+        (0,3),(0.5,3),(1,3),(1.5,3),
+    ), 
 
-  node(a, $3$, stroke: green), node(b, $1$), node(c, $4$), node(d, $2$), 
+    node(a, $3$, stroke: green), node(b, $1$), node(c, $4$), node(d, $2$), 
 
-  node(e, $1$, stroke: green), node(f, $3$, stroke: green), node(g, $4$), node(h, $2$), 
+    node(e, $1$, stroke: green), node(f, $3$, stroke: green), node(g, $4$), node(h, $2$), 
 
-  node(i, $1$, stroke: green), node(j, $3$, stroke: green), node(k, $4$, stroke: green), node(l, $2$), 
+    node(i, $1$, stroke: green), node(j, $3$, stroke: green), node(k, $4$, stroke: green), node(l, $2$), 
 
-  node(m, $1$, stroke: green), node(n, $2$, stroke: green), node(o, $3$, stroke: green), node(p, $4$, stroke: green), 
+    node(m, $1$, stroke: green), node(n, $2$, stroke: green), node(o, $3$, stroke: green), node(p, $4$, stroke: green), 
 
-  edge(b, a, "<->", bend: +90deg),
-  edge((1, 1.5), g, "->"), 
-  edge(l, k, "<->", bend: +90deg),
-  edge(k, j, "<->", bend: +90deg),
+    edge(b, a, "<->", bend: +90deg),
+    edge((1, 1.5), g, "->"), 
+    edge(l, k, "<->", bend: +90deg),
+    edge(k, j, "<->", bend: +90deg),
 ))
 
 #linebreak()
@@ -532,24 +531,24 @@ We are swapping the $j^"th"$ element until $a[j] > a[j-1]$ and from the previous
 So, we finally have: 
 
 #align(center, diagram(
-  let (a, j, o, e, c, i, cc) = (
-    (0,0), (2, 0.3), (0.35, 0), (4, 0), (2, 0), (3, 0.3), (3, 0)  
-  ),
-  
-  node(a, $a$),
-  node(o, $$),
-  node(j, $j$), 
-  node(i, $i$), 
-  node(c, $<= circle.small <$), 
-  node(cc,$circle.small$), 
-  node(e, $$),
+    let (a, j, o, e, c, i, cc) = (
+        (0,0), (2, 0.3), (0.35, 0), (4, 0), (2, 0), (3, 0.3), (3, 0)    
+    ),
+    
+    node(a, $a$),
+    node(o, $$),
+    node(j, $j$), 
+    node(i, $i$), 
+    node(c, $<= circle.small <$), 
+    node(cc,$circle.small$), 
+    node(e, $$),
  
-  edge(o, c, "|==|"),
-  edge(c, cc, "|==|"),
-  edge(cc, e, "|==|"),
+    edge(o, c, "|==|"),
+    edge(c, cc, "|==|"),
+    edge(cc, e, "|==|"),
 
-  edge((0.6, -0.2), (1.7, -0.5), "->"),
-  edge((2.1, -0.2), (2.9, -0.5), "->")
+    edge((0.6, -0.2), (1.7, -0.5), "->"),
+    edge((2.1, -0.2), (2.9, -0.5), "->")
 ))
 
 #linebreak()
@@ -591,83 +590,83 @@ $
 In order to achieve that, we use two pointer technique: 
 
 #align(center, diagram(
-  let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
-    (0,0), (0.25,0), (0.5,0), (0.75,0), 
-    (0,0.75), (0.25,0.75), (0.5,0.75), (0.75,0.75), 
-    (2, 0), 
-    (1.75,0.75), (2,0.75), (2.25, 0.75), (2.5, 0.75)
-  ),
+    let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
+        (0,0), (0.25,0), (0.5,0), (0.75,0), 
+        (0,0.75), (0.25,0.75), (0.5,0.75), (0.75,0.75), 
+        (2, 0), 
+        (1.75,0.75), (2,0.75), (2.25, 0.75), (2.5, 0.75)
+    ),
 
-  node(a, $a |$), node(a1, $1$), node(a2, $5$), node(a3, $10$),
-  node(b, $b |$), node(b1, $2$), node(b2, $4$), node(b3, $6$),
+    node(a, $a |$), node(a1, $1$), node(a2, $5$), node(a3, $10$),
+    node(b, $b |$), node(b1, $2$), node(b2, $4$), node(b3, $6$),
 
-  edge((0.25, 0.4), a1, "->", $i$, label-side: right),
-  edge((0.25, 1.15), b1, "->", $j$, label-side: right),
+    edge((0.25, 0.4), a1, "->", $i$, label-side: right),
+    edge((0.25, 1.15), b1, "->", $j$, label-side: right),
 
-  edge((1.25,-0.25), (1.25, 1)),
-  
-  node(cmp, $a[i] < a[j]$), 
+    edge((1.25,-0.25), (1.25, 1)),
+    
+    node(cmp, $a[i] < a[j]$), 
 
-  node(c, $c |$), 
-  node(c1, $1$), node(c2, " "), node(c3, " ")
+    node(c, $c |$), 
+    node(c1, $1$), node(c2, " "), node(c3, " ")
 ))
 
 
 #align(center, diagram(
-  let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
-    (0,0), (0.25,0), (0.5,0), (0.75,0), 
-    (0,0.75), (0.25,0.75), (0.5,0.75), (0.75,0.75), 
-    (2, 0), 
-    (1.75,0.75), (2,0.75), (2.25, 0.75), (2.5, 0.75)
-  ),
+    let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
+        (0,0), (0.25,0), (0.5,0), (0.75,0), 
+        (0,0.75), (0.25,0.75), (0.5,0.75), (0.75,0.75), 
+        (2, 0), 
+        (1.75,0.75), (2,0.75), (2.25, 0.75), (2.5, 0.75)
+    ),
 
-  node(a, $a |$), node(a1, $cancel(1, stroke: #(paint: red, thickness: 1pt,))$), node(a2, $5$), node(a3, $10$),
-  node(b, $b |$), node(b1, $2$), node(b2, $4$), node(b3, $6$),
+    node(a, $a |$), node(a1, $cancel(1, stroke: #(paint: red, thickness: 1pt,))$), node(a2, $5$), node(a3, $10$),
+    node(b, $b |$), node(b1, $2$), node(b2, $4$), node(b3, $6$),
 
-  edge((0.5, 0.4), a2, "->", $i$, label-side: right),
-  edge((0.25, 1.15), b1, "->", $j$, label-side: right),
+    edge((0.5, 0.4), a2, "->", $i$, label-side: right),
+    edge((0.25, 1.15), b1, "->", $j$, label-side: right),
 
-  edge((1.25,-0.25), (1.25, 1)),
-  
-  node(cmp, $a[i] > a[j]$), 
+    edge((1.25,-0.25), (1.25, 1)),
+    
+    node(cmp, $a[i] > a[j]$), 
 
-  node(c, $c |$), 
-  node(c1, $1$), node(c2, $2$), node(c3, " ")
+    node(c, $c |$), 
+    node(c1, $1$), node(c2, $2$), node(c3, " ")
 ))
 
 
 #align(center, diagram(
-  let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
-    (0,0), (0.25,0), (0.5,0), (0.75,0), 
-    (0,0.75), (0.25,0.75), (0.5,0.75), (0.75,0.75), 
-    (2, 0), 
-    (1.75,0.75), (2,0.75), (2.25, 0.75), (2.5, 0.75)
-  ),
+    let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
+        (0,0), (0.25,0), (0.5,0), (0.75,0), 
+        (0,0.75), (0.25,0.75), (0.5,0.75), (0.75,0.75), 
+        (2, 0), 
+        (1.75,0.75), (2,0.75), (2.25, 0.75), (2.5, 0.75)
+    ),
 
-  node(a, $a |$), node(a1, $cancel(1, stroke: #(paint: red, thickness: 1pt,))$), node(a2, $5$), node(a3, $10$),
-  node(b, $b |$), node(b1, $cancel(2, stroke: #(paint: red, thickness: 1pt,))$), node(b2, $4$), node(b3, $6$),
+    node(a, $a |$), node(a1, $cancel(1, stroke: #(paint: red, thickness: 1pt,))$), node(a2, $5$), node(a3, $10$),
+    node(b, $b |$), node(b1, $cancel(2, stroke: #(paint: red, thickness: 1pt,))$), node(b2, $4$), node(b3, $6$),
 
-  edge((0.5, 0.4), a2, "->", $i$, label-side: right),
-  edge((0.5, 1.15), b2, "->", $j$, label-side: right),
+    edge((0.5, 0.4), a2, "->", $i$, label-side: right),
+    edge((0.5, 1.15), b2, "->", $j$, label-side: right),
 
-  edge((1.25,-0.25), (1.25, 1)),
-  
-  node(cmp, $a[i] > a[j]$), 
+    edge((1.25,-0.25), (1.25, 1)),
+    
+    node(cmp, $a[i] > a[j]$), 
 
-  node(c, $c |$), 
-  node(c1, $1$), node(c2, $2$), node(c3, $4$),
+    node(c, $c |$), 
+    node(c1, $1$), node(c2, $2$), node(c3, $4$),
 
-  node((1.25, 1.5), $dots.v$)
+    node((1.25, 1.5), $dots.v$)
 ))
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 1, end: none,
-      content: text(red, $" " Omicron(n "+" m) "                                            "$),
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start: 1, end: none,
+            content: text(red, $" " Omicron(n "+" m) "                                            "$),
+        ),
+    )
 )
 ```
 def merge(a, b)
@@ -692,21 +691,21 @@ To use this merge function to make the a sorting algorithm we use the divide & c
 The objective here is to make recursive call dividing the array by 2 each time until is size is 1. After that we reconstruct the array with our merge function. 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start: 2, end: 5,
-      content: text(red, $" " Omicron(n) "                                            "$),
-    ),
-    (
-      start: 7, end: 8,
-      content: text(red, $" " T(n/2) " * " 2 "                                            "$),
-    ),
-    (
-      start: 10, end: none,
-      content: text(red, $" " Omicron(n) "                                            "$),
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start: 2, end: 5,
+            content: text(red, $" " Omicron(n) "                                            "$),
+        ),
+        (
+            start: 7, end: 8,
+            content: text(red, $" " T(n/2) " * " 2 "                                            "$),
+        ),
+        (
+            start: 10, end: none,
+            content: text(red, $" " Omicron(n) "                                            "$),
+        ),
+    )
 )
 ```
 def sort(a) 
@@ -729,42 +728,42 @@ T(n) &= 2 dot T(n/2) + c dot n \
 $
 
 #align(center, diagram(
-  let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
-    (-1.5,0), 
-    (-2.75,1),(-0.25, 1), 
-    (-3.25, 2),(-2.25, 2),(-0.75, 2),(0.25, 2), 
-    (-3.5, 3),(-3, 3),(-2.5, 3),(-2, 3),(-1, 3),(-0.5, 3),(0, 3),(0.5, 3)
-  ),
+    let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
+        (-1.5,0), 
+        (-2.75,1),(-0.25, 1), 
+        (-3.25, 2),(-2.25, 2),(-0.75, 2),(0.25, 2), 
+        (-3.5, 3),(-3, 3),(-2.5, 3),(-2, 3),(-1, 3),(-0.5, 3),(0, 3),(0.5, 3)
+    ),
 
-  node(N, $n$),
-  
-  node(H, $n/2$), node(I, $n/2$), 
-  
-  node(Q, $n/4$), node(R, $n/4$), node(S, $n/4$), node(T, $n/4$),
+    node(N, $n$),
+    
+    node(H, $n/2$), node(I, $n/2$), 
+    
+    node(Q, $n/4$), node(R, $n/4$), node(S, $n/4$), node(T, $n/4$),
 
-  node(L, $circle$), node(M, $circle$), node(O, $circle$), node(P, $circle$),
-  node(U, $circle$), node(V, $circle$), node(W, $circle$), node(Y, $circle$),
+    node(L, $circle$), node(M, $circle$), node(O, $circle$), node(P, $circle$),
+    node(U, $circle$), node(V, $circle$), node(W, $circle$), node(Y, $circle$),
 
-  edge(N, H, "->"), edge(N, I, "->"),
+    edge(N, H, "->"), edge(N, I, "->"),
 
-  edge(H, Q, "->"), edge(H, R, "->"),
-  edge(I, S, "->"), edge(I, T, "->"),
+    edge(H, Q, "->"), edge(H, R, "->"),
+    edge(I, S, "->"), edge(I, T, "->"),
 
-  edge(Q, L, "--"), edge(Q, M, "--"),
-  edge(R, O, "--"), edge(R, P, "--"),
-  edge(S, U, "--"), edge(S, V, "--"),
-  edge(T, W, "--"), edge(T, Y, "--"),
+    edge(Q, L, "--"), edge(Q, M, "--"),
+    edge(R, O, "--"), edge(R, P, "--"),
+    edge(S, U, "--"), edge(S, V, "--"),
+    edge(T, W, "--"), edge(T, Y, "--"),
 
-  node((1.5, 0), text(red, $n "operations"$)),
-  node((1.5, 1), text(red, $n "operations"$)),
-  node((1.5, 2), text(red, $n "operations"$)),
-  node((1.5, 3), text(red, $n "operations"$)),
+    node((1.5, 0), text(red, $n "operations"$)),
+    node((1.5, 1), text(red, $n "operations"$)),
+    node((1.5, 2), text(red, $n "operations"$)),
+    node((1.5, 3), text(red, $n "operations"$)),
 
-  edge((1.5, 2), (1.5, 3), "--", stroke: red),
+    edge((1.5, 2), (1.5, 3), "--", stroke: red),
 
-  edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right),
+    edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right),
 
-  node((1.5,3.5), text(red, $"Overall complexity" = n dot log n$))
+    node((1.5,3.5), text(red, $"Overall complexity" = n dot log n$))
 ))
 
 Another proof: 
@@ -772,7 +771,7 @@ Another proof:
 $
 T(n) &<= 2 dot T(n/2) + c dot n \
      &<= 2c dot n/2 dot log n/2 + c dot n \
-     &=  c dot n dot log(n -1) + c dot n \ 
+     &=    c dot n dot log(n -1) + c dot n \ 
      &= Omicron(n log n)
 $
 

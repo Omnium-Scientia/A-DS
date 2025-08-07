@@ -6,10 +6,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "12", 
-  video_link: "https://www.youtube.com/watch?v=5C7JT8cVHDU&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=12",
-  title: "Knapsack"
+    semester: "1", 
+    chapter_number: "12", 
+    video_link: "https://www.youtube.com/watch?v=5C7JT8cVHDU&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=12",
+    title: "Knapsack"
 )
 
 = Knapsack
@@ -59,9 +59,9 @@ D[i,j] eq.def "it is possible to have subset of" I[0..i-1] "with" sum w = j
 $
 
 + set contain $i-1$:
-  $D[i,j] = D[i-1,j-w_(i-1)]$
+    $D[i,j] = D[i-1,j-w_(i-1)]$
 + set does not contain $i-1$: 
-  $D[i,j] = D[i-1,j]$
+    $D[i,j] = D[i-1,j]$
 
 At the end: 
 $
@@ -75,17 +75,17 @@ w : 5,3,2,3 \ S = 9
 $
 
 #align(
-  center,
-  table(
-    columns: (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em), 
-    rows: (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em),
-    [D],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],
-    [0],[+],[-],[-],[-],[-],[-],[-],[-],[-],[-],
-    [1],[+],[-],[-],[-],[-],[+],[-],[-],[-],[-],
-    [2],[+],[-],[-],[+],[-],[+],[-],[-],[+],[-],
-    [3],[+],[-],[+],[+],[-],[+],[-],[+],[+],[-],
-    [4],[+],[-],[+],[+],[-],[+],[+],[+],[+],[-],
-  )
+    center,
+    table(
+        columns: (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em), 
+        rows: (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em),
+        [D],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],
+        [0],[+],[-],[-],[-],[-],[-],[-],[-],[-],[-],
+        [1],[+],[-],[-],[-],[-],[+],[-],[-],[-],[-],
+        [2],[+],[-],[-],[+],[-],[+],[-],[-],[+],[-],
+        [3],[+],[-],[+],[+],[-],[+],[-],[+],[+],[-],
+        [4],[+],[-],[+],[+],[-],[+],[+],[+],[+],[-],
+    )
 )
 
 $
@@ -110,13 +110,13 @@ $
 
 We use the same approach: 
 + set contain $i-1$
-  $
-  D[i-1,j-w_(i-1)] + c_(i-1)
-  $
+    $
+    D[i-1,j-w_(i-1)] + c_(i-1)
+    $
 + set does not contain $i-1$ 
-  $
-  D[i-1,j]
-  $
+    $
+    D[i-1,j]
+    $
 
 $
 D[i,j] = max(D[i-1,j-w_(i-1)] + c_(i-1),D[i-1,j])
@@ -129,17 +129,17 @@ w : 5,3,2,3 \ c : 3,2,5,3 \ S = 9
 $
 
 #align(
-  center,
-  table(
-    columns: (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em), 
-    rows: (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em),
-    [D],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],
-    [0],[0],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],
-    [1],[0],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],[3],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],
-    [2],[0],text(8pt)[$- infinity$],text(8pt)[$- infinity$],[2],text(8pt)[$- infinity$],[3],text(8pt)[$- infinity$],text(8pt)[$- infinity$],[5],text(8pt)[$- infinity$],
-    [3],[0],text(8pt)[$- infinity$],[5],[2],text(8pt)[$- infinity$],[7],text(8pt)[$- infinity$],[8],[5],text(8pt)[$- infinity$],
-    [4],[0],text(8pt)[$- infinity$],[5],[3],text(8pt)[$- infinity$],[8],[5],[8],[10],text(8pt)[$- infinity$],
-  )
+    center,
+    table(
+        columns: (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em), 
+        rows: (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em),
+        [D],[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],
+        [0],[0],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],
+        [1],[0],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],[3],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],text(8pt)[$- infinity$],
+        [2],[0],text(8pt)[$- infinity$],text(8pt)[$- infinity$],[2],text(8pt)[$- infinity$],[3],text(8pt)[$- infinity$],text(8pt)[$- infinity$],[5],text(8pt)[$- infinity$],
+        [3],[0],text(8pt)[$- infinity$],[5],[2],text(8pt)[$- infinity$],[7],text(8pt)[$- infinity$],[8],[5],text(8pt)[$- infinity$],
+        [4],[0],text(8pt)[$- infinity$],[5],[3],text(8pt)[$- infinity$],[8],[5],[8],[10],text(8pt)[$- infinity$],
+    )
 )
 
 Our answer is $limits(max)_j D[n,j]$
@@ -171,7 +171,7 @@ To achieve that, we want to enumerate all the subsets.
 We want to make a bijection between: 
 
 $
-"subset of" [0..n-1] <-> bracket.double.l 0..2^n -1 bracket.double.r  
+"subset of" [0..n-1] <-> bracket.double.l 0..2^n -1 bracket.double.r    
 $
 
 We are going to use the bit in our number to enumerate our subsets. 
@@ -190,7 +190,7 @@ $
 
 === Union 
 
-The $i^"th"$ bit of  our number should be equal to one $i$ at least one of the $i^"th"$ bit of our two sets we want to make the vision of is set at once. 
+The $i^"th"$ bit of    our number should be equal to one $i$ at least one of the $i^"th"$ bit of our two sets we want to make the vision of is set at once. 
 
 This is the bitwise or: 
 $
@@ -203,7 +203,7 @@ $
 x inter y <-> x \& y 
 $
 
-Elements that in $x$ and $y$. The $i^"th"$  bit of our resulting set is set to $1$ if both $i^"th"$ bit are set to $1$ for $x$ and $y$. This is the bitwise and. 
+Elements that in $x$ and $y$. The $i^"th"$    bit of our resulting set is set to $1$ if both $i^"th"$ bit are set to $1$ for $x$ and $y$. This is the bitwise and. 
 
 === Difference 
 
@@ -241,15 +241,15 @@ Our complexity here is $Omicron(2^n dot n)$. We want to optimize that complexity
 === Meet in the middle optimization 
 
 $
-underbrace(underbracket(#text(fill:blue)[$0$] " " 0 " " #text(fill:blue)[$0$] " " #text(fill:blue)[$0$] " " .,n/2).underbracket(.  " " 0 " " #text(fill:red)[$0$] " " 0 " " #text(fill:red)[$0$], n/2),n) : #text(fill:blue)[$X$] ; #text(fill:red)[$Y$]
+underbrace(underbracket(#text(fill:blue)[$0$] " " 0 " " #text(fill:blue)[$0$] " " #text(fill:blue)[$0$] " " .,n/2).underbracket(.    " " 0 " " #text(fill:red)[$0$] " " 0 " " #text(fill:red)[$0$], n/2),n) : #text(fill:blue)[$X$] ; #text(fill:red)[$Y$]
 $
 
 We want to iterate over $x$ and $y$ separately. 
 
 $
 (1) cases(
-  sum_(i in x) w_i + sum_(i in y) w_i <= S, 
-  sum_(i in x) c_i + sum_(i in y) c_i -> "maximized"
+    sum_(i in x) w_i + sum_(i in y) w_i <= S, 
+    sum_(i in x) c_i + sum_(i in y) c_i -> "maximized"
 )
 $
 
@@ -257,12 +257,12 @@ We do not want to iterate over all $x$ and $y$ or our optimization will be worth
 
 We want the optimal $y$ for each $x$. 
 
-Lets see, if we fix the value of $x$, what constrain do we have on $y$ from $(1)$.  
+Lets see, if we fix the value of $x$, what constrain do we have on $y$ from $(1)$.    
 
 $
 (2) cases(
-  sum_(i in y) w_i <= S - sum_(i in x) w_i, 
-  sum_(i in y) c_i -> "maximized"
+    sum_(i in y) w_i <= S - sum_(i in x) w_i, 
+    sum_(i in y) c_i -> "maximized"
 )
 $
 
@@ -289,16 +289,16 @@ We want to minimize the number of knapsacks to all items.
 Example: 
 
 #grid(
-  align: center,
-  columns: (50%,50%),
-  $
-  w = 2,5,3,1,4,8 \ S = 9
-  $, 
-  $
-  K_1 = {5,2} \ 
-  K_2 = {8,1} \ 
-  K_3 = {3,4}   
-  $
+    align: center,
+    columns: (50%,50%),
+    $
+    w = 2,5,3,1,4,8 \ S = 9
+    $, 
+    $
+    K_1 = {5,2} \ 
+    K_2 = {8,1} \ 
+    K_3 = {3,4}     
+    $
 )
 
 $
@@ -335,7 +335,7 @@ def multi_knapsack(w,S)
     D[0] = 0 
     for X = 1..(2**n - 1)
         for Y subset of X 
-            if  sum(w) of Y <= S
+            if    sum(w) of Y <= S
                 D[X] = min(D[X], D[X-Y]+1)
 ```
 
@@ -352,7 +352,7 @@ With this optimization, our complexity goes from $Omicron(n^4)$ to $Omicron(n^3)
 The idea to iterate over all the subset of $X$ is to begin with $X = Y$ and then by decreasing $Y$ from $X$ to $0$, we get all the its subset. 
 
 $
-X =  &1 0 0 1 0 1 1 0 \
+X =    &1 0 0 1 0 1 1 0 \
 Y -> &1 0 0 1 0 1 1 0 \
      &1 0 0 1 0 1 0 0 \
      &1 0 0 1 0 0 1 0 \
@@ -365,15 +365,15 @@ $
 To go from one iteration of $Y$ to another: 
 
 #let colorunderline(color: black, equation) = block(
-  stroke: (bottom: 1pt + color), 
-  outset: (bottom: 2pt), 
-  $ equation $
+    stroke: (bottom: 1pt + color), 
+    outset: (bottom: 2pt), 
+    $ equation $
 )
 
 $
-X  &: underbracket(colorunderline(color:#red,"       ")colorunderline(color:#rgb(255,255,255),1)colorunderline(color:#blue,011010)) \
-Y  &: underbracket(colorunderline(color:#red,"       ")1011010) \
-Y' &: underbracket(colorunderline(color:#red,"       ")colorunderline(color:#rgb(255,255,255),#text(fill:blue)[0])colorunderline(color:#blue,011010)) 
+X    &: underbracket(colorunderline(color:#red,"         ")colorunderline(color:#rgb(255,255,255),1)colorunderline(color:#blue,011010)) \
+Y    &: underbracket(colorunderline(color:#red,"         ")1011010) \
+Y' &: underbracket(colorunderline(color:#red,"         ")colorunderline(color:#rgb(255,255,255),#text(fill:blue)[0])colorunderline(color:#blue,011010)) 
 $
 
 $
@@ -388,7 +388,7 @@ def multi_knapsack(w,S)
     for X = 1..(2**n - 1)
         for (Y = X; Y > 0; Y = (Y - 1) & X)
             if sum(w) of Y <= S 
-                D[X] =  min(D[X], D[X-Y]+1)
+                D[X] =    min(D[X], D[X-Y]+1)
 ```
 
 This is quite a universal technique when we want to split a set into subsets maintaining a property. 
@@ -407,23 +407,23 @@ $
 
 - Here, we want to optimize both $A$ and $B$. Usually this is not possible. It is here because we want to minimize the pair. We optimize $A$ and then $B$. 
 
-  Compare $(A_1,B_1)$ and $(A_2,B_2)$: 
-  - $A_1 <= A_2, B_1 <= B_2 => (A_1,B_1) <= (A_2,B_2)$
-  - $A_1 < A_2, B_1 > B_2 => (A_1,B_1) <= (A_2,B_2)$
+    Compare $(A_1,B_1)$ and $(A_2,B_2)$: 
+    - $A_1 <= A_2, B_1 <= B_2 => (A_1,B_1) <= (A_2,B_2)$
+    - $A_1 < A_2, B_1 > B_2 => (A_1,B_1) <= (A_2,B_2)$
     - Because $(A_1,B_1) <= (A_1 + 1, 0) <= (A_2,B_2)$
     // Do the schema
-  
-  In short, we have two parameters to optimize but they do not have the same priority. 
+    
+    In short, we have two parameters to optimize but they do not have the same priority. 
 
 In our transition we go from set $X \\ {i} -> X$: 
 - If $(B + w_i) <= S$ 
-  $
-  D[X] = (A, B+w_i)
-  $
+    $
+    D[X] = (A, B+w_i)
+    $
 - Else $(B + w_i) > S$ 
-  $
-  D[X] = (A+1, w_i)
-  $
+    $
+    D[X] = (A+1, w_i)
+    $
 
 Our number of transition from one state to another is now $2$ instead of $2^n$. 
 

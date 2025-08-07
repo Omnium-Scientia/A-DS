@@ -6,10 +6,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "5", 
-  video_link: "https://www.youtube.com/watch?v=GWj9PcBgyy4&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=5",
-  title: "Binary search"
+    semester: "1", 
+    chapter_number: "5", 
+    video_link: "https://www.youtube.com/watch?v=GWj9PcBgyy4&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=5",
+    title: "Binary search"
 )
 
 
@@ -32,20 +32,20 @@ To achieve that, we are going to use 2 pointers:
 We are ensuring the property: $x in a[l..r]$
 
 #align(center, diagram(
-  node((0,0), $a$),
-  node((1,0), $2$),
-  node((1.5,0), $5$), 
-  node((2,0), $8$),
-  node((2.5,0), $dot.triple$), 
-  node((3,0), $15$),
-  node((3.5,0), $18$),
-  node((4,0), $21$),
+    node((0,0), $a$),
+    node((1,0), $2$),
+    node((1.5,0), $5$), 
+    node((2,0), $8$),
+    node((2.5,0), $dot.triple$), 
+    node((3,0), $15$),
+    node((3.5,0), $18$),
+    node((4,0), $21$),
 
-  node((1,0.75), text(red, $l$)), 
-  node((4,0.75), text(red, $r$)),
+    node((1,0.75), text(red, $l$)), 
+    node((4,0.75), text(red, $r$)),
 
-  edge((1,0.75), (1,0), "->", stroke: red), 
-  edge((4,0.75), (4,0), "->", stroke: red),
+    edge((1,0.75), (1,0), "->", stroke: red), 
+    edge((4,0.75), (4,0), "->", stroke: red),
 ))
 
 We pick $m$ at the middle of this segment: 
@@ -62,17 +62,17 @@ $
 
 
 - if a[m] < x
-  - since the array is sorted, all the elements to the left of $a[m]$ are also less than $x$
-  - we want to look at the right of $m$
-  - l = m + 1
+    - since the array is sorted, all the elements to the left of $a[m]$ are also less than $x$
+    - we want to look at the right of $m$
+    - l = m + 1
 
 - else if a[m] > x 
-  - then it is the opposite case, all the elements to the right of $a[m]$ are also greater than $x$
-  - we want to look at the left of $m$
-  - r = m - 1
+    - then it is the opposite case, all the elements to the right of $a[m]$ are also greater than $x$
+    - we want to look at the left of $m$
+    - r = m - 1
 
 - else a[m] = x
-  - we return $m$
+    - we return $m$
 
 We have our algorithm. 
 
@@ -118,20 +118,20 @@ To get around, we "add" $2$ more elements in the array:
 - $+ infinity$ for the rightmost position and starting point of $r$.
 
 #align(center, diagram(
-  node((0,0), $a$),
-  node((1,0), $- infinity$),
-  node((1.5,0), $5$), 
-  node((2,0), $8$),
-  node((2.5,0), $dot.triple$), 
-  node((3,0), $15$),
-  node((3.5,0), $18$),
-  node((4,0), $+ infinity$),
+    node((0,0), $a$),
+    node((1,0), $- infinity$),
+    node((1.5,0), $5$), 
+    node((2,0), $8$),
+    node((2.5,0), $dot.triple$), 
+    node((3,0), $15$),
+    node((3.5,0), $18$),
+    node((4,0), $+ infinity$),
 
-  node((1,0.75), text(red, $l$)), 
-  node((4,0.75), text(red, $r$)),
+    node((1,0.75), text(red, $l$)), 
+    node((4,0.75), text(red, $r$)),
 
-  edge((1,0.75), (1,0), "->", stroke: red), 
-  edge((4,0.75), (4,0), "->", stroke: red),
+    edge((1,0.75), (1,0), "->", stroke: red), 
+    edge((4,0.75), (4,0), "->", stroke: red),
 ))
 
 This is a common work around when we try to find element with properties. 
@@ -270,13 +270,13 @@ Our goal is to find a point which is in the interval for every person:
 
 $
 forall i cases(
-  delim: "|", 
-  x >= l_i, 
-  x <= r_i
+    delim: "|", 
+    x >= l_i, 
+    x <= r_i
 ) => cases(
-  delim: "|", 
-  x >= max(l_i), 
-  x <= min(r_i)
+    delim: "|", 
+    x >= max(l_i), 
+    x <= min(r_i)
 )
 $
 
@@ -322,9 +322,9 @@ _It is the same as having two following integer but here we have two following d
 
 How to fix this? 
 - first option: check if $m = l "or" r$
-  - if it is the case then we are in the previous situation so we can break 
+    - if it is the case then we are in the previous situation so we can break 
 - second option: The safest way 
-  - instead of a while-loop we can use a for-loop and do a given amount of iterations.
+    - instead of a while-loop we can use a for-loop and do a given amount of iterations.
     - i.e. `for i=0..100` instead of `while r - l > EPS` 
     since each time the difference between $l$ and $r$ is divided by 2, with this for-loop the distance will be divided by $2^100 tilde.eq 10^30$. This is more than enough, 100 even may be to big and time out. 
 
@@ -347,38 +347,38 @@ def bin_search()
 Imagine you are given a function that you want to maximize. This function is of $x$. 
 
 #align(center, diagram(
-  render: (grid, nodes, edges, options) => {
-    cetz.canvas({
-      draw.set-style(
-        axes: (
-          y: (label: (anchor: "north-west", offset: -0.2), mark: (end: "stealth", fill: black)),
-          x: (mark: (end: "stealth", fill: black)),
-        ),
-      )
-      plot.plot(
-        size: (10, 4),
-        x-min: -1,
-        x-max: 1,
-        x-label: $x$,
-        y-label: $f(x)$,
-        y-tick-step: 1,
-        x-tick-step: 2,
-        x-grid: false,
-        y-grid: false,
-        legend: "inner-north-west",
-        legend-style: (stroke: .5pt),
-        axis-style: "school-book",
-        {
-          plot.add(
-            style: (stroke: red + 1.5pt),
-            domain: (-1, 1),
-            samples: 100,
-            x => -calc.pow(x+0.16, 2) + 0.5,
-          )
-        },
-      )
-    })
-  }
+    render: (grid, nodes, edges, options) => {
+        cetz.canvas({
+            draw.set-style(
+                axes: (
+                    y: (label: (anchor: "north-west", offset: -0.2), mark: (end: "stealth", fill: black)),
+                    x: (mark: (end: "stealth", fill: black)),
+                ),
+            )
+            plot.plot(
+                size: (10, 4),
+                x-min: -1,
+                x-max: 1,
+                x-label: $x$,
+                y-label: $f(x)$,
+                y-tick-step: 1,
+                x-tick-step: 2,
+                x-grid: false,
+                y-grid: false,
+                legend: "inner-north-west",
+                legend-style: (stroke: .5pt),
+                axis-style: "school-book",
+                {
+                    plot.add(
+                    style: (stroke: red + 1.5pt),
+                    domain: (-1, 1),
+                    samples: 100,
+                    x => -calc.pow(x+0.16, 2) + 0.5,
+                    )
+                },
+            )
+        })
+    }
 ))
 
 On the interval where we want to maximize $f$, the function can be separated in 2 intervals, 1 where the function increase, the other one where the function decrease. 
@@ -388,16 +388,16 @@ If at each point we can check if the function is increasing or not, then this ch
 But if we can only compute the value of the given point: 
 - we set two pointers $l$ and $r$ 
 - we maintain following properties, 
-  - in $l$ the function is increasing
-  - in $r$ the function is decreasing 
+    - in $l$ the function is increasing
+    - in $r$ the function is decreasing 
 - we pick 2 middle points $m_1$ and $m_2$
-  - $m_1 = l + 1 / 3 (r - l)$
-  - $m_1 = l + 2 / 3 (r - l)$
+    - $m_1 = l + 1 / 3 (r - l)$
+    - $m_1 = l + 2 / 3 (r - l)$
 - now we compute $f(m_1)$ and $f(m_2)$
-  - if $f(m_1) >= f(m_2)$
+    - if $f(m_1) >= f(m_2)$
     - it means that the function is decreasing in $m_2$
     - $r = m_2$
-  - else 
+    - else 
     - it means that the function is increasing in $m_1$
     - $l = m_1$
 
@@ -431,7 +431,7 @@ $
 
 $
 alpha dot (r - l) = (1 - alpha)^2 dot (r - l) \
-alpha = 1 - 2 alpha  + alpha ^2 \ 
+alpha = 1 - 2 alpha    + alpha ^2 \ 
 alpha ^2 - 3 alpha + 1 = 0 
 $
 

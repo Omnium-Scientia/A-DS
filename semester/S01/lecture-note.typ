@@ -3,20 +3,20 @@
 #show: codly-init.with()
 
 #codly(languages: codly-languages,
-        zebra-fill: luma(250), 
-        number-format: none, 
-      )
+    zebra-fill: luma(250), 
+    number-format: none, 
+)
 
 #import "../../template/semester.typ": semester
 
 #show: semester.with(
-  title: [Semester 1],
-  subtitle: [Lecture notes],
-  abstract: [
-      This semester is about core concept of algorithms:
-    \ You will learn about simple data structures, algorithms and also techniques to analyze them.
-    \ The concepts of this semester will be used multiple times across the next ones.
-  ],
+    title: [Semester 1],
+    subtitle: [Lecture notes],
+    abstract: [
+            This semester is about core concept of algorithms:
+        \   You will learn about simple data structures, algorithms and also techniques to analyze them.
+        \   The concepts of this semester will be used multiple times across the next ones.
+    ],
 )
 
 #include "../../lecture/s01e01.typ"

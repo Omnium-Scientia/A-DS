@@ -6,27 +6,27 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "15", 
-  video_link: "https://www.youtube.com/watch?v=YyqdxbwAIgA&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=15",
-  title: "Perfect & Cuckoo hashing, Bloom filters"
+    semester: "1", 
+    chapter_number: "15", 
+    video_link: "https://www.youtube.com/watch?v=YyqdxbwAIgA&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=15",
+    title: "Perfect & Cuckoo hashing, Bloom filters"
 )
 
 = Perfect & Cuckoo hashing, Bloom filters
 
 Last lecture, we saw 2 data structures: 
 #align(center, grid(
-  columns:(30%,30%),  
-  [
-  `set`: 
-  - `insert(x)`
-  - `contain(x)` 
-  ], 
-  [ 
-  `map`:
-  - `put(k,v)`
-  - `get(k)`
-  ]
+    columns:(30%,30%),    
+    [
+        `set`: 
+        - `insert(x)`
+        - `contain(x)` 
+    ], 
+    [ 
+        `map`:
+        - `put(k,v)`
+        - `get(k)`
+    ]
 ))
 
 All of these function were working in $Omicron(1)$ average when $-> limits(PP(h(x) = h(y)))_(x!=y) tilde.eq 1/m$. 
@@ -115,12 +115,12 @@ def get(k)
 But how we put elements $x$ in our tables? 
 - If one of the two positions: $a_1[h_1(x)]$ or $a_2[h_2(x)]$, we put $x$ in this empty position. 
 - When we have an element in $a_1[h_1(x)]$ and in $a_2[h_2(x)]$ (respectively $A$ and $B$): 
-  - Both of our possibility are taken 
-  - We put $x$ at the place of $A$ 
-  - We try to put $A$ in $a_2$ at $a_2[h_2(A)]$: 
+    - Both of our possibility are taken 
+    - We put $x$ at the place of $A$ 
+    - We try to put $A$ in $a_2$ at $a_2[h_2(A)]$: 
     - If an element $C$ is in there then we put $A$ at the place of $C$ and try to put $C$ in $a_1$ 
     
-  And so on until we reach an empty position. 
+    And so on until we reach an empty position. 
 
 A problem here is that we can en in a cycle: 
 #align(center)[
@@ -210,10 +210,10 @@ We have an array of bits of length $m$ and $k$ hash functions ($h_1, ..., h_k$).
 
 Instead of computing and storing the hash of $x$, we do the following: 
 - for insert function: 
-  - for all $i$ in $bracket.double.l 1,k bracket.double.r$ compute $h_i(x)$. 
-  - for all $i$ in $bracket.double.l 1,k bracket.double.r, a[h_i (x)] = 1$
+    - for all $i$ in $bracket.double.l 1,k bracket.double.r$ compute $h_i(x)$. 
+    - for all $i$ in $bracket.double.l 1,k bracket.double.r, a[h_i (x)] = 1$
 - for contain function: 
-  - for all $i$ in $bracket.double.l 1,k bracket.double.r$ we check that $a[h_i (x)] = 1$
+    - for all $i$ in $bracket.double.l 1,k bracket.double.r$ we check that $a[h_i (x)] = 1$
 
 ```
 def insert(x)
@@ -229,14 +229,14 @@ def contain(x)
     rewturn true
 ```
 
-Again, we see from where our errors can come. We can insert element that collide with $x$ for a specific $h_i$. So if $forall i in bracket.double.l 1,k bracket.double.r ,exists y, h_i (x) = h_i (y)$ we have contain equal true for $x$  when $x$ is not actually here. 
+Again, we see from where our errors can come. We can insert element that collide with $x$ for a specific $h_i$. So if $forall i in bracket.double.l 1,k bracket.double.r ,exists y, h_i (x) = h_i (y)$ we have contain equal true for $x$    when $x$ is not actually here. 
 
 Lets now fix our $k$ and $m$: 
 - We want $m$ such as $PP(a[i] = 1) = 2$ (i.e. when we pick an element at random from $a$, we have the same chance to get $0$ or $1$). 
 
-  Since for each element we add $k$ ones, we add $k dot n$ ones total. 
+    Since for each element we add $k$ ones, we add $k dot n$ ones total. 
 
-  If we want halfs the number of $1$ and $0$ in $a$, we need $m tilde.eq 2 dot k dot n$ (actually it is smaller ($m = 1.44 dot k dot n$) because some ones are colliding). 
+    If we want halfs the number of $1$ and $0$ in $a$, we need $m tilde.eq 2 dot k dot n$ (actually it is smaller ($m = 1.44 dot k dot n$) because some ones are colliding). 
 
 Since $PP(a[i] = 1) = 1/2$, the probability of a false positive is $1/2$ for each iteration. 
 
@@ -262,12 +262,12 @@ The idea is to combine both cuckoo hashing and bloom filter idea.
 
 The idea is the following: 
 - for insert function: 
-  - We compute $x'$, a $k$ bits fingerprint (hash) of $x$. 
-  - we insert the element in the cuckoo table: 
+    - We compute $x'$, a $k$ bits fingerprint (hash) of $x$. 
+    - we insert the element in the cuckoo table: 
     - we compute $h_1(x)$ and $h_2(x)$
     - but instead of putting $x$ as in the cuckoo hashing, we put $x'$ in one of the array
 - for the check function: 
-  we check if $a_1[h_1(x)]$ or $a_2[h_2(x)]$ contain $x'$
+    we check if $a_1[h_1(x)]$ or $a_2[h_2(x)]$ contain $x'$
 
 We have a problem here: 
 - During the insertion, if both places are occupied, we move one of the present element (lets called it $A$)
@@ -284,13 +284,13 @@ $
 
 With this: 
 - If we go from $a_1 -> a_2$: 
-  - we know the value of $h_1(x)$ because it is the value of the index of $A'$ in $a_1$. 
-  - we can compute $"hash"(x')$ because we have $x'$
+    - we know the value of $h_1(x)$ because it is the value of the index of $A'$ in $a_1$. 
+    - we can compute $"hash"(x')$ because we have $x'$
 
-  So we can compute $h_2(x)$
+    So we can compute $h_2(x)$
 - If we go from $a_2 -> a_1$: 
 
-  We know $h_2(x)$ and can compute $"hash"(x')$, so we have: $h_1(x) = h_2(x) plus.circle "hash"(x')$ from xor property. 
+    We know $h_2(x)$ and can compute $"hash"(x')$, so we have: $h_1(x) = h_2(x) plus.circle "hash"(x')$ from xor property. 
 
 Here, we define: 
 

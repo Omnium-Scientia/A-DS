@@ -6,10 +6,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "6", 
-  video_link: "https://www.youtube.com/watch?v=EU09CpPUrZc&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=7",
-  title: "Stacks, Queues, Amortized costs"
+    semester: "1", 
+    chapter_number: "6", 
+    video_link: "https://www.youtube.com/watch?v=EU09CpPUrZc&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=7",
+    title: "Stacks, Queues, Amortized costs"
 )
 
 
@@ -20,40 +20,40 @@
 === Definition 
 
 #align(center, grid(
-  columns: 2, 
-  column-gutter: 30pt,
-  diagram(
+    columns: 2, 
+    column-gutter: 30pt,
+    diagram(
     let (c1, c2, c3, c4) = (
-      (0,0), (1,0), (0,4), (1,4)
+        (0,0), (1,0), (0,4), (1,4)
     ),
-  
+    
     edge(c1, c3), edge(c3, c4), edge(c2, c4), 
-  
+    
     edge((-0.3,0), (0.3,0), "->", bend: 90deg, label: "push"),
     edge((1.3,0), (0.6,0), "<-", bend: -90deg, label: "pop"),
-  
+    
     let (a, b, c, d, e) = (
-      (0.5,3.5),(0.5,2.5),(0.5,1.5),(0,0),(0,0), 
+        (0.5,3.5),(0.5,2.5),(0.5,1.5),(0,0),(0,0), 
     ),
-  
+    
     node(a, "A", stroke: 1pt, shape: rect), node(b, "B", stroke: 1pt, shape: rect), node(c, "C", stroke: 1pt, shape: rect),
-  
+    
     edge((0.25,2), (0.75,1), stroke: red)
-  ), 
-  align(horizon, grid(
+    ), 
+    align(horizon, grid(
     row-gutter: 25pt,
     [$"push(A)"$],
     [$"push(B)"$],
     [$"push(C)"$],
     [$"pop()" #text(fill: red)[$-> C$]$],
-  ))
+    ))
 ))
 
 === Usages
 
 Stack is a very simple data structure but it is widely used in computer science. Even if you never implemented it you used stack before. 
 
-Any recursion implementation is a stack.  
+Any recursion implementation is a stack.    
 
 The computer create a stack frame in order to remember the values of var for each call:
 - When we call a new $f$, it pushes a new block on the stack frame. 
@@ -67,25 +67,25 @@ _Note: This is not only for recursive calls but for any call to a function from 
 With an infinite sized array: 
 
 #align(center,
-  diagram(
+    diagram(
     let (c1, c2, c3, c4) = (
-      (0,0), (0,1), (4,0), (4,1)
+        (0,0), (0,1), (4,0), (4,1)
     ),
-  
+    
     edge(c1, c3), edge(c2, c4), edge(c1, c2), 
-  
+    
     let (a, b, c, d, e) = (
-      (0.5,0.5),(1.5,0.5),(2.5,0.5),(3.5,0.5),(0,0), 
+        (0.5,0.5),(1.5,0.5),(2.5,0.5),(3.5,0.5),(0,0), 
     ),
-  
+    
     node(a, "A"), node(b, "B"), node(c, "C"), node(d, $dot.triple$),
-  
+    
     let (n0, n1) = (
-      (0.5,-0.25),(2.5,-0.25),
+        (0.5,-0.25),(2.5,-0.25),
     ),
 
     node(n0, $0$), node(n1, $n - 1$)
-  ), 
+    ), 
 )
 
 ```
@@ -105,37 +105,37 @@ In C++, vectors are stacks.
 === Definition 
 
 #align(center, grid(
-  columns: 2, 
-  column-gutter: 50pt,
-  align(center+horizon, diagram(
-    let (c1, c2, c3, c4) = (
-      (0,0), (0,1), (5,0), (5,1)
-    ),
-  
-    edge(c1, c3), edge(c2, c4),
+    columns: 2, 
+    column-gutter: 50pt,
+    align(center+horizon, diagram(
+        let (c1, c2, c3, c4) = (
+            (0,0), (0,1), (5,0), (5,1)
+        ),
+        
+        edge(c1, c3), edge(c2, c4),
 
-    edge((0,0.5), (-1,1), "->", bend: -45deg, label: "remove"),
-    edge((5,0.5), (6,0), "<-", bend: -45deg, label: "add"),
-    
-    let (a, b, c, d, e) = (
-      (0,0),(1.5,0.5),(2.5,0.5),(3.5,0.5),(0,0), 
-    ),
-  
-    node(b, "A"), node(c, "B"), node(d, "C"),
+        edge((0,0.5), (-1,1), "->", bend: -45deg, label: "remove"),
+        edge((5,0.5), (6,0), "<-", bend: -45deg, label: "add"),
+        
+        let (a, b, c, d, e) = (
+            (0,0),(1.5,0.5),(2.5,0.5),(3.5,0.5),(0,0), 
+        ),
+        
+        node(b, "A"), node(c, "B"), node(d, "C"),
 
-    let (n0, n1) = (
-      (1.5,1.25),(3.5,1.25),
-    ),
+        let (n0, n1) = (
+            (1.5,1.25),(3.5,1.25),
+        ),
 
-    node(n0, text(fill: blue)[head]), node(n1, text(fill: blue)[tail])
-  )), 
-  align(horizon, grid(
-    row-gutter: 25pt,
-    [$"add(A)"$],
-    [$"add(B)"$],
-    [$"add(C)"$],
-    [$"remove()" #text(fill: red)[$-> A$]$],
-  ))
+        node(n0, text(fill: blue)[head]), node(n1, text(fill: blue)[tail])
+    )), 
+    align(horizon, grid(
+        row-gutter: 25pt,
+        [$"add(A)"$],
+        [$"add(B)"$],
+        [$"add(C)"$],
+        [$"remove()" #text(fill: red)[$-> A$]$],
+    ))
 ))
 
 === Usages
@@ -167,33 +167,33 @@ This data structure is just like a queue but we can add and remove from both end
 #linebreak()
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,0), (0,1), (5,0), (5,1)
-  ),
+    let (c1, c2, c3, c4) = (
+        (0,0), (0,1), (5,0), (5,1)
+    ),
 
-  edge(c1, c3), edge(c2, c4),
+    edge(c1, c3), edge(c2, c4),
 
-  edge((0,0.6), (-1,1.25), "->", bend: -25deg),
-  edge((-1,-0.25), (0,0.4), "->", bend: -25deg),
-  edge((5,0.4), (6,-0.25), "<-", bend: -25deg),
-  edge((5,0.6), (6,1.25), "->", bend: 25deg),
+    edge((0,0.6), (-1,1.25), "->", bend: -25deg),
+    edge((-1,-0.25), (0,0.4), "->", bend: -25deg),
+    edge((5,0.4), (6,-0.25), "<-", bend: -25deg),
+    edge((5,0.6), (6,1.25), "->", bend: 25deg),
 
-  node((-1,1.25), "pop_front(x)"),
-  node((-1,-0.25), "push_front(x)"),
-  node((6,-0.25), "push_back(x)"),
-  node((6,1.25), "pop_back(x)"),
-  
-  let (a, b, c, d, e) = (
-    (0,0),(1.5,0.5),(2.5,0.5),(3.5,0.5),(0,0), 
-  ),
+    node((-1,1.25), "pop_front(x)"),
+    node((-1,-0.25), "push_front(x)"),
+    node((6,-0.25), "push_back(x)"),
+    node((6,1.25), "pop_back(x)"),
+    
+    let (a, b, c, d, e) = (
+        (0,0),(1.5,0.5),(2.5,0.5),(3.5,0.5),(0,0), 
+    ),
 
-  node(b, "A"), node(c, "B"), node(d, "C"),
+    node(b, "A"), node(c, "B"), node(d, "C"),
 
-  let (n0, n1) = (
-    (1.5,1.25),(3.5,1.25),
-  ),
+    let (n0, n1) = (
+        (1.5,1.25),(3.5,1.25),
+    ),
 
-  node(n0, text(fill: blue)[head]), node(n1, text(fill: blue)[tail])
+    node(n0, text(fill: blue)[head]), node(n1, text(fill: blue)[tail])
 ))
 
 == Dynamic array 
@@ -234,42 +234,42 @@ The tricky question is, how to make it grow?
 - what we are going to do is to make it grow by 2. 
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,0), (0,0.5), (2,0), (2,0.5), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-  let (a, b, c, d, e) = (
-    (0.5,0.25),(1.5,0.25),(2.5,0.25),(3.5,0.25),(4.5,0.25), 
-  ),
-  node(a, "X"), node(b, "X"),
+    let (c1, c2, c3, c4) = (
+        (0,0), (0,0.5), (2,0), (2,0.5), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+    let (a, b, c, d, e) = (
+        (0.5,0.25),(1.5,0.25),(2.5,0.25),(3.5,0.25),(4.5,0.25), 
+    ),
+    node(a, "X"), node(b, "X"),
 
-  
-  let (c1, c2, c3, c4) = (
-    (0,1.5), (0,2), (4,1.5), (4,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-  let (a, b, c, d, e) = (
-    (0.5,1.75),(1.5,1.75),(2.5,1.75),(3.5,1.75),(4.5,0.25), 
-  ),
-  node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
-  
-  
-  let (c1, c2, c3, c4) = (
-    (0,3), (0,3.5), (8,3), (8,3.5), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-  let (a, b, c, d, e) = (
-    (0.5,3.25),(1.5,3.25),(2.5,3.25),(3.5,3.25),(4.5,3.25), 
-  ),
-  node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"), node(e, text(fill: red)[X]), 
+    
+    let (c1, c2, c3, c4) = (
+        (0,1.5), (0,2), (4,1.5), (4,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+    let (a, b, c, d, e) = (
+        (0.5,1.75),(1.5,1.75),(2.5,1.75),(3.5,1.75),(4.5,0.25), 
+    ),
+    node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
+    
+    
+    let (c1, c2, c3, c4) = (
+        (0,3), (0,3.5), (8,3), (8,3.5), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+    let (a, b, c, d, e) = (
+        (0.5,3.25),(1.5,3.25),(2.5,3.25),(3.5,3.25),(4.5,3.25), 
+    ),
+    node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"), node(e, text(fill: red)[X]), 
 
-  edge((0.5,0.75), (0.5,1.25), "->", stroke: red),
-  edge((1.5,0.75), (1.5,1.25), "->", stroke: red),
+    edge((0.5,0.75), (0.5,1.25), "->", stroke: red),
+    edge((1.5,0.75), (1.5,1.25), "->", stroke: red),
 
-  edge((0.5,2.25), (0.5,2.75), "->", stroke: red),
-  edge((1.5,2.25), (1.5,2.75), "->", stroke: red),
-  edge((2.5,2.25), (2.5,2.75), "->", stroke: red),
-  edge((3.5,2.25), (3.5,2.75), "->", stroke: red),
+    edge((0.5,2.25), (0.5,2.75), "->", stroke: red),
+    edge((1.5,2.25), (1.5,2.75), "->", stroke: red),
+    edge((2.5,2.25), (2.5,2.75), "->", stroke: red),
+    edge((3.5,2.25), (3.5,2.75), "->", stroke: red),
 ))
 
 ```
@@ -363,7 +363,7 @@ Our affectation cost us 1 operation, repeated $m$ times this cost us $m$ operati
 Our if statement cost $Omicron(n)$ and is called for $n = 1, 2, ... , 2^k$. Its cost is: 
 
 $
-1 + 2 + 4 + ... + 2^k =  2^(k+1) - 1
+1 + 2 + 4 + ... + 2^k = 2^(k+1) - 1
 $
 
 For $m$ operations, we know that $m >= 2^k$ because otherwise we would not have expanded the list. 
@@ -400,16 +400,16 @@ In this method, we introduce a special potential function to our data structure.
 Each time we make an operation, $phi.alt$ changes value. 
 
 #align(center, diagram(
-  let (o1, o2, o3, o4, o5, o6) = (
-    (0,0), (1,0), (2,0), (3,0), (4,0), (5,0), 
-  ),
-  let (p0, p1, p2, p3, p4, p5, p6) = (
-    (-0.5,0.5), (0.5,0.5), (1.5,0.5), (2.5,0.5), (3.5,0.5), (4.5,0.5), (5.5,0.5), 
-  ),
+    let (o1, o2, o3, o4, o5, o6) = (
+        (0,0), (1,0), (2,0), (3,0), (4,0), (5,0), 
+    ),
+    let (p0, p1, p2, p3, p4, p5, p6) = (
+        (-0.5,0.5), (0.5,0.5), (1.5,0.5), (2.5,0.5), (3.5,0.5), (4.5,0.5), (5.5,0.5), 
+    ),
 
-  node(o1, $o_1$), node(o2, $o_2$), node(o3, $o_3$), node(o4, $o_4$), node(o5, $...$), node(o6, $o_m$), 
+    node(o1, $o_1$), node(o2, $o_2$), node(o3, $o_3$), node(o4, $o_4$), node(o5, $...$), node(o6, $o_m$), 
 
-  node(p0, $phi.alt_0$), node(p1, $phi.alt_1$), node(p2, $phi.alt_2$), node(p3, $phi.alt_3$), node(p4, $...$), node(p5, $phi.alt_(m-1)$), node(p6, $phi.alt_m$)
+    node(p0, $phi.alt_0$), node(p1, $phi.alt_1$), node(p2, $phi.alt_2$), node(p3, $phi.alt_3$), node(p4, $...$), node(p5, $phi.alt_(m-1)$), node(p6, $phi.alt_m$)
 ))
 
 2 properties: 
@@ -434,38 +434,38 @@ Now what we need to do is to find a potential function. To achieve that we need 
 In slow operation: 
 
 #align(center, grid(
-  columns: 2, 
-  column-gutter: 40pt,
-  align(center, diagram(
-    let (c1, c2, c3, c4) = (
-      (0,1.5), (0,2), (4,1.5), (4,2), 
-    ),
-    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-    let (a, b, c, d, e) = (
-      (0.5,1.75),(1.5,1.75),(2.5,1.75),(3.5,1.75),(4.5,0.25), 
-    ),
-    node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
-    
-    
-    let (c1, c2, c3, c4) = (
-      (0,3), (0,3.5), (8,3), (8,3.5), 
-    ),
-    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-    let (a, b, c, d, e) = (
-      (0.5,3.25),(1.5,3.25),(2.5,3.25),(3.5,3.25),(4.5,3.25), 
-    ),
-    node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
-  
-    edge((0.5,2.25), (0.5,2.75), "->", stroke: red),
-    edge((1.5,2.25), (1.5,2.75), "->", stroke: red),
-    edge((2.5,2.25), (2.5,2.75), "->", stroke: red),
-    edge((3.5,2.25), (3.5,2.75), "->", stroke: red),
-  )),
-  align(horizon, grid(
-    row-gutter: 25pt,
-    [$T = n$ \  $=> Delta phi.alt tilde.eq - n$],
-    [Because we want \ $tilde(T)$ to be small ],
-  ))
+    columns: 2, 
+    column-gutter: 40pt,
+    align(center, diagram(
+        let (c1, c2, c3, c4) = (
+            (0,1.5), (0,2), (4,1.5), (4,2), 
+        ),
+        edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+        let (a, b, c, d, e) = (
+            (0.5,1.75),(1.5,1.75),(2.5,1.75),(3.5,1.75),(4.5,0.25), 
+        ),
+        node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
+        
+        
+        let (c1, c2, c3, c4) = (
+            (0,3), (0,3.5), (8,3), (8,3.5), 
+        ),
+        edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+        let (a, b, c, d, e) = (
+            (0.5,3.25),(1.5,3.25),(2.5,3.25),(3.5,3.25),(4.5,3.25), 
+        ),
+        node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
+        
+        edge((0.5,2.25), (0.5,2.75), "->", stroke: red),
+        edge((1.5,2.25), (1.5,2.75), "->", stroke: red),
+        edge((2.5,2.25), (2.5,2.75), "->", stroke: red),
+        edge((3.5,2.25), (3.5,2.75), "->", stroke: red),
+    )),
+    align(horizon, grid(
+        row-gutter: 25pt,
+        [$T = n$ \    $=> Delta phi.alt tilde.eq - n$],
+        [Because we want \ $tilde(T)$ to be small ],
+    ))
 ))
 
 We observe that between our two state, the number of element in the second half of our array goes from being full (containing $n / 2$ elements) to being empty (containing $0$ element). 
@@ -488,7 +488,7 @@ Then if we take our relation between amortized costs, real costs and the potenti
 
 $
 tilde(T) & = T + Delta phi.alt \ 
-         & = n - n  \
+         & = n - n    \
          & = Omicron(1)
 $
 
@@ -523,32 +523,32 @@ def push(x)
 ```
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,1.5), (0,2), (4,1.5), (4,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-  let (a, b, c, d, e) = (
-    (0.5,1.75),(1.5,1.75),(2.5,1.75),(3.5,1.75),(4.5,0.25), 
-  ),
-  node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
-  
-  
-  let (c1, c2, c3, c4) = (
-    (0,3), (0,3.5), (8,3), (8,3.5), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-  let (a, b, c, d, e) = (
-    (0.5,3.25),(1.5,3.25),(2.5,3.25),(3.5,3.25),(4.5,3.25), 
-  ),
-  node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
+    let (c1, c2, c3, c4) = (
+        (0,1.5), (0,2), (4,1.5), (4,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+    let (a, b, c, d, e) = (
+        (0.5,1.75),(1.5,1.75),(2.5,1.75),(3.5,1.75),(4.5,0.25), 
+    ),
+    node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
+    
+    
+    let (c1, c2, c3, c4) = (
+        (0,3), (0,3.5), (8,3), (8,3.5), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+    let (a, b, c, d, e) = (
+        (0.5,3.25),(1.5,3.25),(2.5,3.25),(3.5,3.25),(4.5,3.25), 
+    ),
+    node(a, "X"), node(b, "X"), node(c, "X"), node(d, "X"),
 
-  edge((0.5,2.25), (0.5,2.75), "->", stroke: red),
-  edge((1.5,2.25), (1.5,2.75), "->", stroke: red),
-  edge((2.5,2.25), (2.5,2.75), "->", stroke: red),
-  edge((3.5,2.25), (3.5,2.75), "->", stroke: red),
+    edge((0.5,2.25), (0.5,2.75), "->", stroke: red),
+    edge((1.5,2.25), (1.5,2.75), "->", stroke: red),
+    edge((2.5,2.25), (2.5,2.75), "->", stroke: red),
+    edge((3.5,2.25), (3.5,2.75), "->", stroke: red),
 
-  node((2.5,1.20), text(fill: red)[$2$], stroke: 1pt+red),
-  node((3.5,1.20), text(fill: red)[$2$], stroke: 1pt+red)
+    node((2.5,1.20), text(fill: red)[$2$], stroke: 1pt+red),
+    node((3.5,1.20), text(fill: red)[$2$], stroke: 1pt+red)
 ))
 
 When our array is full, we have $n$ coins in our account. Coins that we use to copy our $n$ elements to the new array. 
@@ -581,29 +581,29 @@ def pop()
 ```
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,1.5), (0,2), (8,1.5), (8,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-  let (a, b, c, d, e) = (
-    (0.5,1.75),(1.5,1.75),(2.5,1.75),(3.5,1.75),(4.5,0.25), 
-  ),
-  node(a, "X"), node(b, "X"),
-  node(c, text(fill: red)[$1$], stroke: 1pt+red),
-  node(d, text(fill: red)[$1$], stroke: 1pt+red),
-  
-  
-  let (c1, c2, c3, c4) = (
-    (0,3), (0,3.5), (4,3), (4,3.5), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
-  let (a, b, c, d, e) = (
-    (0.5,3.25),(1.5,3.25),(2.5,3.25),(3.5,3.25),(4.5,3.25), 
-  ),
-  node(a, "X"), node(b, "X"), 
+    let (c1, c2, c3, c4) = (
+        (0,1.5), (0,2), (8,1.5), (8,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+    let (a, b, c, d, e) = (
+        (0.5,1.75),(1.5,1.75),(2.5,1.75),(3.5,1.75),(4.5,0.25), 
+    ),
+    node(a, "X"), node(b, "X"),
+    node(c, text(fill: red)[$1$], stroke: 1pt+red),
+    node(d, text(fill: red)[$1$], stroke: 1pt+red),
+    
+    
+    let (c1, c2, c3, c4) = (
+        (0,3), (0,3.5), (4,3), (4,3.5), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4), edge(c3, c4),
+    let (a, b, c, d, e) = (
+        (0.5,3.25),(1.5,3.25),(2.5,3.25),(3.5,3.25),(4.5,3.25), 
+    ),
+    node(a, "X"), node(b, "X"), 
 
-  edge((0.5,2.25), (0.5,2.75), "->", stroke: red),
-  edge((1.5,2.25), (1.5,2.75), "->", stroke: red),
+    edge((0.5,2.25), (0.5,2.75), "->", stroke: red),
+    edge((1.5,2.25), (1.5,2.75), "->", stroke: red),
 ))
 
 $tilde(T)("pop") = 2 = Omicron(1)$
@@ -617,53 +617,53 @@ Sometime we have more coins than necessary and $tilde(T)$ become negative, this 
 We are given two stacks: 
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,1.5), (0,2), (2,1.5), (2,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
-  
-  let (c1, c2, c3, c4) = (
-    (0,2.5), (0,3), (2,2.5), (2,3), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    let (c1, c2, c3, c4) = (
+        (0,1.5), (0,2), (2,1.5), (2,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    
+    let (c1, c2, c3, c4) = (
+        (0,2.5), (0,3), (2,2.5), (2,3), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
 
-  node((-0.5,1.75), $S_1$),
-  node((-0.5,2.75), $S_2$),
+    node((-0.5,1.75), $S_1$),
+    node((-0.5,2.75), $S_2$),
 
-  edge((2,1.7), (2.5,1.3), "<-", bend: -40deg),    
-  edge((2,1.8), (2.5,2.2), "->", bend: 40deg),
-  edge((2,2.7), (2.5,2.3), "<-", bend: -40deg),    
-  edge((2,2.8), (2.5,3.2), "->", bend: 40deg),
+    edge((2,1.7), (2.5,1.3), "<-", bend: -40deg),    
+    edge((2,1.8), (2.5,2.2), "->", bend: 40deg),
+    edge((2,2.7), (2.5,2.3), "<-", bend: -40deg),    
+    edge((2,2.8), (2.5,3.2), "->", bend: 40deg),
 ))
 
 We have to somehow make a queue from these 2 stacks. 
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,0), (0,0.5), (4,0), (4,0.5)
-  ),
+    let (c1, c2, c3, c4) = (
+        (0,0), (0,0.5), (4,0), (4,0.5)
+    ),
 
-  edge(c1, c3), edge(c2, c4),
+    edge(c1, c3), edge(c2, c4),
 
-  edge((0,0.25), (-0.5,0.75), "->", bend: -40deg),
-  edge((4,0.25), (4.5,-0.25), "<-", bend: -40deg),
+    edge((0,0.25), (-0.5,0.75), "->", bend: -40deg),
+    edge((4,0.25), (4.5,-0.25), "<-", bend: -40deg),
 ))
 
 To make this append, we split our queue in 2. 1 half is $S_1$ the other one is $S_2$.
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,1.5), (0,2), (2,1.5), (2,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
-  
-  let (c1, c2, c3, c4) = (
-    (-0.2,1.5), (-0.2,2), (-2,1.5), (-2,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    let (c1, c2, c3, c4) = (
+        (0,1.5), (0,2), (2,1.5), (2,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    
+    let (c1, c2, c3, c4) = (
+        (-0.2,1.5), (-0.2,2), (-2,1.5), (-2,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
 
-  node((-1,2.25), $S_1$),
-  node((1,2.25), $S_2$),
+    node((-1,2.25), $S_1$),
+    node((1,2.25), $S_2$),
 ))
 
 #pagebreak()
@@ -676,22 +676,22 @@ def add(x)
 ```
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,1.5), (0,2), (2,1.5), (2,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
-  
-  let (c1, c2, c3, c4) = (
-    (-0.2,1.5), (-0.2,2), (-2,1.5), (-2,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    let (c1, c2, c3, c4) = (
+        (0,1.5), (0,2), (2,1.5), (2,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    
+    let (c1, c2, c3, c4) = (
+        (-0.2,1.5), (-0.2,2), (-2,1.5), (-2,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
 
-  node((-1,2.25), $S_1$),
-  node((1,2.25), $S_2$),
+    node((-1,2.25), $S_1$),
+    node((1,2.25), $S_2$),
 
-  node((0.3,1.75), $A$),
-  node((0.6,1.75), $B$),
-  node((0.9,1.75), $C$),
+    node((0.3,1.75), $A$),
+    node((0.6,1.75), $B$),
+    node((0.9,1.75), $C$),
 ))
 
 To remove them, we put elements of $S_2$ into $S_1$ ten pop from $S_1$: 
@@ -712,44 +712,44 @@ We need to save coins to do our `while` condition in remove.
 We save 1 coin each time we add an element in $S_2$. 
 
 #align(center, diagram(
-  let (c1, c2, c3, c4) = (
-    (0,1.5), (0,2), (2,1.5), (2,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
-  
-  let (c1, c2, c3, c4) = (
-    (-0.2,1.5), (-0.2,2), (-2,1.5), (-2,2), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    let (c1, c2, c3, c4) = (
+        (0,1.5), (0,2), (2,1.5), (2,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    
+    let (c1, c2, c3, c4) = (
+        (-0.2,1.5), (-0.2,2), (-2,1.5), (-2,2), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
 
-  node((0.3,1.75), $A$),
-  node((0.9,1.75), $B$),
-  node((1.5,1.75), $C$),
+    node((0.3,1.75), $A$),
+    node((0.9,1.75), $B$),
+    node((1.5,1.75), $C$),
 
-  node((0.3,1.2), text(fill :red)[$1$], stroke: 1pt+red),
-  node((0.9,1.2), text(fill :red)[$1$], stroke: 1pt+red),
-  node((1.5,1.2), text(fill :red)[$1$], stroke: 1pt+red),
+    node((0.3,1.2), text(fill :red)[$1$], stroke: 1pt+red),
+    node((0.9,1.2), text(fill :red)[$1$], stroke: 1pt+red),
+    node((1.5,1.2), text(fill :red)[$1$], stroke: 1pt+red),
 
-  let (c1, c2, c3, c4) = (
-    (0,3), (0,3.5), (2,3), (2,3.5), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
-  
-  let (c1, c2, c3, c4) = (
-    (-0.2,3), (-0.2,3.5), (-2,3), (-2,3.5), 
-  ),
-  edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    let (c1, c2, c3, c4) = (
+        (0,3), (0,3.5), (2,3), (2,3.5), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
+    
+    let (c1, c2, c3, c4) = (
+        (-0.2,3), (-0.2,3.5), (-2,3), (-2,3.5), 
+    ),
+    edge(c1, c3), edge(c1, c2), edge(c2, c4),
 
-  node((-1.5,2.5), $S_1$),
-  node((1.5,2.5), $S_2$),
+    node((-1.5,2.5), $S_1$),
+    node((1.5,2.5), $S_2$),
 
-  node((-0.5,3.25), $C$),
-  node((-1.1,3.25), $B$),
-  node((-1.7,3.25), $A$),
+    node((-0.5,3.25), $C$),
+    node((-1.1,3.25), $B$),
+    node((-1.7,3.25), $A$),
 
-  edge((0.3,2.1), (-1.6, 2.9), "->", stroke: red),
-  edge((0.9,2.1), (-1, 2.9), "->", stroke: red),
-  edge((1.5,2.1), (-0.4, 2.9), "->", stroke: red),
+    edge((0.3,2.1), (-1.6, 2.9), "->", stroke: red),
+    edge((0.9,2.1), (-1, 2.9), "->", stroke: red),
+    edge((1.5,2.1), (-0.4, 2.9), "->", stroke: red),
 ))
 
 We then have: 

@@ -5,29 +5,28 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "3", 
-  video_link: "https://www.youtube.com/watch?v=jHDgr-dKhgA&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=3", 
-  title: "Quick-sort, order statistics"
+    semester: "1", 
+    chapter_number: "3", 
+    video_link: "https://www.youtube.com/watch?v=jHDgr-dKhgA&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=3", 
+    title: "Quick-sort, Order statistics"
 )
 
 
-= Quick-sort, order statistics
+= Quick-sort, Order statistics
 
 == Randomized algorithms
 
 #linebreak()
 
 #align(center, diagram(
+    node((0,0), $"Input data"$, name: <I>),
+    node((+1,0), $"Algorithm"$, name: <A>),
+    node((1,0.75), $"Random Input"$, name: <R>), 
+    node((+2,0), $"Output data"$, name: <O>),
 
-  node((0,0), $"Input data"$, name: <I>),
-  node((+1,0), $"Algorithm"$, name: <A>),
-  node((1,0.75), $"Random Input"$, name: <R>), 
-  node((+2,0), $"Output data"$, name: <O>),
-
-  edge(<I>, "->", <A>), 
-  edge(<A>, "->", <O>), 
-  edge(<R>, "->", <A>), 
+    edge(<I>, "->", <A>), 
+    edge(<A>, "->", <O>), 
+    edge(<R>, "->", <A>), 
 ))
 
 We add a bit of random data to our input. And that random data can help us to solve the problem more efficiently. 
@@ -39,17 +38,17 @@ We add a bit of random data to our input. And that random data can help us to so
 We have an array $a$ that we want to sort: 
 
 #align(center, diagram(
-  let (a, e, c, l, r) = (
-    (0,0), (0.3, 0), (7.2, 0), (0.5, 0.25), (7, 0.25)  
-  ),
-  
-  node(a, $a$),  
-  node(c, $$), 
-  node(e, $$),
-  node(r, $r$),
-  node(l, $l$),
+    let (a, e, c, l, r) = (
+        (0,0), (0.3, 0), (7.2, 0), (0.5, 0.25), (7, 0.25)    
+    ),
+    
+    node(a, $a$),    
+    node(c, $$), 
+    node(e, $$),
+    node(r, $r$),
+    node(l, $l$),
  
-  edge(c, e, "|==|", ),
+    edge(c, e, "|==|", ),
 ))
 
 #linebreak()
@@ -63,20 +62,20 @@ $
 Then we split the array at $x$, before $x$ all the number $< x$ after all number $>= x$. 
 
 #align(center, diagram(
-  let (e, c, l, r) = (
-    (0.3, 0), (7.2, 0), (3.6, 0), (4,0)  
-  ),
+    let (e, c, l, r) = (
+        (0.3, 0), (7.2, 0), (3.6, 0), (4,0)    
+    ),
     
-  node(c, $$), 
-  node(e, $$),
-  node(r, $$),
-  node(l, $$),
+    node(c, $$), 
+    node(e, $$),
+    node(r, $$),
+    node(l, $$),
 
-  node((1.95, 0.25), $< x$),
-  node((5.4, 0.25), $>= x$),
+    node((1.95, 0.25), $< x$),
+    node((5.4, 0.25), $>= x$),
 
-  edge(e, r, "|==|", ),
-  edge(c, l, "|==|", ),
+    edge(e, r, "|==|", ),
+    edge(c, l, "|==|", ),
 ))
 
 #linebreak()
@@ -107,25 +106,25 @@ This algorithm actually has a flaw. If we have multiple element that are equal t
 One of the most simple way to solve this problem id to split the array in three instead of two. One part for the number $< x$, one part for the number $= x$ and one part for the number $> x$. 
 
 #align(center, diagram(
-  let (e, c, l, m, r, v) = (
-    (0.3, 0), (7.2, 0), (3.4, 0), (3.1,0), (5,0), (5.1,0)  
-  ),
+    let (e, c, l, m, r, v) = (
+        (0.3, 0), (7.2, 0), (3.4, 0), (3.1,0), (5,0), (5.1,0)    
+    ),
     
-  node(c, $$), 
-  node(e, $$),
-  node(r, $$),
-  node(l, $$),
-  node(m, $$),
+    node(c, $$), 
+    node(e, $$),
+    node(r, $$),
+    node(l, $$),
+    node(m, $$),
 
-  node((1.95, 0.25), $< x$),
-  node((6, -0.4), $2$, stroke: 1pt, shape: shapes.circle),
-  node((1.95, -0.4), $1$, stroke: 1pt, shape: shapes.circle),
-  node((6, 0.25), $> x$),
-  node((4.2, 0.25), $= x$),
-  
-  edge(e, l, "|==|", ),
-  edge(c, r, "|==|", ),
-  edge(m, v, "|==|", ),
+    node((1.95, 0.25), $< x$),
+    node((6, -0.4), $2$, stroke: 1pt, shape: shapes.circle),
+    node((1.95, -0.4), $1$, stroke: 1pt, shape: shapes.circle),
+    node((6, 0.25), $> x$),
+    node((4.2, 0.25), $= x$),
+    
+    edge(e, l, "|==|", ),
+    edge(c, r, "|==|", ),
+    edge(m, v, "|==|", ),
 ))
 
 #linebreak()
@@ -228,32 +227,32 @@ Here we are going to do the same algorithm than previously with the modified qui
 We separate our array $a$ in block of five elements. 
 
 #align(center, diagram(
-  let (a, e, c, l, r) = (
-    (0,0), (0.3, 0), (7.3, 0), (0.5, 0.25), (7.1, 0.25)  
-  ),
-  
-  node(a, $a$),  
-  node(c, $$), 
-  node(e, $$),
-  node(r, $r$),
-  node(l, $l$),
+    let (a, e, c, l, r) = (
+        (0,0), (0.3, 0), (7.3, 0), (0.5, 0.25), (7.1, 0.25)    
+    ),
+    
+    node(a, $a$),    
+    node(c, $$), 
+    node(e, $$),
+    node(r, $r$),
+    node(l, $l$),
  
-  edge(c, e, "|==|", ),
+    edge(c, e, "|==|", ),
 
-  edge((1.3, 0.15), (1.3, -0.15)), 
-  edge((2.3, 0.15), (2.3, -0.15)), 
-  edge((3.3, 0.15), (3.3, -0.15)),
-  edge((4.3, 0.15), (4.3, -0.15)),
-  edge((5.3, 0.15), (5.3, -0.15)), 
-  edge((6.3, 0.15), (6.3, -0.15)), 
+    edge((1.3, 0.15), (1.3, -0.15)), 
+    edge((2.3, 0.15), (2.3, -0.15)), 
+    edge((3.3, 0.15), (3.3, -0.15)),
+    edge((4.3, 0.15), (4.3, -0.15)),
+    edge((5.3, 0.15), (5.3, -0.15)), 
+    edge((6.3, 0.15), (6.3, -0.15)), 
 
-  node((0.8, -0.3), $5$),
-  node((1.8, -0.3), $5$),
-  node((2.8, -0.3), $5$),
-  node((3.8, -0.3), $5$),
-  node((4.8, -0.3), $5$),
-  node((5.8, -0.3), $5$),
-  node((6.8 , -0.3), $5$),
+    node((0.8, -0.3), $5$),
+    node((1.8, -0.3), $5$),
+    node((2.8, -0.3), $5$),
+    node((3.8, -0.3), $5$),
+    node((4.8, -0.3), $5$),
+    node((5.8, -0.3), $5$),
+    node((6.8 , -0.3), $5$),
 ))
 
 $
@@ -263,43 +262,43 @@ $
 We take the median of each block. After that, we take the median of those median. This is our $x$.
 
 #align(center, diagram(
-  let (a, bl, br, ul, ur) = (
-    (0,0), (0.3,1), (7.3,1), (0.3,-1), (7.3,-1) 
-  ),
-  let (b1, b2, b3, b4, b5, b6, u1, u2, u3, u4, u5, u6) = (
-    (1.3,1),(2.3,1),(3.3,1),(4.3,1),(5.3,1),(6.3,1),
-    (1.3,-1),(2.3,-1),(3.3,-1),(4.3,-1),(5.3,-1),(6.3,-1),
-  ),
-  let x = (3.8,-0.025), 
-  let (lbn, lun, rbn,run) = (
-    (0.3,0.1), (0.3,-0.1), (7.3,0.1), (7.3,-0.1)
-  ),
-  let (mb1, mb2, mb3, mb4, mb5, mb6, mu1, mu2, mu3, mu4, mu5, mu6) = (
-    (1.3,0.1),(2.3,0.1),(3.3,0.1),(4.3,0.1),(5.3,0.1),(6.3,0.1),
-    (1.3,-0.1),(2.3,-0.1),(3.3,-0.1),(4.3,-0.1),(5.3,-0.1),(6.3,-0.1),
-  ),
-  
-  node(a, $a$), 
-  node(x, $x$),
-  
-  node((8, -0.6), text(red, $"Less than" x$)),
-  node((8, 0.6), text(blue, $"Could be" \ "less than" x$)),
+    let (a, bl, br, ul, ur) = (
+        (0,0), (0.3,1), (7.3,1), (0.3,-1), (7.3,-1) 
+    ),
+    let (b1, b2, b3, b4, b5, b6, u1, u2, u3, u4, u5, u6) = (
+        (1.3,1),(2.3,1),(3.3,1),(4.3,1),(5.3,1),(6.3,1),
+        (1.3,-1),(2.3,-1),(3.3,-1),(4.3,-1),(5.3,-1),(6.3,-1),
+    ),
+    let x = (3.8,-0.025), 
+    let (lbn, lun, rbn,run) = (
+        (0.3,0.1), (0.3,-0.1), (7.3,0.1), (7.3,-0.1)
+    ),
+    let (mb1, mb2, mb3, mb4, mb5, mb6, mu1, mu2, mu3, mu4, mu5, mu6) = (
+        (1.3,0.1),(2.3,0.1),(3.3,0.1),(4.3,0.1),(5.3,0.1),(6.3,0.1),
+        (1.3,-0.1),(2.3,-0.1),(3.3,-0.1),(4.3,-0.1),(5.3,-0.1),(6.3,-0.1),
+    ),
+    
+    node(a, $a$), 
+    node(x, $x$),
+    
+    node((8, -0.6), text(red, $"Less than" x$)),
+    node((8, 0.6), text(blue, $"Could be" \ "less than" x$)),
 
-  edge(bl, br), edge(ul,ur), edge(bl,ul), edge(br,ur), 
-  edge(b1,u1),edge(b2,u2),edge(b3,u3),edge(b4,u4),edge(b5,u5),edge(b6,u6),
-  edge(lbn, rbn), edge(lun, run), 
+    edge(bl, br), edge(ul,ur), edge(bl,ul), edge(br,ur), 
+    edge(b1,u1),edge(b2,u2),edge(b3,u3),edge(b4,u4),edge(b5,u5),edge(b6,u6),
+    edge(lbn, rbn), edge(lun, run), 
 
-  edge(lbn, u1, stroke: red), edge(mb1, u2, stroke: red), edge(mb2, u3, stroke: red), edge(mu3, u4, stroke: red), edge(ul, mb1, stroke: red), edge(mb2, u1, stroke: red), edge(mb3, u2, stroke: red), edge(mu4, u3, stroke: red),
+    edge(lbn, u1, stroke: red), edge(mb1, u2, stroke: red), edge(mb2, u3, stroke: red), edge(mu3, u4, stroke: red), edge(ul, mb1, stroke: red), edge(mb2, u1, stroke: red), edge(mb3, u2, stroke: red), edge(mu4, u3, stroke: red),
 
-  edge(mu4, u5, stroke: blue), edge(mu5, u6, stroke: blue), edge(mu6, ur, stroke: blue), edge(mu5, u4, stroke: blue), edge(mu6, u5, stroke: blue), edge(run, u6, stroke: blue),
+    edge(mu4, u5, stroke: blue), edge(mu5, u6, stroke: blue), edge(mu6, ur, stroke: blue), edge(mu5, u4, stroke: blue), edge(mu6, u5, stroke: blue), edge(run, u6, stroke: blue),
 
-  edge(lbn, b1, stroke: blue), edge(mb1, b2, stroke: blue), edge(mb2, b3, stroke: blue), edge(mb1, bl, stroke: blue), edge(mb2, b1, stroke: blue), edge(mb3, b2, stroke: blue),
+    edge(lbn, b1, stroke: blue), edge(mb1, b2, stroke: blue), edge(mb2, b3, stroke: blue), edge(mb1, bl, stroke: blue), edge(mb2, b1, stroke: blue), edge(mb3, b2, stroke: blue),
 
-  let (a,y) = (0.75,-1.3),  
-  node((a,y),$a_0$),node((a+1,y),$a_5$),node((a+2,y),$...$),node((a+3,y),$a_i$),node((a+4,y),$...$),node((a+5,y),$a_(n-9)$),node((a+6,y),$a_(n-4)$),
+    let (a,y) = (0.75,-1.3),    
+    node((a,y),$a_0$),node((a+1,y),$a_5$),node((a+2,y),$...$),node((a+3,y),$a_i$),node((a+4,y),$...$),node((a+5,y),$a_(n-9)$),node((a+6,y),$a_(n-4)$),
 
-  let (a,y) = (0.8,1.3),  
-  node((a,y),$a_4$),node((a+1,y),$a_9$),node((a+2,y),$...$),node((a+3,y),$a_(i+5)$),node((a+4,y),$...$),node((a+5,y),$a_(n-5)$),node((a+6,y),$a_n$),
+    let (a,y) = (0.8,1.3),    
+    node((a,y),$a_4$),node((a+1,y),$a_9$),node((a+2,y),$...$),node((a+3,y),$a_(i+5)$),node((a+4,y),$...$),node((a+5,y),$a_(n-5)$),node((a+6,y),$a_n$),
 ))
 
 To find the median of all the median, we call recursively the algorithm that make the block in the array & take their median. 
@@ -313,7 +312,7 @@ Let's show that $T(n) <= c dot n$:
 
 $
 T(n) &<= n + c n/5 + c (7n)/10
-     &=  n (1 + 9/10 c)
+     &=    n (1 + 9/10 c)
      &= Omicron(n)
 $
 

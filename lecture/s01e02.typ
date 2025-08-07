@@ -5,14 +5,14 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "2", 
-  video_link: "https://www.youtube.com/watch?v=koyuy564TZ8&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=2", 
-  title: "Data structures, binary heap, heap sort"
+    semester: "1", 
+    chapter_number: "2", 
+    video_link: "https://www.youtube.com/watch?v=koyuy564TZ8&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=2", 
+    title: "Data structures, Binary heap, Heap sort"
 )
 
 
-= Data structures, binary heap, heap sort
+= Data structures, Binary heap, Heap sort
 
 == Data structures 
 
@@ -33,21 +33,21 @@ Data structure are closely related to algorithm because we need algorithm to imp
 - From a the data structure classes of heap (priority queue)
 - contain set of elements 
 - two basic operations 
-  - $"insert"(x)$
-  - $"remove_min"()$
+    - $"insert"(x)$
+    - $"remove_min"()$
 
 === Let's try use simpler data structure to implement those operations:
 
 ==== Array 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start:1, end: 3,
-      content: text(red, $Omicron(1) "                                                                                            "$)
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start:1, end: 3,
+            content: text(red, $Omicron(1) "                                                                                            "$)
+        ),
+    )
 )
 ```
 def insert(x) 
@@ -56,13 +56,13 @@ def insert(x)
 ```
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start:1, end: 8,
-      content: text(red, $Omicron(n) "                                                                                            "$)
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start:1, end: 8,
+            content: text(red, $Omicron(n) "                                                                                            "$)
+        ),
+    )
 )
 ```
 def remove_min() 
@@ -82,13 +82,13 @@ def remove_min()
 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start:1, end: 7,
-      content: text(red, $Omicron(n) "                                                                                            "$)
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start:1, end: 7,
+            content: text(red, $Omicron(n) "                                                                                            "$)
+        ),
+    )
 )
 ```
 def insert(x) 
@@ -102,13 +102,13 @@ def insert(x)
 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start:1, end: 3,
-      content: text(red, $Omicron(n) "                                                                                            "$)
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start:1, end: 3,
+            content: text(red, $Omicron(n) "                                                                                            "$)
+        ),
+    )
 )
 ```
 def remove_min() 
@@ -135,27 +135,27 @@ Given those construction rules, let's see the skeleton of the binary heap with t
 
 #let purpled(n) = text(purple, $" "#n$)
 #align(center, diagram(
-  let (N, H,I, Q,R,S,T, L,M,O) = (
-    (0,0), 
-    (-2,1),(2, 1), 
-    (-3, 2),(-1, 2),(1, 2),(3, 2), 
-    (-3.5, 3),(-2.5, 3),(-1.5, 3),
-  ),
+    let (N, H,I, Q,R,S,T, L,M,O) = (
+        (0,0), 
+        (-2,1),(2, 1), 
+        (-3, 2),(-1, 2),(1, 2),(3, 2), 
+        (-3.5, 3),(-2.5, 3),(-1.5, 3),
+    ),
 
-  node(N, $circle^purpled(0)$),
-  
-  node(H, $circle^purpled(1)$), node(I, $circle^purpled(2)$), 
-  
-  node(Q, $circle^purpled(3)$), node(R, $circle^purpled(4)$), node(S, $circle^purpled(5)$), node(T, $circle^purpled(6)$),
+    node(N, $circle^purpled(0)$),
+    
+    node(H, $circle^purpled(1)$), node(I, $circle^purpled(2)$), 
+    
+    node(Q, $circle^purpled(3)$), node(R, $circle^purpled(4)$), node(S, $circle^purpled(5)$), node(T, $circle^purpled(6)$),
 
-  node(L, $circle^purpled(7)$), node(M, $circle^purpled(8)$), node(O, $circle^purpled(9)$),
+    node(L, $circle^purpled(7)$), node(M, $circle^purpled(8)$), node(O, $circle^purpled(9)$),
 
-  edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
 
-  edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
 
-  edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left), edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left), 
+    edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left), edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left), 
 ))
 
 ==== Insertion
@@ -168,54 +168,54 @@ Let's see this on our previous example:
 
 #let purpled(n) = text(purple, $" "#n$)
 #align(center, diagram(
-  let (N, H,I, Q,R,S,T, L,M,O,P) = (
-    (0,0), 
-    (-2,1),(2, 1), 
-    (-3, 2),(-1, 2),(1, 2),(3, 2), 
-    (-3.5, 3),(-2.5, 3),(-1.5, 3),(-0.5, 3)
-  ), 
+    let (N, H,I, Q,R,S,T, L,M,O,P) = (
+        (0,0), 
+        (-2,1),(2, 1), 
+        (-3, 2),(-1, 2),(1, 2),(3, 2), 
+        (-3.5, 3),(-2.5, 3),(-1.5, 3),(-0.5, 3)
+    ), 
 
-  node(N, $circle^purpled(0)$),
-  
-  node(H, $circle^purpled(1)$), node(I, $circle^purpled(2)$), 
-  
-  node(Q, $circle^purpled(3)$), node(R, $circle^purpled(4)$), node(S, $circle^purpled(5)$), node(T, $circle^purpled(6)$),
+    node(N, $circle^purpled(0)$),
+    
+    node(H, $circle^purpled(1)$), node(I, $circle^purpled(2)$), 
+    
+    node(Q, $circle^purpled(3)$), node(R, $circle^purpled(4)$), node(S, $circle^purpled(5)$), node(T, $circle^purpled(6)$),
 
-  node(L, $circle^purpled(7)$), node(M, $circle^purpled(8)$), node(O, $circle^purpled(9)$), node(P, text(blue,$circle^purpled(10)$)), 
+    node(L, $circle^purpled(7)$), node(M, $circle^purpled(8)$), node(O, $circle^purpled(9)$), node(P, text(blue,$circle^purpled(10)$)), 
 
-  edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
 
-  edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
 
-  edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left), edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(R, P, "-", label: text(blue, $<=$), label-side: left, label-angle: left, stroke: blue), 
+    edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left), edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(R, P, "-", label: text(blue, $<=$), label-side: left, label-angle: left, stroke: blue), 
 ))
 
 - Since the condition $node_4 <= node_10$ is not satisfied, we swap them: 
 
 #let purpled(n) = text(purple, $" "#n$)
 #align(center, diagram(
-  let (N, H,I, Q,R,S,T, L,M,O,P) = (
-    (0,0), 
-    (-2,1),(2, 1), 
-    (-3, 2),(-1, 2),(1, 2),(3, 2), 
-    (-3.5, 3),(-2.5, 3),(-1.5, 3),(-0.5, 3)
-  ),
+    let (N, H,I, Q,R,S,T, L,M,O,P) = (
+        (0,0), 
+        (-2,1),(2, 1), 
+        (-3, 2),(-1, 2),(1, 2),(3, 2), 
+        (-3.5, 3),(-2.5, 3),(-1.5, 3),(-0.5, 3)
+    ),
 
-  node(N, $circle^purpled(0)$),
-  
-  node(H, $circle^purpled(1)$), node(I, $circle^purpled(2)$), 
-  
-  node(Q, $circle^purpled(3)$), node(R, text(blue, $circle^purpled(4)$)), node(S, $circle^purpled(5)$), node(T, $circle^purpled(6)$),
+    node(N, $circle^purpled(0)$),
+    
+    node(H, $circle^purpled(1)$), node(I, $circle^purpled(2)$), 
+    
+    node(Q, $circle^purpled(3)$), node(R, text(blue, $circle^purpled(4)$)), node(S, $circle^purpled(5)$), node(T, $circle^purpled(6)$),
 
-  node(L, $circle^purpled(7)$), node(M, $circle^purpled(8)$), node(O, $circle^purpled(9)$), node(P,$circle^purpled(10)$), 
+    node(L, $circle^purpled(7)$), node(M, $circle^purpled(8)$), node(O, $circle^purpled(9)$), node(P,$circle^purpled(10)$), 
 
-  edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
 
-  edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
+    edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
 
-  edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left), edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(R, P, "-", label: text(red, $>=$), label-side: left, label-angle: left,), edge(R, P, "<->", stroke: blue, bend: -40deg,) 
+    edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left), edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left), edge(R, P, "-", label: text(red, $>=$), label-side: left, label-angle: left,), edge(R, P, "<->", stroke: blue, bend: -40deg,) 
 ))
 
 #linebreak()
@@ -225,17 +225,17 @@ Now the properties are all satisfied, the node is well placed. If the properties
 Let's write that function insert. 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start:1, end: 1,
-      content: text(red, $Omicron(log n)$)
-    ),
-    (
-      start:5, end: 7,
-      content: text(red, $Omicron(log n)$) + ",  sift_up operation            " 
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start:1, end: 1,
+            content: text(red, $Omicron(log n)$)
+        ),
+        (
+            start:5, end: 7,
+            content: text(red, $Omicron(log n)$) + ",    sift_up operation            " 
+        ),
+    )
 )
 ```
 def insert(x) 
@@ -261,17 +261,17 @@ To satisfy it:
 Repeat while the parent as at least one smaller child. 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start:1, end: 1,
-      content: text(red, $Omicron(log n)$)
-    ),
-    (
-      start:6, end: 14,
-      content: text(red, $Omicron(log n)$) + ",  sift_down operation         " 
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start:1, end: 1,
+            content: text(red, $Omicron(log n)$)
+        ),
+        (
+            start:6, end: 14,
+            content: text(red, $Omicron(log n)$) + ",    sift_down operation         " 
+        ),
+    )
 )
 ```
 def remove_min()
@@ -310,21 +310,21 @@ Let's create a basic heap sort that we will improve after. The idea of heap sort
 There is an implementation of this algorithm: 
 
 #codly(
-  annotation-format: none,    
-  annotations: (
-    (
-      start:1, end: none,
-      content: text(red, $Omicron(n log n)$)
-    ),
-    (
-      start:3, end: none,
-      content: text(red, $Omicron(log n)$) + "                                             " 
-    ),
-    (
-      start:5, end: none,
-      content: text(red, $Omicron(log n)$)
-    ),
-  )
+    annotation-format: none,    
+    annotations: (
+        (
+            start:1, end: none,
+            content: text(red, $Omicron(n log n)$)
+        ),
+        (
+            start:3, end: none,
+            content: text(red, $Omicron(log n)$) + "                                             " 
+        ),
+        (
+            start:5, end: none,
+            content: text(red, $Omicron(log n)$)
+        ),
+    )
 )
 ```
 def sort(a)
@@ -347,16 +347,16 @@ In order to achieve that, we heapify (transform an array into a heap) $a$ and we
 Let's write the algorithm: 
 
 #codly(
-  annotations: (
-    (
-      start:3, end: none,
-      content: text(red, $Omicron(log n)$)
-    ),
-    (
-      start:5, end: 6,
-      content: text(red, $Omicron(log n)$) + "                                             " 
-    ),
-  )
+    annotations: (
+        (
+            start:3, end: none,
+            content: text(red, $Omicron(log n)$)
+        ),
+        (
+            start:5, end: 6,
+            content: text(red, $Omicron(log n)$) + "                                             " 
+        ),
+    )
 )
 ```
 def sort(a)
@@ -378,40 +378,40 @@ Let's decompose why the complexity of this first for-loop is $Omicron(n log n)$ 
 #linebreak()
 
 #align(center, diagram(
-  let y = 0.75,
-  let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
-    (-1.5,0), 
-    (-2.75,y),(-0.25,y), 
-    (-3.25,2*y),(-2.25,2*y),(-0.75,2*y),(0.25,2*y), 
-    (-3.5,3*y),(-3,3*y),(-2.5,3*y),(-2,3*y),(-1,3*y),(-0.5,3*y),(0,3*y),(0.5,3*y)
-  ),
+    let y = 0.75,
+    let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
+        (-1.5,0), 
+        (-2.75,y),(-0.25,y), 
+        (-3.25,2*y),(-2.25,2*y),(-0.75,2*y),(0.25,2*y), 
+        (-3.5,3*y),(-3,3*y),(-2.5,3*y),(-2,3*y),(-1,3*y),(-0.5,3*y),(0,3*y),(0.5,3*y)
+    ),
 
-  node(N, $circle$),
-  
-  node(H, $circle$), node(I, $circle$), 
-  
-  node(Q, $circle$), node(R, $circle$), node(S, $circle$), node(T, $circle$),
+    node(N, $circle$),
+    
+    node(H, $circle$), node(I, $circle$), 
+    
+    node(Q, $circle$), node(R, $circle$), node(S, $circle$), node(T, $circle$),
 
-  node(L, $circle$), node(M, $circle$), node(O, $circle$), node(P, $circle$),
-  node(U, $circle$), node(V, $circle$), node(W, $circle$), node(Y, $circle$),
+    node(L, $circle$), node(M, $circle$), node(O, $circle$), node(P, $circle$),
+    node(U, $circle$), node(V, $circle$), node(W, $circle$), node(Y, $circle$),
 
-  edge(N, H, "-"), edge(N, I, "-"),
+    edge(N, H, "-"), edge(N, I, "-"),
 
-  edge(H, Q, "-"), edge(H, R, "-"),
-  edge(I, S, "-"), edge(I, T, "-"),
+    edge(H, Q, "-"), edge(H, R, "-"),
+    edge(I, S, "-"), edge(I, T, "-"),
 
-  edge(Q, L, "--"), edge(Q, M, "--"),
-  edge(R, O, "--"), edge(R, P, "--"),
-  edge(S, U, "--"), edge(S, V, "--"),
-  edge(T, W, "--"), edge(T, Y, "--"),
+    edge(Q, L, "--"), edge(Q, M, "--"),
+    edge(R, O, "--"), edge(R, P, "--"),
+    edge(S, U, "--"), edge(S, V, "--"),
+    edge(T, W, "--"), edge(T, Y, "--"),
 
-  node((1.5, -0.5), text(red, "For each node:")),
-  node((1.5, 0), text(red, $0 "call to sift_up"$)),
-  node((1.5,y), text(red, $1 "call "$)),
-  node((1.5,2*y), text(red, $2 "calls "$)),
-  node((1.5,3*y), text(red, $log n "calls "$)),
+    node((1.5, -0.5), text(red, "For each node:")),
+    node((1.5, 0), text(red, $0 "call to sift_up"$)),
+    node((1.5,y), text(red, $1 "call "$)),
+    node((1.5,2*y), text(red, $2 "calls "$)),
+    node((1.5,3*y), text(red, $log n "calls "$)),
 
-  edge((1.5,2*y), (1.5,3*y), "--", stroke: red)
+    edge((1.5,2*y), (1.5,3*y), "--", stroke: red)
 ))
 
 #pagebreak()
@@ -425,40 +425,40 @@ $
 To improve this complexity, we are going to use $"sift_down"$ instead of $"sift_up"$ in the first for-loop. Which gives us this situation. 
 
 #align(center, diagram(
-  let y = 0.75,
-  let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
-    (-1.5,0), 
-    (-2.75,y),(-0.25,y), 
-    (-3.25,2*y),(-2.25,2*y),(-0.75,2*y),(0.25,2*y), 
-    (-3.5,3*y),(-3,3*y),(-2.5,3*y),(-2,3*y),(-1,3*y),(-0.5,3*y),(0,3*y),(0.5,3*y)
-  ),
+    let y = 0.75,
+    let (N, H,I, Q,R,S,T, L,M,O,P,U,V,W,Y) = (
+        (-1.5,0), 
+        (-2.75,y),(-0.25,y), 
+        (-3.25,2*y),(-2.25,2*y),(-0.75,2*y),(0.25,2*y), 
+        (-3.5,3*y),(-3,3*y),(-2.5,3*y),(-2,3*y),(-1,3*y),(-0.5,3*y),(0,3*y),(0.5,3*y)
+    ),
 
-  node(N, $circle$),
-  
-  node(H, $circle$), node(I, $circle$), 
-  
-  node(Q, $circle$), node(R, $circle$), node(S, $circle$), node(T, $circle$),
+    node(N, $circle$),
+    
+    node(H, $circle$), node(I, $circle$), 
+    
+    node(Q, $circle$), node(R, $circle$), node(S, $circle$), node(T, $circle$),
 
-  node(L, $circle$), node(M, $circle$), node(O, $circle$), node(P, $circle$),
-  node(U, $circle$), node(V, $circle$), node(W, $circle$), node(Y, $circle$),
+    node(L, $circle$), node(M, $circle$), node(O, $circle$), node(P, $circle$),
+    node(U, $circle$), node(V, $circle$), node(W, $circle$), node(Y, $circle$),
 
-  edge(N, H, "-"), edge(N, I, "-"),
+    edge(N, H, "-"), edge(N, I, "-"),
 
-  edge(H, Q, "-"), edge(H, R, "-"),
-  edge(I, S, "-"), edge(I, T, "-"),
+    edge(H, Q, "-"), edge(H, R, "-"),
+    edge(I, S, "-"), edge(I, T, "-"),
 
-  edge(Q, L, "--"), edge(Q, M, "--"),
-  edge(R, O, "--"), edge(R, P, "--"),
-  edge(S, U, "--"), edge(S, V, "--"),
-  edge(T, W, "--"), edge(T, Y, "--"),
+    edge(Q, L, "--"), edge(Q, M, "--"),
+    edge(R, O, "--"), edge(R, P, "--"),
+    edge(S, U, "--"), edge(S, V, "--"),
+    edge(T, W, "--"), edge(T, Y, "--"),
 
-  node((1.5, -0.5), text(red, "For each node:")),
-  node((1.5, 0), text(red, $log n "calls to sift_down"$)),
-  node((1.5,y), text(red, $log n-1 "calls "$)),
-  node((1.5,2*y), text(red, $1 "calls "$)),
-  node((1.5,3*y), text(red, $0 "calls "$)),
+    node((1.5, -0.5), text(red, "For each node:")),
+    node((1.5, 0), text(red, $log n "calls to sift_down"$)),
+    node((1.5,y), text(red, $log n-1 "calls "$)),
+    node((1.5,2*y), text(red, $1 "calls "$)),
+    node((1.5,3*y), text(red, $0 "calls "$)),
 
-  edge((1.5,y), (1.5,2*y), "--", stroke: red)
+    edge((1.5,y), (1.5,2*y), "--", stroke: red)
 ))
 
 #linebreak()

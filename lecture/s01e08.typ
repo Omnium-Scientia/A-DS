@@ -6,10 +6,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "8", 
-  video_link: "https://www.youtube.com/watch?v=vq5u09x2Kzo&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=8",
-  title: "Disjoint sets (Union-Find)"
+    semester: "1", 
+    chapter_number: "8", 
+    video_link: "https://www.youtube.com/watch?v=vq5u09x2Kzo&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=8",
+    title: "Disjoint sets (Union-Find)"
 )
 
 = Disjoint sets (Union-Find)
@@ -22,75 +22,75 @@ Imagine that you have objects and these objects are separated in disjoint sets, 
 - #text(fill:red)[\*]Union: it take two of our sets as input and output one set which is the union of those two. 
 
 #align(center, diagram(
-  node-corner-radius: 4pt,
-  let (n1, n2, n3, n4, n5, n6, n7) = (
-    (0,0),(1,0),(2,0),(0.5,1),(0.5,2),(1.5,1),(1.5,2),  
-  ),
-  
-  node(n1, $1$),
-  node(n2, $2$),
-  node(n3, $5$),
-  node(n4, $3$),
-  node(n5, $6$),
-  node(n6, $7$),
-  node(n7, $4$),
-  
-  {
+    node-corner-radius: 4pt,
+    let (n1, n2, n3, n4, n5, n6, n7) = (
+        (0,0),(1,0),(2,0),(0.5,1),(0.5,2),(1.5,1),(1.5,2),    
+    ),
+    
+    node(n1, $1$),
+    node(n2, $2$),
+    node(n3, $5$),
+    node(n4, $3$),
+    node(n5, $6$),
+    node(n6, $7$),
+    node(n7, $4$),
+    
+    {
     let tint(c) = (stroke: c, inset: 8pt)
     node(enclose: (n1,n2,n3), ..tint(black))
     node(enclose: (n4,n5), ..tint(black))
     node(enclose: (n6,n7), ..tint(black))
     edge((0,0.5),(0,2.6),(2,2.6),(2,0.5),(0,0.5), stroke:red)
-  },
+    },
 ))
 
 - Find: it take an element $x$ as input and return in which set the element is.
-  - To do that, we use two type of object, the set and the element. 
-  - #text(fill:red)[\*]To not be bothered by that, we are going to mark one element in each set. This element is unique and will represent the set so that our return type is also an element. 
+    - To do that, we use two type of object, the set and the element. 
+    - #text(fill:red)[\*]To not be bothered by that, we are going to mark one element in each set. This element is unique and will represent the set so that our return type is also an element. 
 
-  #align(center, diagram(
-    node-corner-radius: 4pt,
-    let (n1, n2, n3, n4, n5, n6, n7) = (
-      (0,0),(1,0),(2,0),(0.5,1),(0.5,2),(1.5,1),(1.5,2),  
-    ),
-    
-    node(n1, $1$),
-    node(n2, $2$),
-    node(n3, $5$, stroke:1pt+red),
-    node(n4, $3$, stroke:1pt+red),
-    node(n5, $6$),
-    node(n6, $7$, stroke:1pt+red),
-    node(n7, $4$),
-    
-    {
-      let tint(c) = (stroke: c, inset: 8pt)
-      node(enclose: (n1,n2,n3), ..tint(black))
-      node(enclose: (n4,n5), ..tint(black))
-      node(enclose: (n6,n7), ..tint(black))
-    },
-  ))
+    #align(center, diagram(
+        node-corner-radius: 4pt,
+        let (n1, n2, n3, n4, n5, n6, n7) = (
+            (0,0),(1,0),(2,0),(0.5,1),(0.5,2),(1.5,1),(1.5,2),    
+        ),
+        
+        node(n1, $1$),
+        node(n2, $2$),
+        node(n3, $5$, stroke:1pt+red),
+        node(n4, $3$, stroke:1pt+red),
+        node(n5, $6$),
+        node(n6, $7$, stroke:1pt+red),
+        node(n7, $4$),
+        
+        {
+            let tint(c) = (stroke: c, inset: 8pt)
+            node(enclose: (n1,n2,n3), ..tint(black))
+            node(enclose: (n4,n5), ..tint(black))
+            node(enclose: (n6,n7), ..tint(black))
+        },
+    ))
 
-  In this example: 
+    In this example: 
     - $"find"(6) -> 3$
     - $"find"(5) -> 5$
     - $"find"(2) -> 5$
-  Element of the same set return the same result for find.
+    Element of the same set return the same result for find.
 
 #pagebreak()
-  
+    
 == Basic implementation
 
 For this simple representation, we make an array of size $n$. For each object, we store in the array the representative element of his set: 
 
 $
-p: [ &5 "  " 5 "  " 3 "  " 7 "  " 5 "  " 3 "  " 7 ] \ 
-     &1 "  " 2 "  " 3 "  " 4 "  " 5 "  " 6 "  " 7
+p: [ &5 "    " 5 "    " 3 "    " 7 "    " 5 "    " 3 "    " 7 ] \ 
+     &1 "    " 2 "    " 3 "    " 4 "    " 5 "    " 6 "    " 7
 $ 
 
 $p$ is our disjoint set from the previous example. 
 
 === Find 
-  
+    
 ```
 def find(x)
     return p[x]
@@ -98,45 +98,45 @@ def find(x)
 
 === Union 
 
-  In order to make our union operation between $X$ and $Y$, we want to change the representative element of the elements of $X$ to the representative element of $Y$. 
+    In order to make our union operation between $X$ and $Y$, we want to change the representative element of the elements of $X$ to the representative element of $Y$. 
 
-  #align(center, diagram(
-    node-corner-radius: 4pt,
-    let (n1, n2, n3, n4, n5, n6, n7) = (
-      (0,0),(1,0),(2,0),(0.5,1),(0.5,2),(1.5,1),(1.5,2),  
-    ),
-    
-    node(n1, $1$),
-    node(n2, $2$),
-    node(n3, $5$),
-    node(n4, $3$, stroke:1pt+red),
-    node(n5, $6$),
-    node(n6, $7$, stroke:1pt+red),
-    node(n7, $4$),
-    
-    {
-      let tint(c) = (stroke: c, inset: 8pt)
-      node(enclose: (n1,n2,n3), ..tint(black))
-      node(enclose: (n4,n5), ..tint(black))
-      node(enclose: (n6,n7), ..tint(black))
-      edge((0,0.5),(0,2.6),(2,2.6),(2,0.5),(0,0.5), stroke:red)
-    },
-  
-    node((0.5,1.5), text(fill:red)[$X$]),
-    node((1.5,1.5), text(fill:red)[$Y$])
-  ))
+    #align(center, diagram(
+        node-corner-radius: 4pt,
+        let (n1, n2, n3, n4, n5, n6, n7) = (
+            (0,0),(1,0),(2,0),(0.5,1),(0.5,2),(1.5,1),(1.5,2),    
+        ),
+        
+        node(n1, $1$),
+        node(n2, $2$),
+        node(n3, $5$),
+        node(n4, $3$, stroke:1pt+red),
+        node(n5, $6$),
+        node(n6, $7$, stroke:1pt+red),
+        node(n7, $4$),
+        
+        {
+            let tint(c) = (stroke: c, inset: 8pt)
+            node(enclose: (n1,n2,n3), ..tint(black))
+            node(enclose: (n4,n5), ..tint(black))
+            node(enclose: (n6,n7), ..tint(black))
+            edge((0,0.5),(0,2.6),(2,2.6),(2,0.5),(0,0.5), stroke:red)
+        },
+        
+        node((0.5,1.5), text(fill:red)[$X$]),
+        node((1.5,1.5), text(fill:red)[$Y$])
+    ))
 
-  Here, to join our sets, we need to find in $p$ all the elements that have $3$ has a representative element and change it to $7$. 
+    Here, to join our sets, we need to find in $p$ all the elements that have $3$ has a representative element and change it to $7$. 
 
-  ```
-  def union(X,Y)
-      x = find(X), y = find(Y)
-      for i = 1..n
-          if p[i] = x
-              p[y] = y
-  ```
+    ```
+    def union(X,Y)
+        x = find(X), y = find(Y)
+        for i = 1..n
+            if p[i] = x
+                p[y] = y
+    ```
 
-  The complexity of this union function is #text(fill:red)[$Omicron(n)$]. 
+    The complexity of this union function is #text(fill:red)[$Omicron(n)$]. 
 
 The number of union operation that we can make in our structure is $<= n - 1$. 
 
@@ -153,12 +153,12 @@ To optimize the union function, we are going to maintain $n$ list each list are 
 In our previous example we would have: 
 
 $
-"lists": &1:  \
-         &2:  \
+"lists": &1:    \
+         &2:    \
          &3: 3,6 \
-         &4:  \
+         &4:    \
          &5: 2,5,1 \
-         &6:  \
+         &6:    \
          &7: 7,4 \
 $
 
@@ -178,46 +178,46 @@ Did we changed our total cost?
 It depends, it is still possible to have: $T("total union") = Omicron(n^2)$.
 
 #grid(
-  columns: (50%,50%),
-  $
-  "lists": &1: 1 \
-           &2: 2 \
-           &3: 3 \
-           &4: 4 \
-           &5: 5 \
-           &6: 6 \
-           &7: 7 
-  $, 
-  $"union": 1, 2 \ T = 1$
+    columns: (50%,50%),
+    $
+    "lists": &1: 1 \
+             &2: 2 \
+             &3: 3 \
+             &4: 4 \
+             &5: 5 \
+             &6: 6 \
+             &7: 7 
+    $, 
+    $"union": 1, 2 \ T = 1$
 )
 
 #grid(
-  columns: (50%,50%),
-  $
-  "lists": &1: 2 \
-           &2: 2 \
-           &3: 3 \
-           &4: 4 \
-           &5: 5 \
-           &6: 6 \
-           &7: 7 
-  $, 
-  $"union": 2, 3 \ T = 2$
+    columns: (50%,50%),
+    $
+    "lists": &1: 2 \
+             &2: 2 \
+             &3: 3 \
+             &4: 4 \
+             &5: 5 \
+             &6: 6 \
+             &7: 7 
+    $, 
+    $"union": 2, 3 \ T = 2$
 )
 
 #grid(
-  columns: (50%,50%),
-  $
-  "lists": &1: 3 \
-           &2: 3 \
-           &3: 3 \
-           &4: 4 \
-           &5: 5 \
-           &6: 6 \
-           &7: 7 \
-           &"..."
-  $, 
-  $"union": 3, 4 \ T = 3$
+    columns: (50%,50%),
+    $
+    "lists": &1: 3 \
+             &2: 3 \
+             &3: 3 \
+             &4: 4 \
+             &5: 5 \
+             &6: 6 \
+             &7: 7 \
+             &"..."
+    $, 
+    $"union": 3, 4 \ T = 3$
 )
 
 In this case, we have $sum T tilde.eq Omega(n^2)$. 
@@ -240,46 +240,46 @@ def union(X,Y)
 With change, the previous example cannot occur again. Lets compute our new $T("total union")$: 
 
 #grid(
-  columns: (50%,50%),
-  $
-  "lists": &1: 1 \
-           &2: 2 \
-           &3: 3 \
-           &4: 4 \
-           &5: 5 \
-           &6: 6 \
-           &7: 7 
-  $, 
-  $"union": 1, 2 \ T = 1$
+    columns: (50%,50%),
+    $
+    "lists": &1: 1 \
+             &2: 2 \
+             &3: 3 \
+             &4: 4 \
+             &5: 5 \
+             &6: 6 \
+             &7: 7 
+    $, 
+    $"union": 1, 2 \ T = 1$
 )
 
 #grid(
-  columns: (50%,50%),
-  $
-  "lists": &1: 2 \
-           &2: 2 \
-           &3: 3 \
-           &4: 4 \
-           &5: 5 \
-           &6: 6 \
-           &7: 7 
-  $, 
-  $"union": 2, 3 \ T = 1$
+    columns: (50%,50%),
+    $
+    "lists": &1: 2 \
+             &2: 2 \
+             &3: 3 \
+             &4: 4 \
+             &5: 5 \
+             &6: 6 \
+             &7: 7 
+    $, 
+    $"union": 2, 3 \ T = 1$
 )
 
 #grid(
-  columns: (50%,50%),
-  $
-  "lists": &1: 2 \
-           &2: 2 \
-           &3: 2 \
-           &4: 4 \
-           &5: 5 \
-           &6: 6 \
-           &7: 7 \
-           &"..."
-  $, 
-  $"union": 3, 4 \ T = 1$
+    columns: (50%,50%),
+    $
+    "lists": &1: 2 \
+             &2: 2 \
+             &3: 2 \
+             &4: 4 \
+             &5: 5 \
+             &6: 6 \
+             &7: 7 \
+             &"..."
+    $, 
+    $"union": 3, 4 \ T = 1$
 )
 
 We have: $sum T = Omega(n)$, we have made our operation linear. 
@@ -305,26 +305,26 @@ This is a simple yet important technique if you want to make a mergable data str
 == Efficient implementation (rank & path compression)
 
 #align(center, diagram(
-  node-corner-radius: 4pt,
-  let (n1, n2, n3, n4, n5, n6, n7, n8) = (
-    (0,0),(1,0),(2,0),(0,1),(1,1),(2,1),(0.5,2),(1.5,2),
-  ),
-  
-  node(n1, $1$),
-  node(n2, $2$, stroke:1pt+red),
-  node(n3, $4$),
-  node(n4, $6$, stroke:1pt+red),
-  node(n5, $5$),
-  node(n6, $3$, stroke:1pt+red),
-  node(n7, $7$),
-  node(n8, $8$, stroke:1pt+red),
-  
-  {
+    node-corner-radius: 4pt,
+    let (n1, n2, n3, n4, n5, n6, n7, n8) = (
+        (0,0),(1,0),(2,0),(0,1),(1,1),(2,1),(0.5,2),(1.5,2),
+    ),
+    
+    node(n1, $1$),
+    node(n2, $2$, stroke:1pt+red),
+    node(n3, $4$),
+    node(n4, $6$, stroke:1pt+red),
+    node(n5, $5$),
+    node(n6, $3$, stroke:1pt+red),
+    node(n7, $7$),
+    node(n8, $8$, stroke:1pt+red),
+    
+    {
     let tint(c) = (stroke: c, inset: 8pt)
     node(enclose: (n1,n2,n3), ..tint(black))
     node(enclose: (n4,n5,n6), ..tint(black))
     node(enclose: (n7,n8), ..tint(black))
-  },
+    },
 ))
 
 We have our sets and there reference elements. 
@@ -332,36 +332,36 @@ We have our sets and there reference elements.
 The idea is to store the sets as tree with the reference element as root. 
 
 #grid(
-  columns: (40%,30%,30%), 
-  align: center+horizon, 
-  diagram(
-    node-stroke: 1pt,
-    let (n1,n2,n3) = ((0,0),(-0.75,1),(0.75,1)),
+    columns: (40%,30%,30%), 
+    align: center+horizon, 
+    diagram(
+        node-stroke: 1pt,
+        let (n1,n2,n3) = ((0,0),(-0.75,1),(0.75,1)),
 
-    node(n1,$2$),node(n2,$1$),node(n3,$4$),
-    edge(n2,n1,"->"),edge(n3,n1,"->"),edge(n1,n1,"->",bend:135deg,loop-angle:120deg)
-  ),
-  diagram(
-    node-stroke: 1pt,
-    let (n1,n2,n3) = ((0,0),(0,1),(0,2)),
+        node(n1,$2$),node(n2,$1$),node(n3,$4$),
+        edge(n2,n1,"->"),edge(n3,n1,"->"),edge(n1,n1,"->",bend:135deg,loop-angle:120deg)
+        ),
+        diagram(
+        node-stroke: 1pt,
+        let (n1,n2,n3) = ((0,0),(0,1),(0,2)),
 
-    node(n1,$3$),node(n2,$5$),node(n3,$6$),
-    edge(n3,n2,"->"),edge(n2,n1,"->"),edge(n1,n1,"->",bend:135deg,loop-angle:120deg)
-  ),
-  diagram(
-    node-stroke: 1pt,
-    let (n1,n2) = ((0,0),(0,1)),
+        node(n1,$3$),node(n2,$5$),node(n3,$6$),
+        edge(n3,n2,"->"),edge(n2,n1,"->"),edge(n1,n1,"->",bend:135deg,loop-angle:120deg)
+        ),
+        diagram(
+        node-stroke: 1pt,
+        let (n1,n2) = ((0,0),(0,1)),
 
-    node(n1,$8$),node(n2,$7$),
-    edge(n2,n1,"->"),edge(n1,n1,"->",bend:135deg,loop-angle:120deg)
-  )
+        node(n1,$8$),node(n2,$7$),
+        edge(n2,n1,"->"),edge(n1,n1,"->",bend:135deg,loop-angle:120deg)
+    )
 )
 
 $p: p[x] dash.em "parent of "x$
 
 $
-p: [ &2 "  " 2 "  " 3 "  " 2 "  " 3 "  " 5 "  " 8 "  " 8] \ 
-     &1 "  " 2 "  " 3 "  " 4 "  " 5 "  " 6 "  " 7 "  " 8
+p: [ &2 "    " 2 "    " 3 "    " 2 "    " 3 "    " 5 "    " 8 "    " 8] \ 
+     &1 "    " 2 "    " 3 "    " 4 "    " 5 "    " 6 "    " 7 "    " 8
 $ 
 
 === Find 
@@ -402,10 +402,10 @@ To avoid long path, we need to make the tree balanced. To do that, lets use the 
 Rank heuristic: we maintain the rank of each node (the number of node between the node and a leaf): 
 
 #align(center, diagram(
-  node((0,0), $X$, stroke:1pt), node((0,1.5), $$, stroke:1pt), 
-  edge((0,0),(0,1.5),"~"), 
-  edge((-1.5,1.85),(1.5,1.85)),edge((-1.5,1.85),(0,-0.7),(1.5,1.85)),
-  edge((2,-0.7),(2,1.85),"<->", $r[X]$, label-side:left)
+    node((0,0), $X$, stroke:1pt), node((0,1.5), $$, stroke:1pt), 
+    edge((0,0),(0,1.5),"~"), 
+    edge((-1.5,1.85),(1.5,1.85)),edge((-1.5,1.85),(0,-0.7),(1.5,1.85)),
+    edge((2,-0.7),(2,1.85),"<->", $r[X]$, label-side:left)
 ))
 
 What we want to do is to connect the tree with the smaller rank to the tree with the bigger rank. 
@@ -413,18 +413,18 @@ What we want to do is to connect the tree with the smaller rank to the tree with
 Rank value after union: 
 
 #align(center, diagram(
-  node((0,0), $Y$, stroke:1pt), node((0,1.5), $$, stroke:1pt), 
-  edge((0,0),(0,1.5),"~"), 
-  edge((-1.5,1.85),(1.5,1.85)),edge((-1.5,1.85),(0,-0.7),(1.5,1.85)),
-  edge((2,-0.7),(2,1.85),"<->", text(fill:red)[$r[Y]$], label-side:left, stroke:red),
+    node((0,0), $Y$, stroke:1pt), node((0,1.5), $$, stroke:1pt), 
+    edge((0,0),(0,1.5),"~"), 
+    edge((-1.5,1.85),(1.5,1.85)),edge((-1.5,1.85),(0,-0.7),(1.5,1.85)),
+    edge((2,-0.7),(2,1.85),"<->", text(fill:red)[$r[Y]$], label-side:left, stroke:red),
 
-  node((-5,0), $X$, stroke:1pt), node((-5,1.5), $$, stroke:1pt), 
-  edge((-5,0),(-5,1.5),"~"), 
-  edge((-1.5-5,1.85),(1.5-5,1.85)),edge((-1.5-5,1.85),(0-5,-0.7),(1.5-5,1.85)),
-  edge((-7.5,-0.7),(-7.5,1.85),"<->", $r[X]$, label-side:right),
-  edge((-0.5,-0.1),(-7,1.85),"<->", text(fill:red)[$r[X]+1$], label-side:right, bend: -70deg, stroke:red),
+    node((-5,0), $X$, stroke:1pt), node((-5,1.5), $$, stroke:1pt), 
+    edge((-5,0),(-5,1.5),"~"), 
+    edge((-1.5-5,1.85),(1.5-5,1.85)),edge((-1.5-5,1.85),(0-5,-0.7),(1.5-5,1.85)),
+    edge((-7.5,-0.7),(-7.5,1.85),"<->", $r[X]$, label-side:right),
+    edge((-0.5,-0.1),(-7,1.85),"<->", text(fill:red)[$r[X]+1$], label-side:right, bend: -70deg, stroke:red),
 
-  edge((-4.5,0),(-0.5,0),"->")
+    edge((-4.5,0),(-0.5,0),"->")
 ))
 
 $
@@ -451,14 +451,14 @@ Our introduction property is that a set with a reference element $X$ of rank $r[
 
 *After union operation:* 
 - we join 2 trees: 
-  - the first as a rank of $r[X]$ and is number of elements is  $>=2^r[X]$
-  - the second as a rank of $r[Y]$ and is number of elements is  $>=2^r[Y]$
+    - the first as a rank of $r[X]$ and is number of elements is    $>=2^r[X]$
+    - the second as a rank of $r[Y]$ and is number of elements is    $>=2^r[Y]$
 - if $r[X] < r[Y]:$ 
-  - we saw that $r[Y]$ stay the same. 
-  - number of element is at least $2^r[Y]$ since number of element os first tree is $>=1$. 
+    - we saw that $r[Y]$ stay the same. 
+    - number of element is at least $2^r[Y]$ since number of element os first tree is $>=1$. 
 - if $r[X] = r[Y]:$ 
-  - $r[Y] = r[Y] + 1$
-  - we have at leat $2^(r[Y]+1)$ element in our final tree since both of our trees had at least $2^r[Y]$ element at the beginning. 
+    - $r[Y] = r[Y] + 1$
+    - we have at leat $2^(r[Y]+1)$ element in our final tree since both of our trees had at least $2^r[Y]$ element at the beginning. 
 
 The property stay true after the union operation and is true at the beginning, The property is always true. 
 
@@ -512,9 +512,9 @@ Path compression + rank heuristics costs:
 $
 tilde(T)("find") = Omicron(alpha(m,n))
 $ where: 
-  - $alpha$ is the reverse Ackerman function
-  - $n$ is the size of the tree (i.e. the number of element in the set). 
-  - $m$ is the number of finds call. 
+    - $alpha$ is the reverse Ackerman function
+    - $n$ is the size of the tree (i.e. the number of element in the set). 
+    - $m$ is the number of finds call. 
 
 When: 
 $
@@ -568,23 +568,23 @@ The number of big jump is $<= log^* n$ because $r[X] <= log n$.
 Number of small jump: 
 
 #grid(
-  columns: (50%,50%),
-  align(center, diagram(
-    node-stroke: 1pt,
-    let (n1,n2,n3,n4,n5,n6) = ((0,0),(0,1),(0,2),(0,3),(0,4),(0,5)),
+    columns: (50%,50%),
+    align(center, diagram(
+        node-stroke: 1pt,
+        let (n1,n2,n3,n4,n5,n6) = ((0,0),(0,1),(0,2),(0,3),(0,4),(0,5)),
 
-    node(n1,$Y$),node(n2,$$),node(n3,$$),node(n4,$$),node(n5,$$),node(n6,$X$),
-    edge(n6,n5,"->"),edge(n5,n4,"->"),edge(n4,n3,"->"),edge(n3,n2,"->"),edge(n2,n1,"->",stroke:blue),edge(n1,n1,"->",bend:135deg,loop-angle:120deg),
+        node(n1,$Y$),node(n2,$$),node(n3,$$),node(n4,$$),node(n5,$$),node(n6,$X$),
+        edge(n6,n5,"->"),edge(n5,n4,"->"),edge(n4,n3,"->"),edge(n3,n2,"->"),edge(n2,n1,"->",stroke:blue),edge(n1,n1,"->",bend:135deg,loop-angle:120deg),
 
-    edge((1,5),n6,"->"),node((1,5),[find],stroke:0pt),
-  )),
-  align(horizon)[
-    When we call find, $r[p[X]]$ is increasing because the link from: 
-    $
-    #circle[$1$] -> #circle[$2$]
-    $
-    and $r[Y] > r[p[X]]$
-  ]
+        edge((1,5),n6,"->"),node((1,5),[find],stroke:0pt),
+    )),
+    align(horizon)[
+        When we call find, $r[p[X]]$ is increasing because the link from: 
+        $
+        #circle[$1$] -> #circle[$2$]
+        $
+        and $r[Y] > r[p[X]]$
+    ]
 )
 
 How many jump will it take for $Y$ to have a big jump and not a small one?
@@ -599,11 +599,13 @@ $
 sum_r "cnt"[r] dot 1.9^r <= n dot underbrace(sum (1.9 / 2)^r, = Omicron(n))
 $
 
+#pagebreak()
+
 So: 
 
 $
 sum T("find") &<= #text(fill:blue)[$m$] + #text(fill:red)[$m dot log^* n$] + #text(fill:green)[$n$] \
-              &<= Omicron(n log^* n)
+                &<= Omicron(n log^* n)
 $
 
 since $m = n$ by hypothesis. 

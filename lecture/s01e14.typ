@@ -6,24 +6,24 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "14", 
-  video_link: "https://www.youtube.com/watch?v=QM_m5TfoQm4&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=14",
-  title: "Hash Tables"
+    semester: "1", 
+    chapter_number: "14", 
+    video_link: "https://www.youtube.com/watch?v=QM_m5TfoQm4&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=14",
+    title: "Hash tables"
 )
 
-= Hash Tables
+= Hash tables
 
 Hash tables are really important data structures. They are randomized and can cause problem in some situation. We will see when to use them and when not to. 
 
 There are 2 major data structures that are based on hash tables: 
 - `set`: as the name suggest, this is a set of objects. Its base operations are: 
-  - `add(x)`
-  - `remove(x)`
-  - `contain(x)`
+    - `add(x)`
+    - `remove(x)`
+    - `contain(x)`
 - `map`: these are object mapping a key to a value, we access value with the key. Its base operations are: 
-  - `put(k,v)`
-  - `get(k)`
+    - `put(k,v)`
+    - `get(k)`
 
 Those are widely used primitive data structures. 
 
@@ -32,7 +32,7 @@ Those are widely used primitive data structures.
 === Small range integers keys 
 
 $
-"key" in bracket.double.l 0,m-1 bracket.double.r \ m - "small"  
+"key" in bracket.double.l 0,m-1 bracket.double.r \ m - "small"    
 $
 
 We use the key as an index of an array: 
@@ -52,16 +52,16 @@ This is the most simple case to implement `maps`.
 === Big range integers key
 
 $
-"key" in bracket.double.l 0,n-1 bracket.double.r \ n - "big"  
+"key" in bracket.double.l 0,n-1 bracket.double.r \ n - "big"    
 $
 
 What wee can do is to make a function that take a big integer and return a small one. Then we use this result as a key in our array. 
 
 $
 h cases(
-  delim: bar, 
-  bracket.double.l 0\,n-1 bracket.double.r -> bracket.double.l 0\,m-1 bracket.double.r,
-  k |-> k % m
+    delim: bar, 
+    bracket.double.l 0\,n-1 bracket.double.r -> bracket.double.l 0\,m-1 bracket.double.r,
+    k |-> k % m
 )
 $
 
@@ -160,11 +160,11 @@ Our function set is the following, we call it $H$.
 
 $
 H eq.def {
-  h_(p,A) cases(
+    h_(p,A) cases(
     delim: bar, 
     NN -> bracket.double.l 0\,m-1 bracket.double.r, 
     k |-> ((k dot A) % p) %m,
-  ) : p "big random prime number", A in bracket.double.l 0,p-1 bracket.double.r
+    ) : p "big random prime number", A in bracket.double.l 0,p-1 bracket.double.r
 }
 $
 
@@ -179,7 +179,7 @@ $
 If we prove that getting a function from $H$ maintain this property we will have proved that $T("get") = Omicron(1)$. 
 
 $
-   & h(x) = h(y) \
+     & h(x) = h(y) \
 => & ((x dot A)%p)%m = ((y dot A)%p)%m \ 
 => & (((x - y) dot A)%p)%m = 0 \ 
 => & (((x - y) dot A)%p)%m = k dot m \ 
@@ -246,52 +246,52 @@ def get(k)
 Array size and complexity: 
 - $n "elements" - "array of size" m=n$
 
-  This does not work because at the end we will not have any empty space so the get function will not work. 
+    This does not work because at the end we will not have any empty space so the get function will not work. 
 - lets try with $n "elements" - "array of size" m=2n$
 
-  Approximately half of our array is empty so $PP(a[i]="null") = 1/2$. 
+    Approximately half of our array is empty so $PP(a[i]="null") = 1/2$. 
 
-  So, the probability of making $i$ step before finding (or not) our key is: 
+    So, the probability of making $i$ step before finding (or not) our key is: 
 
-  $
-  PP("number of steps" = i) = 1/2^i
-  $
+    $
+    PP("number of steps" = i) = 1/2^i
+    $
 
-  So: 
+    So: 
 
-  $
-  EE("number of steps") = sum_i 1/2^i = 1
-  $
+    $
+    EE("number of steps") = sum_i 1/2^i = 1
+    $
 
-  This is actually not totally true because our probability are not independent. This is because of clustering: 
+    This is actually not totally true because our probability are not independent. This is because of clustering: 
 
-  $
-  a: [ &" "& | &" "& | &" "&  | &crossmark& | &crossmark& | &crossmark& | &crossmark& | &crossmark& | &" "& | &" "& | &" "&] \ 
-       &0& &1& &2& &3& &4& &5& &6& &7& &8& &9& &10&
-  $
+    $
+    a: [ &" "& | &" "& | &" "&    | &crossmark& | &crossmark& | &crossmark& | &crossmark& | &crossmark& | &" "& | &" "& | &" "&] \ 
+         &0& &1& &2& &3& &4& &5& &6& &7& &8& &9& &10&
+    $
 
-  In this case, the probability of putting our next value in the cluster increase because of how the previous value are disposed in the array. Therefore probability are dependent of each other. But we will talk after of avoiding cluster. So we can still say that: 
+    In this case, the probability of putting our next value in the cluster increase because of how the previous value are disposed in the array. Therefore probability are dependent of each other. But we will talk after of avoiding cluster. So we can still say that: 
 
-  $
-  T("get") = EE("number of steps") = Omicron(1)
-  $
+    $
+    T("get") = EE("number of steps") = Omicron(1)
+    $
 
 How to avoid clustering? 
 - When we iterate over the right, we change the size of the steps. The change need to follow a function, what is important is to use the same jump function for put and get function. 
 
-  The function can be: 
-  - Incremental: ($1^"st"$ jump -> 1 cell,$2^"nd"$ jump -> 2 cells,$3^"rd"$ jump -> 3 cells,...)
-  - Polynomial: ($1^"st"$ jump -> 1 cell,$2^"nd"$ jump -> 4 cells,$3^"rd"$ jump -> 9 cells,...)
-  - Or, what we can do is to select a second hash function $h_2$ created at the same time as the first one. In this case length of jump $= h_2(k)$
+    The function can be: 
+        - Incremental: ($1^"st"$ jump -> 1 cell,$2^"nd"$ jump -> 2 cells,$3^"rd"$ jump -> 3 cells,...)
+        - Polynomial: ($1^"st"$ jump -> 1 cell,$2^"nd"$ jump -> 4 cells,$3^"rd"$ jump -> 9 cells,...)
+        - Or, what we can do is to select a second hash function $h_2$ created at the same time as the first one. In this case length of jump $= h_2(k)$
 
-  But if this function make us make big jump, our function will be less efficient. 
+    But if this function make us make big jump, our function will be less efficient. 
 
-  It is a tradeoff. 
+    It is a tradeoff. 
 
 Why use open addressing when the previous technique seems to work just fine? 
 - Memory efficiency: 
-  - No other lists 
-  - No other pointers 
+    - No other lists 
+    - No other pointers 
 - Useful for caching because we iterate on a continuous block of memory 
 
 In practice this technique can be more efficient than the first one. 

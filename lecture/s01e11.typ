@@ -6,10 +6,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-  semester: "1", 
-  chapter_number: "11", 
-  video_link: "https://www.youtube.com/watch?v=kBtTT3fTSc8&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=11",
-  title: "Dynamic Programming - PART II"
+    semester: "1", 
+    chapter_number: "11", 
+    video_link: "https://www.youtube.com/watch?v=kBtTT3fTSc8&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=11",
+    title: "Dynamic Programming - PART II"
 )
 
 = Dynamic Programming - PART II
@@ -19,21 +19,21 @@
 We have two text: 
 
 #grid(
-  columns: (50%,50%), 
-  column-gutter: 10pt,
-  ```py
-  s = 0 
-  for i in range(n): 
-      s+= a[i]
-  print(s)
-  ```,
-  ```py
-  s = float('-inf') 
-  for i in range(n): 
-      if a[i] > s:
-          s = a[i]
-  print(s)
-  ```
+    columns: (50%,50%), 
+    column-gutter: 10pt,
+    ```py
+    s = 0 
+    for i in range(n): 
+        s+= a[i]
+    print(s)
+    ```,
+    ```py
+    s = float('-inf') 
+    for i in range(n): 
+        if a[i] > s:
+            s = a[i]
+    print(s)
+    ```
 )
 
 The changes between those texts are: 
@@ -61,29 +61,29 @@ Our authorized operations are:
 Lets look at an example: 
 
 $
-  A = "APPLE" \ B = "ALPINE"
-  $
+    A = "APPLE" \ B = "ALPINE"
+    $
 
 #align(center,grid(
-  columns: (30%,30%,30%), 
-  $
-  A &cancel(P) P L E \ &#text(fill:blue)[L]
-  $,
-  $
-  A L P &cancel(L) E \ &#text(fill:blue)[I]
-  $,
-  $
-  A L P I #text(fill:blue)[N] E
-  $
+    columns: (30%,30%,30%), 
+    $
+    A &cancel(P) P L E \ &#text(fill:blue)[L]
+    $,
+    $
+    A L P &cancel(L) E \ &#text(fill:blue)[I]
+    $,
+    $
+    A L P I #text(fill:blue)[N] E
+    $
 ))
 
 // MAke the example 
 
 #align(
-  center,
-  diagram(
-    let y = 0, 
-  )
+    center,
+    diagram(
+       let y = 0, 
+    )
 )
 
 We need 3 operations to get from $A$ to $B$. This is what we call the Levenshtein distance (or the edit distance). 
@@ -95,37 +95,37 @@ We now want to make an algorithm that compute that edit distance.
 We have two words:
 
 $
-A : underbracket("                   ") x "  " B : underbracket("                   ") y
+A : underbracket("                     ") x "    " B : underbracket("                     ") y
 $
 
 + If the last character between $A$ and $B$ is the same $(x = y)$, we can let it here and repeat the same problem on $A'$ and $B'$ where $A' = A[:-1]$ and $B' = B[:-1]$. 
 
-  $
-  A &: underbracket("                   ") \ B &: underbracket("                   ")
-  $
+    $
+    A &: underbracket("                     ") \ B &: underbracket("                     ")
+    $
 
-  We do the same as in the first dynamic programming lecture: repeat the same problem on a reduced input. 
+    We do the same as in the first dynamic programming lecture: repeat the same problem on a reduced input. 
 
 + If $(x eq.not y)$: 
-  - change $(x,y)$ so that both letter are the same and then we are in $1.$ situation. 
+    - change $(x,y)$ so that both letter are the same and then we are in $1.$ situation. 
 
-  $
-  A &: underbracket("                   ") y \ B &: underbracket("                   ") y
-  $
+    $
+    A &: underbracket("                     ") y \ B &: underbracket("                     ") y
+    $
 
-  - remove $x$, then we repeat our problem between $A'$ and $B$. 
+    - remove $x$, then we repeat our problem between $A'$ and $B$. 
 
-  $
-  A &: underbracket("                   ") \ B &: underbracket("                   ") y
-  $
+    $
+    A &: underbracket("                     ") \ B &: underbracket("                     ") y
+    $
 
-  - add $y$ at the end of $A$ then repeat our problem between $A$ and $B'$. 
+    - add $y$ at the end of $A$ then repeat our problem between $A$ and $B'$. 
 
-  $
-  A &: underbracket("                   ") x y \ B &: underbracket("                   ") y
-  $
+    $
+    A &: underbracket("                     ") x y \ B &: underbracket("                     ") y
+    $
 
-  Those are the option we have if the end letter are not the same. Each time, we reduce our problem to a smaller one of the same type, and each time the smaller problems input are prefix of $A$ and $B$. 
+    Those are the option we have if the end letter are not the same. Each time, we reduce our problem to a smaller one of the same type, and each time the smaller problems input are prefix of $A$ and $B$. 
 
 Lets define our dynamic programming state: 
 
@@ -134,7 +134,7 @@ D[i,j] eq.def "min munber of operation to produce" B[0..j-1] "from" A[0..i-1]
 $
 
 Lets define our transition value for each transition define before: 
-- same ending   
+- same ending     
 $
 D[i,j] = D[i-1,j-1]
 $
@@ -175,20 +175,20 @@ A = "APPLE" \ B = "ALPINE"
 $
 
 #align(
-  center, 
-  grid(
-    align: center+horizon,
-    stroke:1pt,
-    columns: (2em,2em,2em,2em,2em,2em,2em,2em,), 
-    rows:    (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,), 
-    [D],  [0],[A:1],[L:2],[P:3],[I:4],[N:5],[E:6],
-    [0],  text(fill:blue)[0],text(fill:blue)[1],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],text(fill:blue)[5],text(fill:blue)[6],
-    [A:1],text(fill:blue)[1],text(fill:blue)[0],text(fill:blue)[1],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],text(fill:blue)[5],
-    [P:2],text(fill:blue)[2],text(fill:blue)[1],text(fill:blue)[1],text(fill:blue)[1],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],
-    [P:3],text(fill:blue)[3],text(fill:blue)[2],text(fill:blue)[2],text(fill:blue)[1],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],
-    [L:4],text(fill:blue)[4],text(fill:blue)[3],text(fill:blue)[2],text(fill:blue)[2],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],
-    [E:5],text(fill:blue)[5],text(fill:blue)[4],text(fill:blue)[3],text(fill:blue)[3],text(fill:blue)[3],text(fill:blue)[3],text(fill:blue)[3],
-  )
+    center, 
+    grid(
+        align: center+horizon,
+        stroke:1pt,
+        columns: (2em,2em,2em,2em,2em,2em,2em,2em,), 
+        rows:    (1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,1.5em,), 
+        [D],    [0],[A:1],[L:2],[P:3],[I:4],[N:5],[E:6],
+        [0],    text(fill:blue)[0],text(fill:blue)[1],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],text(fill:blue)[5],text(fill:blue)[6],
+        [A:1],text(fill:blue)[1],text(fill:blue)[0],text(fill:blue)[1],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],text(fill:blue)[5],
+        [P:2],text(fill:blue)[2],text(fill:blue)[1],text(fill:blue)[1],text(fill:blue)[1],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],
+        [P:3],text(fill:blue)[3],text(fill:blue)[2],text(fill:blue)[2],text(fill:blue)[1],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],
+        [L:4],text(fill:blue)[4],text(fill:blue)[3],text(fill:blue)[2],text(fill:blue)[2],text(fill:blue)[2],text(fill:blue)[3],text(fill:blue)[4],
+        [E:5],text(fill:blue)[5],text(fill:blue)[4],text(fill:blue)[3],text(fill:blue)[3],text(fill:blue)[3],text(fill:blue)[3],text(fill:blue)[3],
+    )
 )
 
 Now, we want to not just get the minimum number of change but also get the change-log of what operation need to be done. 
@@ -213,54 +213,54 @@ If each file is really big: $bar.v\Abar.v tilde.eq bar.v\Bbar.v tilde.eq 10^6$, 
 In a real world calculation, in git diff for example, we use additional heuristics to decrease complexity: 
 - If we have 2 big files with not to many difference, we arrange just to build the table around the optimal path and not the whole things. 
 - Sometimes it will not give you real optimal solution, we made a trade of between optimality and complexity. 
-- The algorithm  work "less" correctly if the files are really different. But usually, we use diff on file that have similarity. 
+- The algorithm    work "less" correctly if the files are really different. But usually, we use diff on file that have similarity. 
 
 == Word alignment and text justification 
 
 $
-"Text": underbrace(l_0"       "l_(m-1), w_0) "  " underbrace(l_0"          "l_(m'-1), w_1) "  " underbrace(l_0"  "l_(m''-1), w_2) "  " ... "  "  underbrace(l_0"       "l_(m-1), w_(n-1))
+"Text": underbrace(l_0"         "l_(m-1), w_0) "    " underbrace(l_0"            "l_(m'-1), w_1) "    " underbrace(l_0"    "l_(m''-1), w_2) "    " ... "    "    underbrace(l_0"         "l_(m-1), w_(n-1))
 $
 
 We know the length of each words. We want to print them on a sheet of width $L$. 
 
 #align(
-  center,
-  diagram(
-    let (c0,c1,c2,c3,ll,lr) = (
-      (0,0),(0,5),(3,0),(3,5),(0,4.5),(3,4.5) 
-    ),
+    center,
+    diagram(
+        let (c0,c1,c2,c3,ll,lr) = (
+            (0,0),(0,5),(3,0),(3,5),(0,4.5),(3,4.5) 
+        ),
 
-    edge((0.2,0.5),(0.8,0.5),"|-|",label:text(8pt)[$w_0$],label-side:right),edge((1.1,0.5),(2.1,0.5),"|-|",label:text(8pt)[$w_1$],label-side:right),edge((2.4,0.5),(2.6,0.5),"|-|",label:text(8pt)[$w_2$],label-side:right),
+        edge((0.2,0.5),(0.8,0.5),"|-|",label:text(8pt)[$w_0$],label-side:right),edge((1.1,0.5),(2.1,0.5),"|-|",label:text(8pt)[$w_1$],label-side:right),edge((2.4,0.5),(2.6,0.5),"|-|",label:text(8pt)[$w_2$],label-side:right),
 
-    edge((0.2,1.5),(1.2,1.5),"|-|",label:text(8pt)[$w_3$],label-side:right),edge((1.5,1.5),(2.4,1.5),"|-|",label:text(8pt)[$w_4$],label-side:right),
+        edge((0.2,1.5),(1.2,1.5),"|-|",label:text(8pt)[$w_3$],label-side:right),edge((1.5,1.5),(2.4,1.5),"|-|",label:text(8pt)[$w_4$],label-side:right),
 
-    edge((0.2,2.5),(1.2,2.5),"|-|",label:text(8pt)[$w_5$],label-side:right),edge((1.5,2.5),(2.7,2.5),"<->",stroke:red),
+        edge((0.2,2.5),(1.2,2.5),"|-|",label:text(8pt)[$w_5$],label-side:right),edge((1.5,2.5),(2.7,2.5),"<->",stroke:red),
 
-    edge((0.2,3.5),(2.2,3.5),"|-|",label:text(8pt)[$w_6$],label-side:right),edge((2.4,3.5),(2.6,3.5),"|-|",label:text(8pt)[$w_7$],label-side:right),
+        edge((0.2,3.5),(2.2,3.5),"|-|",label:text(8pt)[$w_6$],label-side:right),edge((2.4,3.5),(2.6,3.5),"|-|",label:text(8pt)[$w_7$],label-side:right),
 
-    edge(c0,c1),edge(c0,c2),edge(c2,c3),edge(ll,lr,"<->",label:$L$,label-side:right),
-  )
+        edge(c0,c1),edge(c0,c2),edge(c2,c3),edge(ll,lr,"<->",label:$L$,label-side:right),
+    )
 )
 
 We have a big gap after word 5. What we want is to justify the text to not have those kind of big gaps. 
 
 #align(
-  center,
-  diagram(
-    let (c0,c1,c2,c3,ll,lr) = (
-      (0,0),(0,5),(3,0),(3,5),(0,4.5),(3,4.5) 
-    ),
+    center,
+    diagram(
+        let (c0,c1,c2,c3,ll,lr) = (
+            (0,0),(0,5),(3,0),(3,5),(0,4.5),(3,4.5) 
+        ),
 
-    edge((0.2,0.5),(0.8,0.5),"|-|",label:text(8pt)[$w_0$],label-side:right),edge((1.1,0.5),(2.1,0.5),"|-|",label:text(8pt)[$w_1$],label-side:right),edge((2.4,0.5),(2.8,0.5),"<->",stroke:red),
+        edge((0.2,0.5),(0.8,0.5),"|-|",label:text(8pt)[$w_0$],label-side:right),edge((1.1,0.5),(2.1,0.5),"|-|",label:text(8pt)[$w_1$],label-side:right),edge((2.4,0.5),(2.8,0.5),"<->",stroke:red),
 
-    edge((0.2,1.5),(0.6,1.5),"|-|",label:text(8pt)[$w_2$],label-side:right),edge((1.2,1.5),(2.2,1.5),"|-|",label:text(8pt)[$w_3$],label-side:right),edge((2.4,1.5),(2.8,1.5),"<->",stroke:red),
-    
-    edge((1.5-1.3,2.5),(2.4-1.3,2.5),"|-|",label:text(8pt)[$w_4$],label-side:right),edge((1.3,2.5),(2.3,2.5),"|-|",label:text(8pt)[$w_5$],label-side:right),edge((2.4,2.5),(2.8,2.5),"<->",stroke:red),
+        edge((0.2,1.5),(0.6,1.5),"|-|",label:text(8pt)[$w_2$],label-side:right),edge((1.2,1.5),(2.2,1.5),"|-|",label:text(8pt)[$w_3$],label-side:right),edge((2.4,1.5),(2.8,1.5),"<->",stroke:red),
+        
+        edge((1.5-1.3,2.5),(2.4-1.3,2.5),"|-|",label:text(8pt)[$w_4$],label-side:right),edge((1.3,2.5),(2.3,2.5),"|-|",label:text(8pt)[$w_5$],label-side:right),edge((2.4,2.5),(2.8,2.5),"<->",stroke:red),
 
-    edge((0.2,3.5),(2.2,3.5),"|-|",label:text(8pt)[$w_6$],label-side:right),edge((2.4,3.5),(2.6,3.5),"|-|",label:text(8pt)[$w_7$],label-side:right),
+        edge((0.2,3.5),(2.2,3.5),"|-|",label:text(8pt)[$w_6$],label-side:right),edge((2.4,3.5),(2.6,3.5),"|-|",label:text(8pt)[$w_7$],label-side:right),
 
-    edge(c0,c1),edge(c0,c2),edge(c2,c3),edge(ll,lr,"<->",label:$L$,label-side:right),
-  )
+        edge(c0,c1),edge(c0,c2),edge(c2,c3),edge(ll,lr,"<->",label:$L$,label-side:right),
+    )
 )
 
 First we need to define a measurement to know if the text is good. For example, if we call our end gap $x$, we have: $"badness" = x^3$.
@@ -270,7 +270,7 @@ Our badness function does not change the code this function need to be found by 
 What we want is to take our word array and split it in segment representing our lines. 
 
 $
-underbrace(underbrace(l_0"       "l_(m-1), w_0) "  " underbrace(l_0"          "l_(m'-1), w_1), "line 1") "  " underbrace(underbrace(l_0"  "l_(m''-1), w_2) "  " ..., "line 2") "  " underbrace(... "  "  underbrace(l_0"       "l_(m-1), w_(n-1)), "line 3")
+underbrace(underbrace(l_0"         "l_(m-1), w_0) "    " underbrace(l_0"            "l_(m'-1), w_1), "line 1") "    " underbrace(underbrace(l_0"    "l_(m''-1), w_2) "    " ..., "line 2") "    " underbrace(... "    "    underbrace(l_0"         "l_(m-1), w_(n-1)), "line 3")
 $
 
 Lets define the function computing the badness of a segment. 
@@ -340,7 +340,7 @@ S -> c_1(S[1..n-1])
 $
 + it is part of a repeating group: 
 $
-S: underbrace(underline(l_0 ... l_(x-1)) "  "..."  "  underline(l_((K-1)\x) ... l_(K\x-1)), K "times the same group of length" x) "  "..."  " l_(n-1) -> K(S[0..x-1])(S[K\x..n-1])
+S: underbrace(underline(l_0 ... l_(x-1)) "    "..."    "    underline(l_((K-1)\x) ... l_(K\x-1)), K "times the same group of length" x) "    "..."    " l_(n-1) -> K(S[0..x-1])(S[K\x..n-1])
 $ 
 
 In each case, we reduce our problem to a subset of the same problem: 
@@ -359,17 +359,17 @@ Our transition value are:
 We use the 2 previously calculated state to get the new one: 
 
 #align(
-  center,
-  diagram(
-    node-stroke:1pt,
-    node-shape:shapes.pill,
-    node((-1,-0.5),$l,l+x$), 
-    node((-1,0.5),$l+k\x,r$), 
-    node((0,0),$l,r$), 
+    center,
+    diagram(
+        node-stroke:1pt,
+        node-shape:shapes.pill,
+        node((-1,-0.5),$l,l+x$), 
+        node((-1,0.5),$l+k\x,r$), 
+        node((0,0),$l,r$), 
 
-    edge((-1,-0.5),(0,0),"->"),
-    edge((-1,0.5),(0,0),"->"),
-  )
+        edge((-1,-0.5),(0,0),"->"),
+        edge((-1,0.5),(0,0),"->"),
+    )
 )
 
 We see there that on the contrary of our previous algorithms, we need to compute our array from the bottom to up. 
