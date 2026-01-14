@@ -22,7 +22,7 @@ It is then an important thing to know how to recognize those problems and know w
 
 You have: - $n$ items 
 
-Each items has a weight and a cost: $forall i in bracket.double.l 0,n-1 bracket.double.r | I_i -> (w_i, c_i)$
+Each items has a weight and a cost: $forall i in bracket.stroked.l 0,n-1 bracket.stroked.r | I_i -> (w_i, c_i)$
 
 You also have a knapsack of capacity $S$. 
 
@@ -171,7 +171,7 @@ To achieve that, we want to enumerate all the subsets.
 We want to make a bijection between: 
 
 $
-"subset of" [0..n-1] <-> bracket.double.l 0..2^n -1 bracket.double.r    
+"subset of" [0..n-1] <-> bracket.stroked.l 0..2^n -1 bracket.stroked.r    
 $
 
 We are going to use the bit in our number to enumerate our subsets. 
@@ -269,7 +269,7 @@ $
 Our new objective is to solve $(2)$ for $y$ without going through every possible $y$. To achieve that, we make a sorted array of $y$, sorted by $sum_(i in y) w_i$. We can then separate this array into two part: 
 
 $
-[Y_0, ... , Y_i, Y_(i+1), ... , Y_(n-1)] -> forall j in bracket.double.l 0,i bracket.double.r, sum_(k in Y_j) w_k <= S - sum_(k in X) w_k
+[Y_0, ... , Y_i, Y_(i+1), ... , Y_(n-1)] -> forall j in bracket.stroked.l 0,i bracket.stroked.r, sum_(k in Y_j) w_k <= S - sum_(k in X) w_k
 $
 
 We can find this prefix using binary search. 

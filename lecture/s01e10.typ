@@ -385,7 +385,7 @@ D[n] eq.def "miminum cost to reach the cell" n
 $
 
 $
-D[n] = min_(i in bracket.double.l 1,k bracket.double.r) (D[n-i]) + c[n]
+D[n] = min_(i in bracket.stroked.l 1,k bracket.stroked.r) (D[n-i]) + c[n]
 $
 
 ```

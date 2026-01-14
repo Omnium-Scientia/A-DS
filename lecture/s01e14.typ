@@ -32,7 +32,7 @@ Those are widely used primitive data structures.
 === Small range integers keys 
 
 $
-"key" in bracket.double.l 0,m-1 bracket.double.r \ m - "small"    
+"key" in bracket.stroked.l 0,m-1 bracket.stroked.r \ m - "small"    
 $
 
 We use the key as an index of an array: 
@@ -52,7 +52,7 @@ This is the most simple case to implement `maps`.
 === Big range integers key
 
 $
-"key" in bracket.double.l 0,n-1 bracket.double.r \ n - "big"    
+"key" in bracket.stroked.l 0,n-1 bracket.stroked.r \ n - "big"    
 $
 
 What wee can do is to make a function that take a big integer and return a small one. Then we use this result as a key in our array. 
@@ -60,7 +60,7 @@ What wee can do is to make a function that take a big integer and return a small
 $
 h cases(
     delim: bar, 
-    bracket.double.l 0\,n-1 bracket.double.r -> bracket.double.l 0\,m-1 bracket.double.r,
+    bracket.stroked.l 0\,n-1 bracket.stroked.r -> bracket.stroked.l 0\,m-1 bracket.stroked.r,
     k |-> k % m
 )
 $
@@ -96,7 +96,7 @@ $
 Since the function $h$ is the same for one hash table for both function $"put"$ and $"get"$, we end on the same index. This is the basic idea of hashing. 
 
 But our current implementation suffer from one big problem: 
-- Collision: when we have: $x,y in bracket.double.l 0\,n-1 bracket.double.r, x != y and h(x) = h(y)$
+- Collision: when we have: $x,y in bracket.stroked.l 0\,n-1 bracket.stroked.r, x != y and h(x) = h(y)$
 
 For example with our previous example we have: $37 != 52 and h(37) = h(52) = 2$
 
@@ -143,7 +143,7 @@ This is a problem because it forces us to make really big array to avoid collisi
 
 == Random hash function 
 
-What we then want is to use a random function from all $h bar bracket.double.l 0,n-1 bracket.double.r -> bracket.double.l 0,m-1 bracket.double.r$. Which gives us $m^n$ possibilities. 
+What we then want is to use a random function from all $h bar bracket.stroked.l 0,n-1 bracket.stroked.r -> bracket.stroked.l 0,m-1 bracket.stroked.r$. Which gives us $m^n$ possibilities. 
 
 If we take a random function, what is the expected complexity for get?
 
@@ -162,9 +162,9 @@ $
 H eq.def {
     h_(p,A) cases(
     delim: bar, 
-    NN -> bracket.double.l 0\,m-1 bracket.double.r, 
+    NN -> bracket.stroked.l 0\,m-1 bracket.stroked.r, 
     k |-> ((k dot A) % p) %m,
-    ) : p "big random prime number", A in bracket.double.l 0,p-1 bracket.double.r
+    ) : p "big random prime number", A in bracket.stroked.l 0,p-1 bracket.stroked.r
 }
 $
 
@@ -185,11 +185,11 @@ $
 => & (((x - y) dot A)%p)%m = k dot m \ 
 $
 
-Where $k in bracket.double.l 0,p-1 bracket.double.r$, we then have $tilde.eq p/m$ possibilities for $k dot m$.
+Where $k in bracket.stroked.l 0,p-1 bracket.stroked.r$, we then have $tilde.eq p/m$ possibilities for $k dot m$.
 
 Since $p$ is prime and $x != y$: 
 $
-forall k in bracket.double.l 0,p-1 bracket.double.r, exists ! A in bracket.double.l 0,p-1 bracket.double.r, (x - y) dot A eq.triple k dot m [p]
+forall k in bracket.stroked.l 0,p-1 bracket.stroked.r, exists ! A in bracket.stroked.l 0,p-1 bracket.stroked.r, (x - y) dot A eq.triple k dot m [p]
 $
 
 The probability that we have picked such $A$ is the same as $limits(PP(h(x) = h(k)))_(x!=k) = 1/m$. 

@@ -210,10 +210,10 @@ We have an array of bits of length $m$ and $k$ hash functions ($h_1, ..., h_k$).
 
 Instead of computing and storing the hash of $x$, we do the following: 
 - for insert function: 
-    - for all $i$ in $bracket.double.l 1,k bracket.double.r$ compute $h_i(x)$. 
-    - for all $i$ in $bracket.double.l 1,k bracket.double.r, a[h_i (x)] = 1$
+    - for all $i$ in $bracket.stroked.l 1,k bracket.stroked.r$ compute $h_i(x)$. 
+    - for all $i$ in $bracket.stroked.l 1,k bracket.stroked.r, a[h_i (x)] = 1$
 - for contain function: 
-    - for all $i$ in $bracket.double.l 1,k bracket.double.r$ we check that $a[h_i (x)] = 1$
+    - for all $i$ in $bracket.stroked.l 1,k bracket.stroked.r$ we check that $a[h_i (x)] = 1$
 
 ```
 def insert(x)
@@ -229,7 +229,7 @@ def contain(x)
     rewturn true
 ```
 
-Again, we see from where our errors can come. We can insert element that collide with $x$ for a specific $h_i$. So if $forall i in bracket.double.l 1,k bracket.double.r ,exists y, h_i (x) = h_i (y)$ we have contain equal true for $x$    when $x$ is not actually here. 
+Again, we see from where our errors can come. We can insert element that collide with $x$ for a specific $h_i$. So if $forall i in bracket.stroked.l 1,k bracket.stroked.r ,exists y, h_i (x) = h_i (y)$ we have contain equal true for $x$    when $x$ is not actually here. 
 
 Lets now fix our $k$ and $m$: 
 - We want $m$ such as $PP(a[i] = 1) = 2$ (i.e. when we pick an element at random from $a$, we have the same chance to get $0$ or $1$). 
@@ -277,7 +277,7 @@ We have a problem here:
 To go around this problem we define: 
 
 $
-h_1(x) = "hash"(x) \ h_2(x) = h_1(x) plus.circle "hash"(x') 
+h_1(x) = "hash"(x) \ h_2(x) = h_1(x) plus.o "hash"(x') 
 $
 
 #pagebreak()
@@ -290,7 +290,7 @@ With this:
     So we can compute $h_2(x)$
 - If we go from $a_2 -> a_1$: 
 
-    We know $h_2(x)$ and can compute $"hash"(x')$, so we have: $h_1(x) = h_2(x) plus.circle "hash"(x')$ from xor property. 
+    We know $h_2(x)$ and can compute $"hash"(x')$, so we have: $h_1(x) = h_2(x) plus.o "hash"(x')$ from xor property. 
 
 Here, we define: 
 

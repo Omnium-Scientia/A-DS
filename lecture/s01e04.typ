@@ -19,8 +19,8 @@
 #set math.cases(reverse: true)
 $ 
 cases(
-"Merge sort" \
-"Heap sort" \ 
+"Merge sort",
+"Heap sort",
 "Quick sort" 
 ) -> Omicron(n log n) 
 $
@@ -85,7 +85,7 @@ We have proved that in our comparison model, the lower bound for sorting is $Omi
 We have an array $a$ with:
 
 $
-a[i] in bracket.double 0..m-1 bracket.double.r "where" m "is small"
+a[i] in bracket.stroked 0..m-1 bracket.stroked.r "where" m "is small"
 $
 
 Let's take for example $m = 3$ and $a[1;0;1;2;2;0;1;1;2;0]$. 
@@ -159,14 +159,14 @@ Complexity is still $Omicron(n + m)$.
 Let's do counting sort with bigger int. We still have our array $a$ but this time: 
 
 $
-a[i] in bracket.double 0..m^2-1 bracket.double.r "where" m "is small"
+a[i] in bracket.stroked 0..m^2-1 bracket.stroked.r "where" m "is small"
 $
 
 For $x$ an element of $a$ we have: 
 
 $
-x in bracket.double 0..m^2-1 bracket.double.r \
-x = y dot m + z " such that " y,z in bracket.double 0..m-1 bracket.double.r
+x in bracket.stroked 0..m^2-1 bracket.stroked.r \
+x = y dot m + z " such that " y,z in bracket.stroked 0..m-1 bracket.stroked.r
 $
 
 We make two array for $x "and" y$ and we have: 
