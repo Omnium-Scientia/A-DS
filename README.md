@@ -1,4 +1,4 @@
-# Algorithm & Data Structure
+# Algorithm & Data Structure [UNDER CONSTRUCTION]
 
 This is the algorithm and data structure course of the Omnium scientia project. 
 
