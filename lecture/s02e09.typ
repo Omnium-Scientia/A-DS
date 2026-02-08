@@ -5,10 +5,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-    semester: "2", 
-    chapter_number: "9", 
-    video_link: "https://www.youtube.com/watch?v=X5pp8L_lypw&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=26&pp=iAQB", 
-    title: "Binary lifting, LCA, Farach-Coltion and Bender algorithm"
+  semester: "2",
+  chapter_number: "9",
+  video_link: "https://www.youtube.com/watch?v=X5pp8L_lypw&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=26&pp=iAQB",
+  title: "Binary lifting, LCA, Farach-Coltion and Bender algorithm",
 )
 
 

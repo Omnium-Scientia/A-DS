@@ -5,10 +5,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-    semester: "2", 
-    chapter_number: "12", 
-    video_link: "https://www.youtube.com/watch?v=sdad8cFarHA&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=29&pp=iAQB", 
-    title: "Euler tour tree, Tarjan's algorithm"
+  semester: "2",
+  chapter_number: "12",
+  video_link: "https://www.youtube.com/watch?v=sdad8cFarHA&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=29&pp=iAQB",
+  title: "Euler tour tree, Tarjan's algorithm",
 )
 
 

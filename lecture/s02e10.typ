@@ -5,10 +5,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-    semester: "2", 
-    chapter_number: "10", 
-    video_link: "https://www.youtube.com/watch?v=_S1CQ5g9uTg&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=27&pp=iAQB", 
-    title: "Heavy-light decomposition"
+  semester: "2",
+  chapter_number: "10",
+  video_link: "https://www.youtube.com/watch?v=_S1CQ5g9uTg&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=27&pp=iAQB",
+  title: "Heavy-light decomposition",
 )
 
 

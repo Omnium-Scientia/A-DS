@@ -5,10 +5,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-    semester: "2", 
-    chapter_number: "13", 
-    video_link: "https://www.youtube.com/watch?v=Vo6EbmVoPzs&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=30&pp=iAQB", 
-    title: "Centroid decomposition"
+  semester: "2",
+  chapter_number: "13",
+  video_link: "https://www.youtube.com/watch?v=Vo6EbmVoPzs&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=30&pp=iAQB",
+  title: "Centroid decomposition",
 )
 
 

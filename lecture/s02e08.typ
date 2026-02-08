@@ -5,10 +5,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-    semester: "2", 
-    chapter_number: "8", 
-    video_link: "https://www.youtube.com/watch?v=ZCTI3zzwrkE&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=25&pp=iAQB0gcJCa0JAYcqIYzv", 
-    title: "Scapegoat tree, List order maintenance"
+  semester: "2",
+  chapter_number: "8",
+  video_link: "https://www.youtube.com/watch?v=ZCTI3zzwrkE&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=25&pp=iAQB0gcJCa0JAYcqIYzv",
+  title: "Scapegoat tree, List order maintenance",
 )
 
 

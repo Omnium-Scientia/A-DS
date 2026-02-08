@@ -5,10 +5,10 @@
 #import "../template/lesson.typ": lesson
 
 #show: lesson.with(
-    semester: "2", 
-    chapter_number: "15", 
-    video_link: "https://www.youtube.com/watch?v=zjBH1hjDUIs&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=32&pp=iAQB", 
-    title: "Complexity classes"
+  semester: "2",
+  chapter_number: "15",
+  video_link: "https://www.youtube.com/watch?v=zjBH1hjDUIs&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=32&pp=iAQB",
+  title: "Complexity classes",
 )
 
 
