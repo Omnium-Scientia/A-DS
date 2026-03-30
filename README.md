@@ -1,6 +1,6 @@
 # Algorithm & Data Structure [UNDER CONSTRUCTION]
 
-This is the algorithm and data structure course of the Omnium scientia project. 
+This is the algorithm and data structure course of the Omnium Scientia project. 
 
 To know the part of this course see: [SYLLABUS.md](doc/SYLLABUS.md).
 

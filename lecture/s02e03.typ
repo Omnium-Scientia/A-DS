@@ -13,3 +13,23 @@
 
 
 = Fenwick tree, Sparse table
+
+Given an array $a$, we want to answer two types of queries:
+- The first one change change an element of the array.
+- Second one is making an operation on a segment of the array.
+
+For the first thinking, let's chose:
+- `inc(i,v)` $eq.def a[i] += v$
+- `sum(l,r)` $eq.def sum_(i=l)^(r-1) a[i]$
+as our operations. Goal here is to make both those operations running in $Omicron(log n)$.
+
+This might seems the same as the segment tree from the two previous lectures. So why we would have to make an other structure working the same? \
+Fenwick tree are actually better in multiple ways:
+- Complexity: same asymptotic behavior but better constant factors.
+- Better memory usage.
+
+Those two reasons motive our learning of this data structure.
+
+== Implementation 
+
+

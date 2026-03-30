@@ -1,0 +1,9 @@
+Hyperlegible
+Omnium-Scientia
+yaml
+STIX
+JuliaMono
+rgb
+Omnium
+scientia
+Scientia
