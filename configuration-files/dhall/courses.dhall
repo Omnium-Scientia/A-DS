@@ -30,20 +30,20 @@ let L = ./lectures.dhall
 let a-ds-s1
     : T.Course
     = { title = "Algorithms and Data strcutures"
-      , subtitle = "Lecture notes -- Semester 1"
+      , subtitle = "Lecture notes — Semester 1"
       , abstract =
           ''
           This semester is about core concept of algorithms:
           You will learn about simple data structures, algorithms and also techniques to analyze them.
           The concepts you will learn this semester will be used multiple times across the next ones.
           ''
-      , content = [ L.s01l01 ]
+      , content = [ L.s01l01, L.s01l02 ]
       }
 
 let a-ds-s2
     : T.Course
     = { title = "Algorithms and Data structures"
-      , subtitle = "Lecture notes -- Semester 2"
+      , subtitle = "Lecture notes — Semester 2"
       , abstract =
           ''
           In this semester, we continue to explore core concept:

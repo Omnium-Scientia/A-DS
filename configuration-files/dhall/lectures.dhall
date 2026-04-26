@@ -36,6 +36,16 @@ let s01l01
       , abstract = None Text
       }
 
+let s01l02
+    : T.Lecture
+    = { file = "s01l02"
+      , authors = [ A.buzzy ]
+      , chapter = 2
+      , title = "Data structures, Binary heap, Heap sort"
+      , subtitle = None Text
+      , abstract = None Text
+      }
+
 let s02l01
     : T.Lecture
     = { file = "s02l01"
@@ -46,4 +56,4 @@ let s02l01
       , abstract = None Text
       }
 
-in  { s01l01, s02l01 }
+in  { s01l01, s01l02, s02l01 }

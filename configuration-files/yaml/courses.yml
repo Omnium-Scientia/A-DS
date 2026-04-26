@@ -14,7 +14,16 @@
     file: s01l01
     subtitle: null
     title: "Algorithm, Time complexity, Merge sort"
-  subtitle: "Lecture notes -- Semester 1"
+  - abstract: null
+    authors:
+    - contact: "contact@buzzybis.com"
+      name: BuzzY_
+      organisation: null
+    chapter: 2
+    file: s01l02
+    subtitle: null
+    title: "Data structures, Binary heap, Heap sort"
+  subtitle: "Lecture notes — Semester 1"
   title: Algorithms and Data strcutures
 "a-ds-s2":
   abstract: |
@@ -32,5 +41,5 @@
     file: s02l01
     subtitle: Generality
     title: Segment tree
-  subtitle: "Lecture notes -- Semester 2"
+  subtitle: "Lecture notes — Semester 2"
   title: Algorithms and Data structures

@@ -9,6 +9,16 @@ s01l01:
   file: s01l01
   subtitle: null
   title: "Algorithm, Time complexity, Merge sort"
+s01l02:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 2
+  file: s01l02
+  subtitle: null
+  title: "Data structures, Binary heap, Heap sort"
 s02l01:
   abstract: null
   authors:

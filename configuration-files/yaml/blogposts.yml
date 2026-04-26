@@ -11,6 +11,12 @@
     #show: blogpost.with(
       entry-key: "s01l01",
     )
+  - |
+    #import "../templates.typ": blogpost
+
+    #show: blogpost.with(
+      entry-key: "s01l02",
+    )
   subtitle: "Lecture notes -- Semester 1"
   title: Algorithms and Data strcutures
 "a-ds-s2":
