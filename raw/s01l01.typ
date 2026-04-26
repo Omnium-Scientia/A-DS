@@ -1,7 +1,7 @@
 #import "@preview/fletcher:0.5.5": *
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
-
+#import "../functions.typ": pseudocode-alg
 
 == What is an algorithm?
 
@@ -18,19 +18,15 @@ An algorithm is a formalised way to solve a problem. Taking input parameters of 
   edge(<A>, "->", <O>),
 ))
 
-Example: Sum of elements of an array
+For example, given an array $(x_i | i in bracket.stroked.l 1, n bracket.stroked.r)$ we can make the @array-sum to compute $sum_(i) a_i$.
 
-$
-  "input": a[0..n-1] \
-  "output": sum_(i) a[i]
-$
+#pseudocode-alg(title: [Sum of an array])[
+    - s = 0 
+    - *for* i = 1..n 
+      - s += a[i]
+    - return s
+] <array-sum>
 
-```
-s = 0
-for i = 0..n-1:
-    s += a[i]
-print(s)
-```
 
 == Time complexity
 
