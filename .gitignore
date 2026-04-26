@@ -1,0 +1,8 @@
+# ignore exported files
+export
+
+# ignore macOS .DS_Store
+.DS_Store
+
+# ignore ltex
+.vscode/ltex*.txt

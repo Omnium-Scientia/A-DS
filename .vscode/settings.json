@@ -1,0 +1,15 @@
+{
+    "editor.wordWrap": "on",
+    "editor.formatOnSaveMode": "file",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 200,
+    "tinymist.fontPaths": [
+        "${userHome}/typst-fonts"
+    ],
+    "tinymist.outputPath": "$root/export/$dir/$name",
+    "tinymist.formatterMode": "typstyle",
+    "[typst]": {
+        "editor.defaultFormatter": "myriad-dreamin.tinymist",
+        "editor.formatOnSave": true,
+    },
+}

@@ -1,0 +1,8 @@
+# Sources for s01l01.typ
+
+ads-s1-e1: 
+  type : video 
+  title : "A&DS S01E01. Algorithms. Time complexity. Merge sort."
+  date : 2020-09-11
+  author : ["Pavel Marvin"]
+  url : https://www.youtube.com/watch?v=oWgLjhM-6XE&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=4
