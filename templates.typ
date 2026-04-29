@@ -25,6 +25,12 @@
     date: datetime.today(),
   )
 
+  // Set lang 
+  set text(
+    lang: "en",
+    region: "gb"
+  )
+
   // Set page layout and footer
   set page(
     width: 210mm,
@@ -157,6 +163,12 @@
     author: authors.map(author => author.name),
     description: [#abstract],
     date: datetime.today(),
+  )
+
+  // Set lang 
+  set text(
+    lang: "en",
+    region: "gb"
   )
 
   // Set page layout

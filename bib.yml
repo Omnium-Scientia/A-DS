@@ -6,3 +6,54 @@ ads-s1-e1:
   date : 2020-09-11
   author : ["Pavel Marvin"]
   url : https://www.youtube.com/watch?v=oWgLjhM-6XE&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=4
+
+call-tree: 
+  type: book
+  title: "Introduction to Algorithms"
+  author: 
+    - Thomas H. Cormen 
+    - Charles E. Leiserson
+    - Ronald L. Rivest
+    - Clifford Stein
+  date: 2022-04
+  publisher: MIT Press
+  edition: 4
+  chapter: 4
+  page-range: 95-101
+  page-total: 1312
+  isbn: 978-0-262-04630-5
+
+divide-conquer: 
+  type: book
+  title: "Introduction to Algorithms"
+  author: 
+    - Thomas H. Cormen 
+    - Charles E. Leiserson
+    - Ronald L. Rivest
+    - Clifford Stein
+  date: 2022-04
+  publisher: MIT Press
+  edition: 4
+  chapter: 4
+  page-range: 76-125
+  page-total: 1312
+  isbn: 978-0-262-04630-5
+
+master-theo: 
+  type: article
+  title: "A general method for solving divide-and-conquer recurrences"
+  author: 
+    - Bentley Jon Louis
+    - Haken Dorothea
+    - Saxe James B.
+  publisher: Association for Computing Machinery
+  location: New York, NY, USA
+  volume: 3
+  volume-total: 12
+  date: 1980-09
+  page-range: 36–44
+  serial-number: 
+    issn: 0163-5700
+    doi: 10.1145/1008861.1008865
+  url: https://doi.org/10.1145/1008861.1008865
+  
