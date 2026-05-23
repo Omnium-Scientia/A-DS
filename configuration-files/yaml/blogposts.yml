@@ -17,7 +17,7 @@
     #show: blogpost.with(
       entry-key: "s01l02",
     )
-  subtitle: "Lecture notes -- Semester 1"
+  subtitle: "Lecture notes — Semester 1"
   title: Algorithms and Data strcutures
 "a-ds-s2":
   abstract: |
@@ -32,5 +32,5 @@
     #show: blogpost.with(
       entry-key: "s02l01",
     )
-  subtitle: "Lecture notes -- Semester 2"
+  subtitle: "Lecture notes — Semester 2"
   title: Algorithms and Data structures
