@@ -33,7 +33,7 @@ let a-ds-s1
       , subtitle = "Lecture notes — Semester 1"
       , abstract =
           ''
-          This semester is about core concept of algorithms:
+          This semester is about core concepts of algorithms:
           You will learn about simple data structures, algorithms and also techniques to analyze them.
           The concepts you will learn this semester will be used multiple times across the next ones.
           ''
@@ -46,9 +46,9 @@ let a-ds-s2
       , subtitle = "Lecture notes — Semester 2"
       , abstract =
           ''
-          In this semester, we continue to explore core concept:
+          In this semester, we continue to explore core concepts:
           We will begin with trees, a lot of tree types to do many things,
-          after that we will talk about when an algorithm need external memory
+          after that we will talk about when an algorithm needs external memory
           and finally a chapter on complexity classes.
           ''
       , content = [ L.s02l01 ]
