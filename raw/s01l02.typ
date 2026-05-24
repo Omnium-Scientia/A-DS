@@ -1,20 +1,17 @@
 #import "@preview/fletcher:0.5.5": *
-#import "@preview/codly:1.2.0": *
-#import "@preview/codly-languages:0.1.7": *
+#import "@preview/lovelace:0.3.1": line-label
+#import "../functions.typ": pseudocode-alg, pseudocode-alg-nt
+
+#cite(label("ads-s1-e2"), form: none)
 
 == Data structures
 
-Structures that contains some data. We want specific structures because we want to make operations on our data.
+We learned what is an algorithm, now let's tackle the other big part of problem solving in computer science. When algorithms takes input --- in order to make operations on them to get an answer --- it need to come arranged in a certain way, this way is a data structures (e.g. the array of a sorting algorithm). \ 
+Data structures are important. One may say that when solving a problem, the data structure choice come before the algorithm internals. 
 
-When thinking about a program, we think about what operations we need to do on our data structure. When we know what operations we need, we chose our data structure.
-
-There are multiple classes of data structure, each of them have dedicated operations.
-
-When we analyze a data structure, we want to analyze the complexity of each operations they allow us.
-
-Example: For an array we have the operations $"get"(i) " " amp " " "put"(i, v)$
-
-Data structure are closely related to algorithm because we need algorithm to implement data structures operations and algorithm run with specific data structure.
+OK, but why? Because data structures are way to arrange information. The way we arrange the data is going to make some operations easy and some hard. So when you are designing an algorithm, you need to think about what operations you need to do on your data (e.g. access, add, delete elements) because the choice you will make will groom your ability to solve your problem efficiently. \ 
+To ease this choice, we have categorised data structures into classes, each data structure classes have a set of operations that they optimise. To analyse the operations, we analyse their complexity (e.g. in an array, the $"get"$ operation as a complexity of $Omicron(1)$). \ 
+This way to analyse the capability of the data structures are in reality the same as our previous sorting algorithms, this is simply because our data structures are themselves implemented using algorithms. 
 
 == Binary heap
 
@@ -24,450 +21,293 @@ Data structure are closely related to algorithm because we need algorithm to imp
   - $"insert"(x)$
   - $"remove_min"()$
 
-=== Let's try use simpler data structure to implement those operations:
+=== Let's try use simpler data structure to implement those operations
 
 ==== Array
 
-#codly(
-  annotation-format: none,
-  annotations: (
-    (
-      start: 1,
-      end: 3,
-      content: text(
-        red,
-        $Omicron(1) "                                                                                            "$,
-      ),
-    ),
-  ),
+#grid(
+  columns: (1fr, 1fr), 
+  pseudocode-alg(title: "Insert operation")[
+    + fun insert :: A:[int] -> x:int -> void
+      - $A_n$ = x 
+      - n += 1
+  ], 
+  pseudocode-alg(title: "Remove minimum operation")[
+    + fun remove_min :: A:[int] -> int
+      - j = 0 
+      + *for* i = 0..n-1
+        - if $A_i < A_j$
+          - j = 1
+      + swap $A_j$ $A_(n-1)$
+      - n -= 1
+      - return $A_n$ 
+  ] 
 )
-```
-def insert(x)
-    a[n] = x
-    n += 1
-```
-
-#codly(
-  annotation-format: none,
-  annotations: (
-    (
-      start: 1,
-      end: 8,
-      content: text(
-        red,
-        $Omicron(n) "                                                                                            "$,
-      ),
-    ),
-  ),
-)
-```
-def remove_min()
-    j = 0
-    for i = 0..n-1
-        if a[i] < a[j]
-            j = i
-    swap(a[j], a[n-1])
-    n -= 1
-    return a[n]
-```
-
-
-#pagebreak(weak: true)
 
 ==== Sorted array (desc)
 
-
-#codly(
-  annotation-format: none,
-  annotations: (
-    (
-      start: 1,
-      end: 7,
-      content: text(
-        red,
-        $Omicron(n) "                                                                                            "$,
-      ),
-    ),
-  ),
+#grid(
+  columns: (1fr, 1fr), 
+  pseudocode-alg(title: "Insert operation")[
+    + fun insert :: S:[int] -> x:int -> void
+      + $A_n$ = x 
+      - n += 1
+      + *while* i > 0 && $A_i > A_(i-1)$
+        - swap $A_i$ $A_(i-1)$
+        - i -= 1
+  ], 
+  pseudocode-alg(title: "Remove minimum operation")[
+    + fun remove_min :: S[int] -> int
+      - n -= 1 
+      - return $A_n$
+  ] 
 )
-```
-def insert(x)
-    a[n] = x
-    n += 1
-    i = n-1
-    while i > 0 and a[i] > a[i-1]
-        swap(a[i], a[i-1])
-        i -= 1
-```
 
+=== Now let's construct a real binary heap
 
-#codly(
-  annotation-format: none,
-  annotations: (
-    (
-      start: 1,
-      end: 3,
-      content: text(
-        red,
-        $Omicron(n) "                                                                                            "$,
-      ),
-    ),
-  ),
-)
-```
-def remove_min()
-    n -= 1
-    return a[n]
-```
+==== Heap properties and construction
 
-=== Now let's do a binary heap
+We take a complete binary tree, each layer is complete except for the last one that can be empty on the right-hand side. We index the tree from left to right and top to bottom --- purple in @bin-heap. \ 
+In order to get the wanted complexity for our operations, we keep the following property true: for a given element, its child are inferior or equal to it --- green in @bin-heap.
 
-==== Heap properties and construction.
+#let index(n) = text(fuchsia, $" "#n$)
+#let rules_l = text(rgb("#35BC20"), $gt.slant$)
+#let rules_r = text(rgb("#35BC20"), $lt.slant$)
+#let (N, H, I, Q, R, S, T, L, M, O) = (
+      (0, 0),
+      (-2, 1),
+      (2, 1),
+      (-3, 2),
+      (-1, 2),
+      (1, 2),
+      (3, 2),
+      (-3.5, 3),
+      (-2.5, 3),
+      (-1.5, 3),
+    )
+#figure(
+  caption: [Binary heap layout using ten nodes.],
+  align(center, diagram(
+    node(N, $circle^index(0)$),
+  
+    node(H, $circle^index(1)$),
+    node(I, $circle^index(2)$),
+  
+    node(Q, $circle^index(3)$),
+    node(R, $circle^index(4)$),
+    node(S, $circle^index(5)$),
+    node(T, $circle^index(6)$),
+  
+    node(L, $circle^index(7)$),
+    node(M, $circle^index(8)$),
+    node(O, $circle^index(9)$),
+  
+    edge(N, H, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(N, I, "-", label: rules_r, label-side: center, label-angle: right),
+  
+    edge(H, Q, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(H, R, "-", label: rules_r, label-side: center, label-angle: right),
+    edge(I, S, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(I, T, "-", label: rules_r, label-side: center, label-angle: right),
+  
+    edge(Q, L, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(Q, M, "-", label: rules_r, label-side: center, label-angle: right),
+    edge(R, O, "-", label: rules_l, label-side: center, label-angle: left),
+  ))
+) <bin-heap>
 
-We take a complete binary tree, each layer is complete except for the last one that can be empty on the right.
+Since the tree is filed left to right and that a layer need to be full to begin filling the next one, the structure of a tree for a given number of nodes is known. \ 
+Given a binary tree of $n$ nodes, and using the fact that we know the structure of the tree, we can use an array as a container for our nodes. For the node of index $i$ in the array we have: 
+- left child at index $2i + 1$.
 
-#text(red, "*")Heap property is that each sub-layer elt is bigger than the one in the upper layer.
-
-#text(purple, "*")Node are indexed from left to right, top to bottom.
-
-Since the tree structure for a given number of node will always be the same, we can put the node into an array. We will know the position in the tree given the index in the array.
-
-Indeed, if the index of a node is $i$, the index of its left child will be $2i + 1$ and is right child $2i + 2$. While its parent index will be $floor.l (i-1) / 2 floor.r$.
-
-Given those construction rules, let's see the skeleton of the binary heap with ten node:
-#linebreak()
-
-#let purpled(n) = text(purple, $" "#n$)
-#align(center, diagram(
-  let (N, H, I, Q, R, S, T, L, M, O) = (
-    (0, 0),
-    (-2, 1),
-    (2, 1),
-    (-3, 2),
-    (-1, 2),
-    (1, 2),
-    (3, 2),
-    (-3.5, 3),
-    (-2.5, 3),
-    (-1.5, 3),
-  ),
-
-  node(N, $circle^purpled(0)$),
-
-  node(H, $circle^purpled(1)$),
-  node(I, $circle^purpled(2)$),
-
-  node(Q, $circle^purpled(3)$),
-  node(R, $circle^purpled(4)$),
-  node(S, $circle^purpled(5)$),
-  node(T, $circle^purpled(6)$),
-
-  node(L, $circle^purpled(7)$),
-  node(M, $circle^purpled(8)$),
-  node(O, $circle^purpled(9)$),
-
-  edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-
-  edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-
-  edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-))
+- right child at index $2i + 2$.
+- its parent at index $floor((i-1) / 2)$.
 
 ==== Insertion
 
-#text(blue, "*")If we want to insert a new element in the tree, we put it in the next index. Then we ensure heap property, we swap the new element with is parent until the property is satisfied everywhere.
+In order to insert a new element in the tree: 
+- we append it in at the end of the array as in @adding-elt. 
+- we check if the heap property is satisfied: 
+  - if it is, we stop there. 
+  - else, we swap the new element with its parent until the property is satisfied as in @swap. 
 
-Let's see this on our previous example:
+#let P = (-0.5, 3)
+#figure(
+  caption: [Append new node.],
+  align(center, diagram(
+    node(N, $circle^index(0)$),
+  
+    node(H, $circle^index(1)$),
+    node(I, $circle^index(2)$),
+  
+    node(Q, $circle^index(3)$),
+    node(R, $circle^index(4)$),
+    node(S, $circle^index(5)$),
+    node(T, $circle^index(6)$),
+  
+    node(L, $circle^index(7)$),
+    node(M, $circle^index(8)$),
+    node(O, $circle^index(9)$),
+    node(P, text(red, $circle^index(10)$)),
+  
+    edge(N, H, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(N, I, "-", label: rules_r, label-side: center, label-angle: right),
+    
+    edge(H, Q, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(H, R, "-", label: rules_r, label-side: center, label-angle: right),
+    edge(I, S, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(I, T, "-", label: rules_r, label-side: center, label-angle: right),
+    
+    edge(Q, L, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(Q, M, "-", label: rules_r, label-side: center, label-angle: right),
+    edge(R, O, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(R, P, "-", label: text(red, $gt.slant$), label-side: center, label-angle: right, stroke: red),
+  ))
+) <adding-elt>
 
-- First, we place the new node in the next place:
+#figure(
+  caption: [Swapping new node with parent.],
+  align(center, diagram(
+    node(N, $circle^index(0)$),
+  
+    node(H, $circle^index(1)$),
+    node(I, $circle^index(2)$),
+  
+    node(Q, $circle^index(3)$),
+    node(R, text(red, $circle^index(4)$)),
+    node(S, $circle^index(5)$),
+    node(T, $circle^index(6)$),
+  
+    node(L, $circle^index(7)$),
+    node(M, $circle^index(8)$),
+    node(O, $circle^index(9)$),
+    node(P, $circle^index(10)$),
+  
+    edge(N, H, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(N, I, "-", label: rules_r, label-side: center, label-angle: right),
+    
+    edge(H, Q, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(H, R, "-", label: rules_r, label-side: center, label-angle: right),
+    edge(I, S, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(I, T, "-", label: rules_r, label-side: center, label-angle: right),
+    
+    edge(Q, L, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(Q, M, "-", label: rules_r, label-side: center, label-angle: right),
+    edge(R, O, "-", label: rules_l, label-side: center, label-angle: left),
+    edge(R, P, "-", label: rules_r, label-side: center, label-angle: right),
+    edge(R, P, "<->", stroke: red, bend: -40deg),
+  ))
+) <swap>
 
-#let purpled(n) = text(purple, $" "#n$)
-#align(center, diagram(
-  let (N, H, I, Q, R, S, T, L, M, O, P) = (
-    (0, 0),
-    (-2, 1),
-    (2, 1),
-    (-3, 2),
-    (-1, 2),
-    (1, 2),
-    (3, 2),
-    (-3.5, 3),
-    (-2.5, 3),
-    (-1.5, 3),
-    (-0.5, 3),
-  ),
-
-  node(N, $circle^purpled(0)$),
-
-  node(H, $circle^purpled(1)$),
-  node(I, $circle^purpled(2)$),
-
-  node(Q, $circle^purpled(3)$),
-  node(R, $circle^purpled(4)$),
-  node(S, $circle^purpled(5)$),
-  node(T, $circle^purpled(6)$),
-
-  node(L, $circle^purpled(7)$),
-  node(M, $circle^purpled(8)$),
-  node(O, $circle^purpled(9)$),
-  node(P, text(blue, $circle^purpled(10)$)),
-
-  edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-
-  edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-
-  edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(R, P, "-", label: text(blue, $<=$), label-side: left, label-angle: left, stroke: blue),
-))
-
-- Since the condition $node_4 <= node_10$ is not satisfied, we swap them:
-
-#let purpled(n) = text(purple, $" "#n$)
-#align(center, diagram(
-  let (N, H, I, Q, R, S, T, L, M, O, P) = (
-    (0, 0),
-    (-2, 1),
-    (2, 1),
-    (-3, 2),
-    (-1, 2),
-    (1, 2),
-    (3, 2),
-    (-3.5, 3),
-    (-2.5, 3),
-    (-1.5, 3),
-    (-0.5, 3),
-  ),
-
-  node(N, $circle^purpled(0)$),
-
-  node(H, $circle^purpled(1)$),
-  node(I, $circle^purpled(2)$),
-
-  node(Q, $circle^purpled(3)$),
-  node(R, text(blue, $circle^purpled(4)$)),
-  node(S, $circle^purpled(5)$),
-  node(T, $circle^purpled(6)$),
-
-  node(L, $circle^purpled(7)$),
-  node(M, $circle^purpled(8)$),
-  node(O, $circle^purpled(9)$),
-  node(P, $circle^purpled(10)$),
-
-  edge(N, H, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(N, I, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-
-  edge(H, Q, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(H, R, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(I, S, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(I, T, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-
-  edge(Q, L, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(Q, M, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(R, O, "-", label: text(red, $>=$), label-side: right, label-angle: left),
-  edge(R, P, "-", label: text(red, $>=$), label-side: left, label-angle: left),
-  edge(R, P, "<->", stroke: blue, bend: -40deg),
-))
-
-#linebreak()
-
-Now the properties are all satisfied, the node is well placed. If the properties were not yet satisfied, we would swap with the node at index 1 and again with the node 0 if it was necessary.
-
-Let's write that function insert.
-
-#codly(
-  annotation-format: none,
-  annotations: (
-    (
-      start: 1,
-      end: 1,
-      content: text(red, $Omicron(log n)$),
-    ),
-    (
-      start: 5,
-      end: 7,
-      content: text(red, $Omicron(log n)$) + ",    sift_up operation            ",
-    ),
-  ),
-)
-```
-def insert(x)
-    h[n] = x
-    n += 1
-    i = n-1
-    while i > 0 and a[i] and a[(i-1) / 2]
-        swap(a[i], a[(i-1) / 2])
-        i = (i - 1) / 2
-```
-
-The $"sift_up"$ operation takes a node $i$ and swap it with its parent until it respect the heap property, its complexity is $Omicron(log n)$ because we go up at each iteration. At most, we go from the bottom layer to the first. And since there is at most $log_2 n$ layer in a binary the complexity is $Omicron(log n)$.
+In @insert, the complexity comes from @sift_up, this operation is called sift up. It take a node $i$ and swap it with its parent until it respect the heap property, its complexity is $Omicron(log n)$ because we go up at each iteration. At most, we go from the bottom layer to the first. And since there is at most $log_2 n$ layer in a binary the complexity of sift up is $Omicron(log n)$.
 
 ==== Remove minimum
 
-To remove the minimum element, we swap the root with the last element, we cut the last element. After the swap, the heap does not satisfy the property anymore.
+Removing the minimum is made in 2 step, firstly we remove the minimum from the heap (i.e. we remove the first element) @remove_min (@rem_min) by swapping the minimum with the last element and popping it from the heap. \
+Since the last element become the root of the tree, our heap does satisfy the heap property anymore. To solve this problem, we use the sift down operation (@sift_down @rem_min), it makes the parent go down a layer if one or both its child are smaller than it. If both child are smaller, we swap the parent with the smaller of them. If only one is smaller we swap it with the parent. Loop runs until the heap property is satisfied. \
+Here the complexity is logarithmic for the same reason as in @insert but the complexity comes from the sift down operation instead of sift up (i.e. at most we go from the root to the bottom layer instead of from the bottom layer to the root).  
 
-To satisfy it:
-
-- if the parent if bigger than both of its child, we swap it with the smallest of the two.
-- if only one child is lesser, we swap the parent with this child.
-
-Repeat while the parent as at least one smaller child.
-
-#codly(
-  annotation-format: none,
-  annotations: (
-    (
-      start: 1,
-      end: 1,
-      content: text(red, $Omicron(log n)$),
-    ),
-    (
-      start: 6,
-      end: 14,
-      content: text(red, $Omicron(log n)$) + ",    sift_down operation         ",
-    ),
-  ),
+#grid(
+  columns: (1fr, 1fr), 
+  [
+    #pseudocode-alg(title: "Heap Insertion")[
+      + fun insert :: H:[int] -> x:int -> void
+        + $H_n = x$
+        - n += 1 
+        - i = n-1 
+        + #line-label(<sift_up>) *while* i > 0 && $A_i < A_((i-1)/2)$
+          - swap $A_i$  $A_((i-1)/2)$
+          - i = $(i-1)/2$
+    ] <insert>
+  ],
+  [
+    #pseudocode-alg(title: "Heap Remove Min")[
+      + fun remove_min :: H:[int] -> int
+        + #line-label(<remove_min>) swap $H_0$ $H_(n-1)$
+        - n -= 1
+        - i = 0 
+        + #line-label(<sift_down>) *while* $2i + 1 < n$ 
+          - j = 2i + 1 
+          - if $2i + 2 < n$ && $H_(2i + 2) < H_j$
+            - j = 2i + 2 
+          - if $H_j gt.slant H_i$
+            - break 
+          - swap $H_i$ $H_j$
+          - i = j
+        - return $H_n$
+    ] <rem_min>
+  ]
 )
-```
-def remove_min()
-    swap(h[0], h[n-1])
-    n -= 1
-    i = 0
-
-    // at leat 1 child
-    while 2i + 1 < n
-        j = 2i + 1
-        if (2i+2 < n) and h[2i+2] < h[j]
-            j = 2i + 2
-        if h[j] >= h[i]
-            break
-        swap(h[i], h[j])
-        i = j
-
-    return h[n]
-```
-
-Here the complexity is logarithmic for the same reason as in the $"insert"$ but of going from the bottom layer to the first one, we go from the first one to the bottom one.
 
 _Note: here we have implemented the binary heap using an array but can perfectly do it with a tree structure too._
 
-== Heap sort
+== Heap-sort
+
+The objective here is to create a sorting algorithm using the heap data structure. 
 
 === Naive version
 
-Let's create a basic heap sort that we will improve after. The idea of heap sort is pretty simple when we think about the two operations that we have implemented for our binary heap.
+Our first version is a really naïve one. The idea is simple, given an array $A$ of length $n$, we create a heap $H$ inserting all the elements of $A$ in it using the insertion function. After that, we remove the minimum of $H$ $n$ times and store it in $A$. 
 
-- First we need to create a binary heap using the $"insert"$ function. (we insert each element in an array using insert)
-- Secondly we remove the minimum with the associated function n times and store the result in an array.
+#pseudocode-alg(title: "Naïve Heap Sort")[
+  + fun sort :: A:[int] -> void 
+    - H = [int; n]
+    + *for* i = 0..n-1
+      - insert H $A_i$ 
+    + *for* i = 0..n-1
+      - $A_i$ = remove_min H
+]
 
-#pagebreak()
+Here, our overall complexity is simple to calculate, we do two times n operations that have a $Omicron(log n)$ complexity. So our overall complexity is $Omicron(n log n)$. We will not go into further detail because our current implementation as a massive flaw. \ 
+This flaw is that we reallocate another array of size $n$ to create $H$. This cost us greatly, in order to improve this algorithm we are going to transform it in way it will be in-place. 
 
-There is an implementation of this algorithm:
+=== In-place version
 
-#codly(
-  annotation-format: none,
-  annotations: (
-    (
-      start: 1,
-      end: none,
-      content: text(red, $Omicron(n log n)$),
-    ),
-    (
-      start: 3,
-      end: none,
-      content: text(red, $Omicron(log n)$) + "                                             ",
-    ),
-    (
-      start: 5,
-      end: none,
-      content: text(red, $Omicron(log n)$),
-    ),
-  ),
-)
-```
-def sort(a)
-    for i = 0..n-1
-        insert(a[i])
-    for i = 0..n-1
-        a[i] = remove_min()
-```
+This version is actually what introduced heap-sort @heapsort. Instead of creating a new array, we heapify (transform an array into a heap) $A$ and we remove the minimum $n$ times. 
 
-Here our overall complexity is simple to calculate, we do n times two operations that have a $Omicron(log n)$ so our complexity is $Omicron(n log n)$.
+#pseudocode-alg(title: "Heap Sort using 1 array")[
+  + fun sort :: A:[int] -> void 
+    + *for* i = 0..n-1
+      - sift_up A i 
+    + *for* i = 0..n-1
+      - swap $A_0$ $A_i$
+      - sift_down A 0 
+]
 
-But, implemented like this, we need two array, $a$ of size $n$ and $h$ of size $n$ too to make the heap.
-
-We can improve this by doing our heap operation on our sorted array.
-
-=== With one array
-
-In order to achieve that, we heapify (transform an array into a heap) $a$ and we remove the minimum element each time.
-
-Let's write the algorithm:
-
-#codly(
-  annotations: (
-    (
-      start: 3,
-      end: none,
-      content: text(red, $Omicron(log n)$),
-    ),
-    (
-      start: 5,
-      end: 6,
-      content: text(red, $Omicron(log n)$) + "                                             ",
-    ),
-  ),
-)
-```
-def sort(a)
-    for i = 0..n-1
-        sift_up(i)
-    for i = 0..n-1
-        swap(a[0], a[i])
-        sift_down(0)
-```
-
-Our overall complexity is the same, for the same reason. But now we do not need the array $h$ because we are doing all our operations on array $a$.
+In this version we save space and we achieve $Omicron(1)$ memory complexity. Lets calculate our time complexity: 
+$
+  T("sort") &= n dot T("sift_up") + n dot T("swap") + n dot T("sift_down") \
+            &= n dot Omicron(log n)  + n + n dot Omicron(log n) \
+            &= 2n dot Omicron(log n) + Omicron(n) \
+            &= Omicron(n log n)
+$
 
 === Linear heapify
 
-We still have room for improvement. Indeed we can heapify (the first for-loop in the previous algorithm) in linear time.
+#cite(label("treesort"), form: none)
 
+We can improve further, currently the first `for` loop costs us $Omicron(n log n)$. We can make a linear time heapify @treesort.
 Let's decompose why the complexity of this first for-loop is $Omicron(n log n)$ in order to improve it.
 
-#linebreak()
-
+#let y = 0.75
+#let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
+  (-1.5, 0),
+  (-2.75, y),
+  (-0.25, y),
+  (-3.25, 2 * y),
+  (-2.25, 2 * y),
+  (-0.75, 2 * y),
+  (0.25, 2 * y),
+  (-3.5, 3 * y),
+  (-3, 3 * y),
+  (-2.5, 3 * y),
+  (-2, 3 * y),
+  (-1, 3 * y),
+  (-0.5, 3 * y),
+  (0, 3 * y),
+  (0.5, 3 * y),
+)
 #align(center, diagram(
-  let y = 0.75,
-  let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
-    (-1.5, 0),
-    (-2.75, y),
-    (-0.25, y),
-    (-3.25, 2 * y),
-    (-2.25, 2 * y),
-    (-0.75, 2 * y),
-    (0.25, 2 * y),
-    (-3.5, 3 * y),
-    (-3, 3 * y),
-    (-2.5, 3 * y),
-    (-2, 3 * y),
-    (-1, 3 * y),
-    (-0.5, 3 * y),
-    (0, 3 * y),
-    (0.5, 3 * y),
-  ),
-
   node(N, $circle$),
 
   node(H, $circle$),
@@ -504,8 +344,8 @@ Let's decompose why the complexity of this first for-loop is $Omicron(n log n)$ 
   edge(T, W, "--"),
   edge(T, Y, "--"),
 
-  node((1.5, -0.5), text(red, "For each node:")),
-  node((1.5, 0), text(red, $0 "call to sift_up"$)),
+  node((1.5, -0.3), text(red, "For each node:")),
+  node((1.5, 0), text(red, $0 #text[call to `sift_up`]$)),
   node((1.5, y), text(red, $1 "call "$)),
   node((1.5, 2 * y), text(red, $2 "calls "$)),
   node((1.5, 3 * y), text(red, $log n "calls "$)),
@@ -513,36 +353,16 @@ Let's decompose why the complexity of this first for-loop is $Omicron(n log n)$ 
   edge((1.5, 2 * y), (1.5, 3 * y), "--", stroke: red),
 ))
 
-#pagebreak()
 
-So assuming that we are at a layer $gamma$ the number of call to $"sift_up"$ is at most $2^gamma dot gamma$ which makes our total complexity:
+So assuming that we are at a layer $gamma$ the number of call to `sift_up` is at most $2^gamma dot gamma$ which makes our total complexity:
 
 $
   sum_gamma^(log n) 2^gamma dot gamma = Omega(n log n)
 $
 
-To improve this complexity, we are going to use $"sift_down"$ instead of $"sift_up"$ in the first for-loop. Which gives us this situation.
+To improve this complexity, we are going to use `sift_down` instead of `sift_up` in the first for-loop. Which gives us this situation.
 
 #align(center, diagram(
-  let y = 0.75,
-  let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
-    (-1.5, 0),
-    (-2.75, y),
-    (-0.25, y),
-    (-3.25, 2 * y),
-    (-2.25, 2 * y),
-    (-0.75, 2 * y),
-    (0.25, 2 * y),
-    (-3.5, 3 * y),
-    (-3, 3 * y),
-    (-2.5, 3 * y),
-    (-2, 3 * y),
-    (-1, 3 * y),
-    (-0.5, 3 * y),
-    (0, 3 * y),
-    (0.5, 3 * y),
-  ),
-
   node(N, $circle$),
 
   node(H, $circle$),
@@ -579,8 +399,8 @@ To improve this complexity, we are going to use $"sift_down"$ instead of $"sift_
   edge(T, W, "--"),
   edge(T, Y, "--"),
 
-  node((1.5, -0.5), text(red, "For each node:")),
-  node((1.5, 0), text(red, $log n "calls to sift_down"$)),
+  node((1.5, -0.3), text(red, "For each node:")),
+  node((1.5, 0), text(red, $log n #text[call to `sift_down`]$)),
   node((1.5, y), text(red, $log (n-1) "calls "$)),
   node((1.5, 2 * y), text(red, $1 "calls "$)),
   node((1.5, 3 * y), text(red, $0 "calls "$)),
@@ -592,24 +412,20 @@ To improve this complexity, we are going to use $"sift_down"$ instead of $"sift_
 
 Which bring our overall complexity to:
 
+#align(
+  center, 
+  $      & sum_gamma^(log n) 2^gamma dot (log n - gamma) \ 
+  <=> & sum_h^(log n) 2^(log n - h) dot h && #text(fill: rgb(130, 130, 130))[$"using" h = log n - gamma, gamma = log n - h$] \ 
+  =   & n dot sum_h^(log n) h/2^h \
+  =   & Omicron(n) && #text(fill: rgb(130, 130, 130))[$"because " sum_k^infinity k / 2^k = 2$]$ 
+)
 
-#math.equation(block: true, numbering: "(1)", $sum_gamma^(log n) 2^gamma dot (log n - gamma)$)
-
-
-Let's show that this is $Omicron(n)$:
-
-Let's do the following substitution:
-
+This brings our complexity for heap-sort to: 
 $
-  h = log n - gamma \
-  gamma = log n - h
-$
-
-then $(1)$ become:
-
-$
-  sum_h^(log n) 2^(log n - h) dot h &= n dot sum_h^(log n) h/2^h &&\
-  &= Omicron(n) &&#text(fill: rgb(130, 130, 130))[$"because " sum_k^infinity k / 2^k = 2$]
+  T("sort") &= Omicron(n) + n dot T("swap") + n dot T("sift_down") \
+            &= Omicron(n)  + n + n dot Omicron(log n) \
+            &= n dot Omicron(log n) + 2 dot Omicron(n) \
+            &= Omicron(n log n)
 $
 
-_Note: if you want a more visual prove counting the number of swaps, see the lecture video of Pavel Martin (link below)._
+The same overall complexity, but we improved greatly the constant factors. We can further improve the complexity of this sort. Our sift down function need 2 comparisons to find the swapping elements. This improvement consist to do the swap of the heapify loop to only one comparison @heapsort-bu. A detailed analysis would show us that we improve again our constant on linear side of the linear factor. This make heap-sort roughly competitive with quick-sort. In a later version of this book, we will try to further improve heap-sort making it better in term of cache usage increasing performance again @cache-in-sort. 

@@ -349,5 +349,5 @@
   main_content
 
   // Bibliography
-  bibliography("bib.yml")
+  bibliography("bib.yml", style: "ieee")
 }

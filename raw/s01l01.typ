@@ -1,8 +1,8 @@
 #import "@preview/fletcher:0.5.5": *
-#import "@preview/codly:1.2.0": *
-#import "@preview/codly-languages:0.1.7": *
 #import "@preview/lovelace:0.3.1": line-label
 #import "../functions.typ": pseudocode-alg, pseudocode-alg-nt
+
+#cite(label("ads-s1-e1"), form: none)
 
 == What is an algorithm?
 
@@ -120,6 +120,9 @@ For loop are trivial, while loop can be trickier:
     - i = 1
     - *while* i $lt.slant$ n
       - i += 2
+  ],
+  [
+    
   ]
 )
 
@@ -133,301 +136,246 @@ A recursive function $f$ is a function that call itself, to compute its complexi
 
 === Examples
 
-#pseudocode-alg-nt(title: "Example 1")[
-  - fun m :: n:int -> void 
-    - if n == 0 
-      - return 
-    - minus n-1
-]
-
-Here, we do a constant number of operation each time we call $m$ (check if $n = 0$ and call $m$ decrementing $n$). And, we call $m$ $n$ times. Therefore, complexity of $m$ is $Omicron(n)$.  
-
-#pseudocode-alg-nt(title: "Example 2")[
-  - fun h :: n:int -> void 
-    - if n == 0 
-      - return 
-    - h n/2
-]
-
-In this example, we do the same constant amount of operation in each call to $h$ than with $m$. But, we call: 
-
-#align(center, diagram(
-  $
-    h(n) edge(->, shift: #0pt) & h(n / 2) edge(->, shift: #0pt) & h(n / 4) edge(->, shift: #0pt) & ... edge(->, shift: #0pt) & h(0)
-  $,
-))
-
-which make $log n$ recursive call. Overall the complexity of $h$ is $Omicron(log n)$.
-
-#pseudocode-alg-nt(title: "Example 3")[
-  - fun h :: n:int -> void 
-    - if n == 0 
-      - return 
-    - h n/2
-    - h n/2
-]
-
 #let call_tree_note = [
   A *call tree* is a graph/tree where nodes represent individual function invocations. Edges are directed from the caller to the callee. In recursive algorithms, the total node count reflects the algorithm's time complexity, it is also useful to calculate memory usage and call stack size. For more info see @call-tree. 
 ]
 
-Again, we have the same constant number of operation inside $h$ but instead of making one recursive call, we do two of them. Let's make the call-tree#footnote(call_tree_note) of the function $h$:
+#grid(
+  columns: (40%, 1fr), 
+  row-gutter: 10pt,
+  align: horizon,
+  pseudocode-alg-nt(title: "Example 1")[
+    - fun m :: n:int -> void 
+      - if n == 0 
+        - return 
+      - minus n-1
+  ], 
+  [
+    Here, we execute a constant number of operation each time we call $m$ (check if $n = 0$ and call $m$ decrementing $n$). And, we call $m$ $n$ times. Therefore, complexity of $m$ is $Omicron(n)$.
+  ], 
+  pseudocode-alg-nt(title: "Example 2")[
+    - fun h :: n:int -> void 
+      - if n == 0 
+        - return 
+      - h n/2
+  ],
+  [
+    In this example, we do the same constant amount of operation in each call to $h$ than with $m$. But, we call: 
+
+    #align(center, diagram(
+      $
+        h(n) edge(->, shift: #0pt) & h(n / 2) edge(->, shift: #0pt) & h(n / 4) edge(->, shift: #0pt) & ... edge(->, shift: #0pt) & h(0)
+      $,
+    ))
+    
+    which make $log n$ recursive call. Overall the complexity of $h$ is $Omicron(log n)$.
+  ], 
+  pseudocode-alg-nt(title: "Example 3")[
+    - fun h :: n:int -> void 
+      - if n == 0 
+        - return 
+      - h n/2
+      - h n/2
+  ],
+  [
+    Again, we have the same constant number of operation inside $h$ but instead of making one recursive call, we do two of them. The call-tree#footnote(call_tree_note) of the function (@call-2) allows us to compute the number of call to $h$ by counting its number of node. Therefore, our function complexity is the bound of the node number. \
+    We call the total number of nodes $c$. We have: 
+    $
+      c = 1 + 2 + 4 + dots.h + 2^H "where" H = "tree height" 
+    $
+    In our case, the height of the calling tree is $log_2 n$. The time complexity of $h$ is: 
+    $T(h(n)) & = Omicron(2^(log_2 n)) = Omicron(n)$
+  ], 
+  pseudocode-alg-nt(title: "Example 4")[
+    - fun h :: n:int -> void 
+      - if n == 0 
+        - return 
+      - h n/2
+      - h n/2
+      - h n/2
+  ], 
+  [
+    We use the same technique as before graphing the call-tree (@call-3). \ 
+    The height of the tree is the same but the total number of call will now be $Omicron(3^H)$ because we make three recursive call to 
+    
+    The time complexity for this new $h$ is: 
+    $
+      T(h(n)) = Omicron(3^(log_2 n)) = Omicron(n^(log_2 3)) tilde.eq Omicron(n^1.7)
+    $
+  ]
+) 
 
 #let first-layer = $h(n / 2)$
 #let second-layer = $h(n / 4)$
 #let last-layer = $h(0)$
+#let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
+      (-1.5, 0),
+      (-2.75, 1),
+      (-0.25, 1),
+      (-3.25, 2),
+      (-2.25, 2),
+      (-0.75, 2),
+      (0.25, 2),
+      (-3.5, 3),
+      (-3, 3),
+      (-2.5, 3),
+      (-2, 3),
+      (-1, 3),
+      (-0.5, 3),
+      (0, 3),
+      (0.5, 3),
+    )
 
-#align(center, diagram(
-  let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
-    (-1.5, 0),
-    (-2.75, 1),
-    (-0.25, 1),
-    (-3.25, 2),
-    (-2.25, 2),
-    (-0.75, 2),
-    (0.25, 2),
-    (-3.5, 3),
-    (-3, 3),
-    (-2.5, 3),
-    (-2, 3),
-    (-1, 3),
-    (-0.5, 3),
-    (0, 3),
-    (0.5, 3),
-  ),
+#figure(
+  caption: [Call tree making two recursive call.],
+  align(center, diagram(  
+    node(N, $h(n)$),
+  
+    node(H, first-layer),
+    node(I, first-layer),
+  
+    node(Q, second-layer),
+    node(R, second-layer),
+    node(S, second-layer),
+    node(T, second-layer),
+  
+    node(L, last-layer),
+    node(M, last-layer),
+    node(O, last-layer),
+    node(P, last-layer),
+    node(U, last-layer),
+    node(V, last-layer),
+    node(W, last-layer),
+    node(Y, last-layer),
+  
+    edge(N, H, "->"),
+    edge(N, I, "->"),
+  
+    edge(H, Q, "->"),
+    edge(H, R, "->"),
+    edge(I, S, "->"),
+    edge(I, T, "->"),
+  
+    edge(Q, L, "--"),
+    edge(Q, M, "--"),
+    edge(R, O, "--"),
+    edge(R, P, "--"),
+    edge(S, U, "--"),
+    edge(S, V, "--"),
+    edge(T, W, "--"),
+    edge(T, Y, "--"),
+  
+    edge((1.5, 0), (1.5, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right),
 
-  node(N, $h(n)$),
+    node((-4.5, 0), text(red, $1 "call "$)),
+    node((-4.5, 1), text(red, $2 "calls "$)),
+    node((-4.5, 2), text(red, $4 "calls "$)),
+    node((-4.5, 3), text(red, $2^H "calls "$)),
 
-  node(H, first-layer),
-  node(I, first-layer),
+    edge((-4.5, 2), (-4.5, 3), "--", stroke: red),
+  ))
+) <call-2>
 
-  node(Q, second-layer),
-  node(R, second-layer),
-  node(S, second-layer),
-  node(T, second-layer),
-
-  node(L, last-layer),
-  node(M, last-layer),
-  node(O, last-layer),
-  node(P, last-layer),
-  node(U, last-layer),
-  node(V, last-layer),
-  node(W, last-layer),
-  node(Y, last-layer),
-
-  edge(N, H, "->"),
-  edge(N, I, "->"),
-
-  edge(H, Q, "->"),
-  edge(H, R, "->"),
-  edge(I, S, "->"),
-  edge(I, T, "->"),
-
-  edge(Q, L, "--"),
-  edge(Q, M, "--"),
-  edge(R, O, "--"),
-  edge(R, P, "--"),
-  edge(S, U, "--"),
-  edge(S, V, "--"),
-  edge(T, W, "--"),
-  edge(T, Y, "--"),
-
-  edge((1.5, 0), (1.5, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left),
-))
-
-This call-tree allows us to compute the number of call to $h$ by counting its number of node. Therefore, our function complexity is the bound of the node number. 
-
-We call the total number of nodes $c$. We have: 
-$
-  c = 1 + 2 + 4 + dots.h + 2^H "where" H = "tree height" 
-$
-
-Explanation:
-
-#align(center, diagram(
-  let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
-    (-1.5, 0),
-    (-2.75, 1),
-    (-0.25, 1),
-    (-3.25, 2),
-    (-2.25, 2),
-    (-0.75, 2),
-    (0.25, 2),
-    (-3.5, 3),
-    (-3, 3),
-    (-2.5, 3),
-    (-2, 3),
-    (-1, 3),
-    (-0.5, 3),
-    (0, 3),
-    (0.5, 3),
-  ),
-
-  node(N, $circle$),
-
-  node(H, $circle$),
-  node(I, $circle$),
-
-  node(Q, $circle$),
-  node(R, $circle$),
-  node(S, $circle$),
-  node(T, $circle$),
-
-  node(L, $circle$),
-  node(M, $circle$),
-  node(O, $circle$),
-  node(P, $circle$),
-  node(U, $circle$),
-  node(V, $circle$),
-  node(W, $circle$),
-  node(Y, $circle$),
-
-  edge(N, H, "->"),
-  edge(N, I, "->"),
-
-  edge(H, Q, "->"),
-  edge(H, R, "->"),
-  edge(I, S, "->"),
-  edge(I, T, "->"),
-
-  edge(Q, L, "--"),
-  edge(Q, M, "--"),
-  edge(R, O, "--"),
-  edge(R, P, "--"),
-  edge(S, U, "--"),
-  edge(S, V, "--"),
-  edge(T, W, "--"),
-  edge(T, Y, "--"),
-
-  node((1.5, 0), text(red, $1 "call "$)),
-  node((1.5, 1), text(red, $2 "calls "$)),
-  node((1.5, 2), text(red, $4 "calls "$)),
-  node((1.5, 3), text(red, $2^H "calls "$)),
-
-  edge((1.5, 2), (1.5, 3), "--", stroke: red),
-))
-
-
-In our case, the height of the calling tree is $log_2 n$. The time complexity of $h$ is: 
-$
-  T(h(n)) & = Omicron(2^(log_2 n)) = Omicron(n)
-$
-
-#pseudocode-alg-nt(title: "Example 4")[
-  - fun h :: n:int -> void 
-    - if n == 0 
-      - return 
-    - h n/2
-    - h n/2
-    - h n/2
-]
-
-We make the call-tree the same way:
-
-#align(center, diagram(
-  let (N, H, I, G, Q, R, J, S, T, K, E, F, X, L, M, O, P, U, V, W, Y, A, B, C, D) = (
-    (-0.75, 0),
-    (-3, 1),
-    (-0.75, 1),
-    (1.5, 1),
-    (-3.75, 2),
-    (-2.25, 2),
-    (-3, 2),
-    (-1.5, 2),
-    (0, 2),
-    (-0.75, 2),
-    (0.75, 2),
-    (2.25, 2),
-    (1.5, 2),
-    (-4.25, 3),
-    (-3.75, 3),
-    (-2.75, 3),
-    (-2.25, 3),
-    (-1.5, 3),
-    (-1, 3),
-    (-0.5, 3),
-    (0, 3),
-    (0.75, 3),
-    (1.25, 3),
-    (1.75, 3),
-    (2.25, 3),
-  ),
-
-  node(N, $h(n)$),
-
-  node(H, first-layer),
-  node(I, first-layer),
-  node(G, first-layer),
-
-  node(Q, second-layer),
-  node(R, second-layer),
-  node(J, second-layer),
-  node(S, second-layer),
-  node(T, second-layer),
-  node(K, second-layer),
-  node(E, second-layer),
-  node(F, second-layer),
-  node(X, second-layer),
-
-  edge(N, H, "->"),
-  edge(N, I, "->"),
-  edge(N, G, "->"),
-
-  edge(H, Q, "->"),
-  edge(H, R, "->"),
-  edge(H, J, "->"),
-  edge(I, S, "->"),
-  edge(I, T, "->"),
-  edge(I, K, "->"),
-  edge(G, E, "->"),
-  edge(G, F, "->"),
-  edge(G, X, "->"),
-
-  let dx = 0,
-  let y = 0.75,
-  edge(Q, (-3.75, 3), "--"),
-  edge(R, (-3.75 + 2 * y, 3), "--"),
-  edge(J, (-3.75 + y, 3), "--"),
-  edge(S, (-3.75 + 3 * y, 3), "--"),
-  edge(T, (-3.75 + 5 * y, 3), "--"),
-  edge(K, (-3.75 + 4 * y, 3), "--"),
-  edge(E, (-3.75 + 6 * y, 3), "--"),
-  edge(F, (-3.75 + 8 * y, 3), "--"),
-  edge(X, (-3.75 + 7 * y, 3), "--"),
-
-  let dx = 0.2,
-  let y = 0.75,
-  edge(Q, (-3.75 + dx, 3), "--"),
-  edge(R, (-3.75 + 2 * y + dx, 3), "--"),
-  edge(J, (-3.75 + y + dx, 3), "--"),
-  edge(S, (-3.75 + 3 * y + dx, 3), "--"),
-  edge(T, (-3.75 + 5 * y + dx, 3), "--"),
-  edge(K, (-3.75 + 4 * y + dx, 3), "--"),
-  edge(E, (-3.75 + 6 * y + dx, 3), "--"),
-  edge(F, (-3.75 + 8 * y + dx, 3), "--"),
-  edge(X, (-3.75 + 7 * y + dx, 3), "--"),
-
-  let dx = -0.2,
-  let y = 0.75,
-  edge(Q, (-3.75 + dx, 3), "--"),
-  edge(R, (-3.75 + 2 * y + dx, 3), "--"),
-  edge(J, (-3.75 + y + dx, 3), "--"),
-  edge(S, (-3.75 + 3 * y + dx, 3), "--"),
-  edge(T, (-3.75 + 5 * y + dx, 3), "--"),
-  edge(K, (-3.75 + 4 * y + dx, 3), "--"),
-  edge(E, (-3.75 + 6 * y + dx, 3), "--"),
-  edge(F, (-3.75 + 8 * y + dx, 3), "--"),
-  edge(X, (-3.75 + 7 * y + dx, 3), "--"),
-
-  edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right),
-))
-
-The height of the tree is the same but the total number of call will now be $Omicron(3^H)$ because we make three recursive call to 
-
-The time complexity for this new $h$ is: 
-$
-  T(h(n)) = Omicron(3^(log_2 n)) = Omicron(n^(log_2 3)) tilde.eq Omicron(n^1.7)
-$
+#figure(
+  caption: [Call tree making two recursive call.],
+  align(center, diagram(
+    let (N, H, I, G, Q, R, J, S, T, K, E, F, X, L, M, O, P, U, V, W, Y, A, B, C, D) = (
+      (-0.75, 0),
+      (-3, 1),
+      (-0.75, 1),
+      (1.5, 1),
+      (-3.75, 2),
+      (-2.25, 2),
+      (-3, 2),
+      (-1.5, 2),
+      (0, 2),
+      (-0.75, 2),
+      (0.75, 2),
+      (2.25, 2),
+      (1.5, 2),
+      (-4.25, 3),
+      (-3.75, 3),
+      (-2.75, 3),
+      (-2.25, 3),
+      (-1.5, 3),
+      (-1, 3),
+      (-0.5, 3),
+      (0, 3),
+      (0.75, 3),
+      (1.25, 3),
+      (1.75, 3),
+      (2.25, 3),
+    ),
+  
+    node(N, $h(n)$),
+  
+    node(H, first-layer),
+    node(I, first-layer),
+    node(G, first-layer),
+  
+    node(Q, second-layer),
+    node(R, second-layer),
+    node(J, second-layer),
+    node(S, second-layer),
+    node(T, second-layer),
+    node(K, second-layer),
+    node(E, second-layer),
+    node(F, second-layer),
+    node(X, second-layer),
+  
+    edge(N, H, "->"),
+    edge(N, I, "->"),
+    edge(N, G, "->"),
+  
+    edge(H, Q, "->"),
+    edge(H, R, "->"),
+    edge(H, J, "->"),
+    edge(I, S, "->"),
+    edge(I, T, "->"),
+    edge(I, K, "->"),
+    edge(G, E, "->"),
+    edge(G, F, "->"),
+    edge(G, X, "->"),
+  
+    let dx = 0,
+    let y = 0.75,
+    edge(Q, (-3.75, 3), "--"),
+    edge(R, (-3.75 + 2 * y, 3), "--"),
+    edge(J, (-3.75 + y, 3), "--"),
+    edge(S, (-3.75 + 3 * y, 3), "--"),
+    edge(T, (-3.75 + 5 * y, 3), "--"),
+    edge(K, (-3.75 + 4 * y, 3), "--"),
+    edge(E, (-3.75 + 6 * y, 3), "--"),
+    edge(F, (-3.75 + 8 * y, 3), "--"),
+    edge(X, (-3.75 + 7 * y, 3), "--"),
+  
+    let dx = 0.2,
+    let y = 0.75,
+    edge(Q, (-3.75 + dx, 3), "--"),
+    edge(R, (-3.75 + 2 * y + dx, 3), "--"),
+    edge(J, (-3.75 + y + dx, 3), "--"),
+    edge(S, (-3.75 + 3 * y + dx, 3), "--"),
+    edge(T, (-3.75 + 5 * y + dx, 3), "--"),
+    edge(K, (-3.75 + 4 * y + dx, 3), "--"),
+    edge(E, (-3.75 + 6 * y + dx, 3), "--"),
+    edge(F, (-3.75 + 8 * y + dx, 3), "--"),
+    edge(X, (-3.75 + 7 * y + dx, 3), "--"),
+  
+    let dx = -0.2,
+    let y = 0.75,
+    edge(Q, (-3.75 + dx, 3), "--"),
+    edge(R, (-3.75 + 2 * y + dx, 3), "--"),
+    edge(J, (-3.75 + y + dx, 3), "--"),
+    edge(S, (-3.75 + 3 * y + dx, 3), "--"),
+    edge(T, (-3.75 + 5 * y + dx, 3), "--"),
+    edge(K, (-3.75 + 4 * y + dx, 3), "--"),
+    edge(E, (-3.75 + 6 * y + dx, 3), "--"),
+    edge(F, (-3.75 + 8 * y + dx, 3), "--"),
+    edge(X, (-3.75 + 7 * y + dx, 3), "--"),
+  
+    edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right),
+  ))
+) <call-3>
 
 == Sorting
 
@@ -445,67 +393,75 @@ Insertion sort is the first sort algorithm we learn largely because it is intuit
 
 The principle is easy, to sort the element $A_i$, we swap $A_i$ with the previous element $A_(i-1)$ while $A_i lt.slant A_(i-1)$. \ Let's schematise the insertion sort with the array $A[3,1,4,2]$.
 
-#align(center, diagram(
-  node-stroke: 1pt + red,
-  node-shape: rect,
-
-  let (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) = (
-    (0, 0),
-    (0.5, 0),
-    (1, 0),
-    (1.5, 0),
-    (0, 1),
-    (0.5, 1),
-    (1, 1),
-    (1.5, 1),
-    (0, 2),
-    (0.5, 2),
-    (1, 2),
-    (1.5, 2),
-    (0, 3),
-    (0.5, 3),
-    (1, 3),
-    (1.5, 3),
+#grid(
+  columns: (40%, 1fr), 
+  row-gutter: 10pt,
+  align: horizon,
+  figure( 
+  caption: [Insertion sort for $A[3,1,4,2]$],
+    align(center, diagram(
+      node-stroke: 1pt + red,
+      node-shape: rect,
+    
+      let (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) = (
+        (0, 0),
+        (0.5, 0),
+        (1, 0),
+        (1.5, 0),
+        (0, 1),
+        (0.5, 1),
+        (1, 1),
+        (1.5, 1),
+        (0, 2),
+        (0.5, 2),
+        (1, 2),
+        (1.5, 2),
+        (0, 3),
+        (0.5, 3),
+        (1, 3),
+        (1.5, 3),
+      ),
+    
+      node(a, $3$, stroke: green),
+      node(b, $1$),
+      node(c, $4$),
+      node(d, $2$),
+    
+      node(e, $1$, stroke: green),
+      node(f, $3$, stroke: green),
+      node(g, $4$),
+      node(h, $2$),
+    
+      node(i, $1$, stroke: green),
+      node(j, $3$, stroke: green),
+      node(k, $4$, stroke: green),
+      node(l, $2$),
+    
+      node(m, $1$, stroke: green),
+      node(n, $2$, stroke: green),
+      node(o, $3$, stroke: green),
+      node(p, $4$, stroke: green),
+    
+      edge(b, a, "<->", bend: +90deg),
+      edge((1, 1.5), g, "->"),
+      edge(l, k, "<->", bend: +90deg),
+      edge(k, j, "<->", bend: +90deg),
+    ))
   ),
-
-  node(a, $3$, stroke: green),
-  node(b, $1$),
-  node(c, $4$),
-  node(d, $2$),
-
-  node(e, $1$, stroke: green),
-  node(f, $3$, stroke: green),
-  node(g, $4$),
-  node(h, $2$),
-
-  node(i, $1$, stroke: green),
-  node(j, $3$, stroke: green),
-  node(k, $4$, stroke: green),
-  node(l, $2$),
-
-  node(m, $1$, stroke: green),
-  node(n, $2$, stroke: green),
-  node(o, $3$, stroke: green),
-  node(p, $4$, stroke: green),
-
-  edge(b, a, "<->", bend: +90deg),
-  edge((1, 1.5), g, "->"),
-  edge(l, k, "<->", bend: +90deg),
-  edge(k, j, "<->", bend: +90deg),
-))
-
-#pseudocode-alg(title: "Insertion sort")[
-  - fun insertion_sort :: A:[int] -> void
-    + #line-label(<for-insert>) for i = 1..n-1
-      - j = i 
-      + #line-label(<while-insert>) while j > 0 and $A_j < A_(j-1)$
-        - swap $A_j, A_(j-1)$
-        - j -= 1
-    - return 
-] <insert-sort>
+  [
+    #pseudocode-alg(title: "Insertion sort")[
+      - fun insertion_sort :: A:[int] -> void
+        + #line-label(<for-insert>) for i = 1..n-1
+          - j = i 
+          + #line-label(<while-insert>) while j > 0 and $A_j < A_(j-1)$
+            - swap $A_j$ $A_(j-1)$
+            - j -= 1
+        - return 
+    ] <insert-sort>
+  ]
+)
 
 Let's prove that this algorithm is correct using *for-loop* invariant on @for-insert.  To do that, we have to prove that after iteration $i$ of @for-insert, the array $A$ is sorted from index $0$ to $i$ (i.e. $A_(0:i)$ is sorted). \
-
 Using induction: 
 - Before the first iteration, the slice of $a$ from index $0$ to $0$ is sorted. 
 - At the $i^"th"$ iteration, we have $A_(0:i-1)$ sorted. We are swapping $A_j$ until $A_j gt.slant A_(j-1)$ and the previous iteration of @while-insert gives us that $A_j < A_(j+1)$. So, at the end we have: $A_(j-1) lt.slant A_j < A_(j+1) lt.slant A_i$ (i.e. we have sorted a new element in a previously sorted array).
@@ -555,8 +511,7 @@ Let's begin with the last step: merge two sorted array into one sorted array con
 
 To achieve this, we use the two pointer technique#footnote[#two-pointer], let's see the working of the algorithm using an example: we have $A[1,5,10]$ and $B[2,4,6]$ let's merge them into a sorted array $C$ containing the elements of both $A$ and $B$: 
 
-#align(center, diagram(
-  let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
+#let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
     (0, 0),
     (0.25, 0),
     (0.5, 0),
@@ -570,8 +525,8 @@ To achieve this, we use the two pointer technique#footnote[#two-pointer], let's 
     (2, 0.75),
     (2.25, 0.75),
     (2.5, 0.75),
-  ),
-
+  )
+#align(center, diagram(
   node(a, $A |$),
   node(a1, $1$),
   node(a2, $5$),
@@ -596,22 +551,6 @@ To achieve this, we use the two pointer technique#footnote[#two-pointer], let's 
 
 
 #align(center, diagram(
-  let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
-    (0, 0),
-    (0.25, 0),
-    (0.5, 0),
-    (0.75, 0),
-    (0, 0.75),
-    (0.25, 0.75),
-    (0.5, 0.75),
-    (0.75, 0.75),
-    (2, 0),
-    (1.75, 0.75),
-    (2, 0.75),
-    (2.25, 0.75),
-    (2.5, 0.75),
-  ),
-
   node(a, $A |$),
   node(a1, $cancel(1, stroke: #(paint: red, thickness: 1pt))$),
   node(a2, $5$),
@@ -636,22 +575,6 @@ To achieve this, we use the two pointer technique#footnote[#two-pointer], let's 
 
 
 #align(center, diagram(
-  let (a, a1, a2, a3, b, b1, b2, b3, cmp, c, c1, c2, c3) = (
-    (0, 0),
-    (0.25, 0),
-    (0.5, 0),
-    (0.75, 0),
-    (0, 0.75),
-    (0.25, 0.75),
-    (0.5, 0.75),
-    (0.75, 0.75),
-    (2, 0),
-    (1.75, 0.75),
-    (2, 0.75),
-    (2.25, 0.75),
-    (2.5, 0.75),
-  ),
-
   node(a, $A |$),
   node(a1, $cancel(1, stroke: #(paint: red, thickness: 1pt))$),
   node(a2, $5$),
@@ -687,11 +610,11 @@ We continue until $i$ and $j$ reach the end or $A$ and $B$. This gives us $C[1,2
     + *while* i < n || j < m
       - if j = m || (i < n && $A_i < B_j$)
         - $C_k = A_i$ 
-        - i++
+        - i += 1
       - else 
         - $C_k = B_j$
-        - j++
-      - k++
+        - j += 1
+      - k += 1
     - return C
 ]
 

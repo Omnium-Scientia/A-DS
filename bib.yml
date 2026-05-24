@@ -1,11 +1,11 @@
 # Sources for s01l01.typ
 
 ads-s1-e1: 
-  type : video 
-  title : "A&DS S01E01. Algorithms. Time complexity. Merge sort."
-  date : 2020-09-11
-  author : ["Pavel Marvin"]
-  url : https://www.youtube.com/watch?v=oWgLjhM-6XE&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=4
+  type: video 
+  title: "A&DS S01E01. Algorithms. Time complexity. Merge sort."
+  date: 2020-09-11
+  author: ["Pavel Marvin"]
+  url: https://www.youtube.com/watch?v=oWgLjhM-6XE&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=4
 
 call-tree: 
   type: book
@@ -56,4 +56,81 @@ master-theo:
     issn: 0163-5700
     doi: 10.1145/1008861.1008865
   url: https://doi.org/10.1145/1008861.1008865
+
+# Source for s01l02.typ
+
+ads-s1-e2: 
+  type: video 
+  title: "A&DS S01E02. Data structures. Binary Heap. Heap sort."
+  date: 2020-09-18
+  author: ["Pavel Marvin"]
+  url: https://www.youtube.com/watch?v=koyuy564TZ8&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=2
+
+heapsort: 
+  type: article 
+  title: "Algorithm 232: Heapsort"
+  author: J.W.J. Williams
+  publisher: Association for Computing Machinery
+  location: New York, NY, USA
+  parent: 
+    type: periodical 
+    title: Commun. ACM
+    volume: 7
+    issue: 6
+  date: 1964-06
+  page-range: 347-348
+  serial-number: 
+    issn: 0001-0782
+    doi: 10.1145/512274.3734138
+  url: https://doi.org/10.1145/512274.3734138
+
+treesort: 
+  type: article 
+  title: "Algorithm 245: Treesort"
+  author: Robert W. Floyd
+  publisher: Association for Computing Machinery
+  location: New York, NY, USA
+  parent: 
+    type: periodical 
+    title: Commun. ACM
+    volume: 7
+    issue: 12
+  date: 1964-12
+  page-range: 701
+  serial-number: 
+    issn: 0001-0782
+    doi: 10.1145/355588.365103
+  url: https://doi.org/10.1145/355588.365103
   
+heapsort-bu: 
+  type: article 
+  title: "BOTTOM-UP-HEAPSORT, a new variant of HEAPSORT beating, on an average, QUICKSORT (if n is not very small)"
+  author: Ingo Wegener
+  parent: 
+    type: periodical
+    title: "Theorical Computer Science"
+    volume: 118
+  date: 1993-09-13
+  page-range: 81-98
+  serial-number: 
+    issn: 0304-3975
+    doi: 10.1016/0304-3975(93)90364-Y
+  url: https://doi.org/10.1016/0304-3975(93)90364-Y
+
+cache-in-sort: 
+  type: article 
+  title: The Influence of Caches on the Performance of Sorting
+  author: 
+    - Anthony LaMarca 
+    - Richard E Ladner
+  parent: 
+    type: periodical 
+    title: "Journal of Algorithms"
+    volume: 31 
+    issue: 1 
+  date: 1999-04
+  page-range: 66-104
+  serial-number: 
+    issn: 0196-6774
+    doi: 10.1006/jagm.1998.0985
+  url: https://doi.org/10.1006/jagm.1998.0985

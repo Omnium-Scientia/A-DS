@@ -1,12 +1,14 @@
 #import "@preview/fletcher:0.5.5": *
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
+#import "@preview/lovelace:0.3.1": line-label
+#import "../functions.typ": pseudocode-alg, pseudocode-alg-nt
 
 You want to solve the following problem:
-- You ahve an array of $a$ size $n$.
+- You have an array of $a$ size $n$.
 - You want to perform the following operation on your array:
   - `set(i,v)`: set the $i^("th")$ element to the value $v$.
-  - `op(l,r)`: perform the operation `op` on the segment $[l,r[$
+  - `op(l,r)`: perform the operation `op` on the segment $[l,r[$.
 
 == Sum segment tree <S2L1S11>
 
