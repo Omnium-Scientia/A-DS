@@ -4,7 +4,7 @@ This is the algorithm and data structure course of the Omnium Scientia project.
 
 To know the part of this course see: [SYLLABUS.md](doc/SYLLABUS.md).
 
-Our soucres are cited inside the PDF, to the full list of the course's sources go to [bib.yml](./bib.yml). 
+Our soucres are cited inside the PDF, to the full list of the course's sources go to [bib.yml](./bib.yml). The PDFs of the cited sources are available at [https://kdrive.infomaniak.com/app/share/1926560/0ab82c03-b7ea-4c44-8a17-9ea6bc0136b2](https://kdrive.infomaniak.com/app/share/1926560/0ab82c03-b7ea-4c44-8a17-9ea6bc0136b2) (it is password protected, pw=A-DS).
 
 ## About: 
 
