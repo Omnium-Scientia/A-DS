@@ -1,11 +1,13 @@
+########################
 # Sources for s01l01.typ
+########################
 
 ads-s1-e1: 
   type: video 
   title: "A&DS S01E01. Algorithms. Time complexity. Merge sort."
   date: 2020-09-11
   author: ["Pavel Marvin"]
-  url: https://www.youtube.com/watch?v=oWgLjhM-6XE&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=4
+  url: https://youtu.be/oWgLjhM-6XE
 
 call-tree: 
   type: book
@@ -57,14 +59,17 @@ master-theo:
     doi: 10.1145/1008861.1008865
   url: https://doi.org/10.1145/1008861.1008865
 
-# Source for s01l02.typ
+
+########################
+# Sources for s01l02.typ
+########################
 
 ads-s1-e2: 
   type: video 
   title: "A&DS S01E02. Data structures. Binary Heap. Heap sort."
   date: 2020-09-18
   author: ["Pavel Marvin"]
-  url: https://www.youtube.com/watch?v=koyuy564TZ8&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=2
+  url: https://youtu.be/koyuy564TZ8
 
 heapsort: 
   type: article 
@@ -134,3 +139,16 @@ cache-in-sort:
     issn: 0196-6774
     doi: 10.1006/jagm.1998.0985
   url: https://doi.org/10.1006/jagm.1998.0985
+
+
+########################
+# Sources for s02l01.typ
+########################
+
+ads-s2-e1: 
+  type: video 
+  title: "A&DS S02E01. Segment tree."
+  date: 2021-02-13
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/s3bnguhHttM
+

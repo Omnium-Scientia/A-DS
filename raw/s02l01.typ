@@ -4,6 +4,8 @@
 #import "@preview/lovelace:0.3.1": line-label
 #import "../functions.typ": pseudocode-alg, pseudocode-alg-nt
 
+#cite(label("ads-s2-e1"), form: none)
+
 You want to solve the following problem:
 - You have an array of $a$ size $n$.
 - You want to perform the following operation on your array:
@@ -20,9 +22,8 @@ Segment trees are binary tree where:
 
 Example with $a[5;1;3;2;6;2;4;7]$:
 
-#align(center, diagram(
-  let y = 1,
-  let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
+#let y = 1
+#let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
     (-1.5, 0),
     (-2.75, y),
     (-0.25, y),
@@ -38,8 +39,8 @@ Example with $a[5;1;3;2;6;2;4;7]$:
     (-0.5, 3 * y),
     (0, 3 * y),
     (0.5, 3 * y),
-  ),
-
+)
+#align(center, diagram(
   node(N, $30$),
 
   node(H, $11$),
@@ -81,9 +82,7 @@ _Note: Here, we work with tree where $n = 2^k$. We can also imagine non-balanced
 
 #align(center, diagram(
   let y = 0.75,
-  let (N, H, I, Q, R) = (
-    (-1.5, 0),
-    (-2.75, y),
+  let (I, Q, R) = (
     (-0.25, 2 * y),
     (-3.25, 2 * y),
     (-2.25, 2 * y),
@@ -104,15 +103,15 @@ _Note: Here, we work with tree where $n = 2^k$. We can also imagine non-balanced
   edge(H, R, "-"),
 ))
 
-_We will not consider them in this lecture but they work well too, they are just less convenient to use for educational puspose._
+_We will not consider them in this lecture but they work well too, they are just less convenient to use for educational purpose._
 
-Why we can do that? Because in the case of $n != 2^k$ we can always add empty element so we have $n' = 2^k < 2n$ leaves. Since we are going to work mostly on assymptotics this will not matter that much.
+Why we can do that? Because in the case of $n != 2^k$ we can always add empty element so we have $n' = 2^k < 2n$ leaves. Since we are going to work mostly on asymptotic this will not matter that much.
 
-The number of nodes in our segment tree willl be $2n - 1$.
+The number of nodes in our segment tree will be $2n - 1$.
 
 The height of our segment tree is $log_2 n$. With that, both our `set` and `sum` complexity will be $Omicron(log n)$.
 
-How the tree work? Each node of our tree is accountable for the sum of a segment. So each leaf is accountable for the sum of 1 element and the root of the tree is acocuntable for the sum of the whole segment.
+How the tree work? Each node of our tree is accountable for the sum of a segment. So each leaf is accountable for the sum of 1 element and the root of the tree is accountable for the sum of the whole segment.
 
 == Set operation
 
@@ -123,26 +122,13 @@ This represent 1 node per layer and we go from leaf to root so we have at much $
 
 Recall the tree example we gave in @S2L1S11, let's change last 2 by 5 `set(5,5)`:
 
-#align(center, diagram(
-  let y = 1,
-  let (N, H, I, Q, R, S, T, L, M, O, P, U, V, W, Y) = (
-    (-1.5, 0),
-    (-2.75, y),
+#let y = 1
+#let (I, Q, R) = (
     (-0.25, y),
     (-3.25, 2 * y),
     (-2.25, 2 * y),
-    (-0.75, 2 * y),
-    (0.25, 2 * y),
-    (-3.5, 3 * y),
-    (-3, 3 * y),
-    (-2.5, 3 * y),
-    (-2, 3 * y),
-    (-1, 3 * y),
-    (-0.5, 3 * y),
-    (0, 3 * y),
-    (0.5, 3 * y),
-  ),
-
+  )
+#align(center, diagram(
   node(N, text(red)[$33$]),
 
   node(H, $11$),
@@ -182,7 +168,7 @@ Recall the tree example we gave in @S2L1S11, let's change last 2 by 5 `set(5,5)`
 
 == Sum operation
 
-The objective to take precalculated segments to combine then and make our sum.
+The objective to take pre-calculated segments to combine then and make our sum.
 
 The question is now : how to get each segment of the sum in $Omicron(log n)$ time?
 
@@ -190,11 +176,9 @@ The idea is to make a recursion from root to leaf to find the ones that are in o
 - If the current node is the sum of a segment that do not overlap with our wanted segment, we return early.
 - If the current node is the sum of a segment that is completely in our wanted range, we add it to the result and return early.
 
-With those optimisation, almost all of the calls reslut in one of our optimisation. Indeed, in our segment tree, none of our segment overlap. So in each layer, we have at most 1 segment that contain our left border and also one that contain our right border. So in each layer, we have at most 2 segments continuing the recursion.
+With those optimisation, almost all of the calls result in one of our optimisation. Indeed, in our segment tree, none of our segment overlap. So in each layer, we have at most 1 segment that contain our left border and also one that contain our right border. So in each layer, we have at most 2 segments continuing the recursion.
 
 Since we have $log_2 n$ layer in our tree, we have no more than $2 dot log n$ segment of recursion and there is at most $2 dot log n + 1$ nodes that return. This means that we have at most $4 dot log n$ operations in our sum, so we have $T("sum") = Omicron(log n)$.
-
-#pagebreak()
 
 == Implementation
 
@@ -207,18 +191,11 @@ class Node {
 }
 ```
 
-This implementation work but is not the most efficient because of the number of class instentiation.
+This implementation work but is not the most efficient because of the number of class instantiation.
 
 We are going to use a different one, we assign indexes to nodes the following way (an indexing we previously used):
 
 #align(center, diagram(
-  let y = 1,
-  let (N, H, I) = (
-    (-1.5, 0),
-    (-2.75, y),
-    (-0.25, y),
-  ),
-
   node(N, $x$),
   node(H, $2x + 1$),
   node(I, $2x + 2$),
@@ -227,7 +204,7 @@ We are going to use a different one, we assign indexes to nodes the following wa
   edge(N, I, "-"),
 ))
 
-Whith this structure, we can put our array in an array. We also need to know what are the borders of our segments, instead of storing them, we will compute them on the fly.
+With this structure, we can put our array in an array. We also need to know what are the borders of our segments, instead of storing them, we will compute them on the fly.
 
 $
   x attach(arrow.long, t: "borders") [l x, r x] \
@@ -237,7 +214,7 @@ $
 
 For set, we have the following recursive procedure with the parameters:
 - $i$, the node we change the value of.
-- $v$, the value we wnat to change $i$ to.
+- $v$, the value we what to change $i$ to.
 - $x$, the current node.
 - $l x, r x$, its borders ($l x$ included, $r x$ excluded).
 
@@ -255,7 +232,7 @@ def set(i, v, lx, rx)
 ```
 
 For sum, we have:
-- $l, r$, left and right borders wewant the sum of.
+- $l, r$, left and right borders we want the sum of.
 - $x$, the current node.
 - $l x, r x$, the current borders.
 
@@ -308,7 +285,7 @@ More than `min`, we can  imagine making the structure generic taking a custom fu
 
 == Persistent segment tree
 
-We defined persistant data structue in _Semester 1, Lecture 7_ for linked list. We are going to apply that to segment trees.
+We defined persistent data structure in _Semester 1, Lecture 7_ for linked list. We are going to apply that to segment trees.
 
 The only operation that changes our structure is `set`. When we make a set, we clone the node we change and give it the wanted value. After that, we go up in the tree cloning each upper node and updating their result.
 
@@ -364,4 +341,4 @@ For each new version we want to keep track off, we add $log n$ new nodes. Then w
 
 To implement this, you need to use the class version of the tree because we need pointer to the nodes to make it work.
 
-This will be usefull in some problems that we will se in the later Lectures.
+This will be useful in some problems that we will see in the later Lectures.

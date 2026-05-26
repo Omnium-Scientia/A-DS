@@ -291,6 +291,7 @@
     let custom-inner = [
       #it.body()
       #box(width: 1fr, it.fill)
+      #it.page()
     ]
     link(it.element.location())[
       #it.indented(it.prefix(), custom-inner)
