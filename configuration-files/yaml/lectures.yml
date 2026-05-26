@@ -3,6 +3,7 @@ s01l01:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 1
@@ -13,6 +14,7 @@ s01l02:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 2
@@ -23,6 +25,7 @@ s01l03:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 3
@@ -33,6 +36,7 @@ s01l04:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 4
@@ -43,6 +47,7 @@ s01l05:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 5
@@ -53,6 +58,7 @@ s01l06:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 6
@@ -63,6 +69,7 @@ s01l07:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 7
@@ -73,6 +80,7 @@ s01l08:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 8
@@ -83,6 +91,7 @@ s01l09:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 9
@@ -93,6 +102,7 @@ s01l10:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 10
@@ -103,6 +113,7 @@ s01l11:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 11
@@ -113,6 +124,7 @@ s01l12:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 12
@@ -123,6 +135,7 @@ s01l13:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 13
@@ -133,6 +146,7 @@ s01l14:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 14
@@ -143,6 +157,7 @@ s01l15:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 15
@@ -153,6 +168,7 @@ s02l01:
   abstract: null
   authors:
   - contact: "contact@buzzybis.com"
+    id: 1
     name: BuzzY_
     organisation: null
   chapter: 1

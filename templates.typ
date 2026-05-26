@@ -157,7 +157,7 @@
 
   // Set document
   let lectures = entry.at("content", default: none)
-  let authors = lectures.map(lecture => lecture.authors).flatten().dedup()
+  let authors = entry.at("authors", default: ()).dedup()
   set document(
     title: [#title, #subtitle],
     author: authors.map(author => author.name),
@@ -304,20 +304,10 @@
   )
   pagebreak()
 
-  // Content
-  let chapters = (:)
-  for lecture in lectures.sorted(key: l => l.chapter) {
-    let key = str(lecture.chapter)
-    let val = lecture
-    let _ = val.remove("chapter", default: none)
-    let _ = val.remove("authors", default: none)
-
-    chapters.insert(key, val)
-  }
-
   counter(page).update(1)
 
-  for (chapter, info) in chapters [
+  for lecture in lectures.sorted(key: l => l.chapter) [
+    #let chapter = str(lecture.chapter)
     #set page(
       paper: "a4",
       margin: (x: 1.5cm, y: 1.5cm),
@@ -325,7 +315,7 @@
         #align(left, text(
           font: "Atkinson Hyperlegible Next",
           size: 10pt,
-        )[Lecture #chapter: #info.title])
+        )[Lecture #chapter: #lecture.title])
         #v(0.5em, weak: true)
         #line(length: 100%)
       ],
@@ -339,9 +329,9 @@
       ],
     )
 
-    = #info.title
+    = #lecture.title
 
-    #let inc = "raw/" + info.file + ".typ"
+    #let inc = "raw/" + lecture.file + ".typ"
     #include inc
     #pagebreak()
   ]

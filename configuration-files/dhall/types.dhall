@@ -5,7 +5,7 @@
 -}
 let Author
     : Type
-    = { name : Text, contact : Optional Text, organisation : Optional Text }
+    = { id : Natural, name : Text, contact : Optional Text, organisation : Optional Text }
 
 let Lecture
     : Type
@@ -33,4 +33,22 @@ let BlogMapOutput
     : Type
     = { mapKey : Text, mapValue : BlogOutput }
 
-in  { Author, Lecture, Course, BlogOutput, CourseMap, BlogMapOutput }
+let BookCourse
+    : Type
+    = { title : Text
+      , subtitle : Text
+      , abstract : Text
+      , authors : List Author
+      , content : List { file : Text
+                       , chapter : Natural
+                       , title : Text
+                       , subtitle : Optional Text
+                       , abstract : Optional Text
+                       }
+      }
+
+let BookCourseMap
+    : Type
+    = { mapKey : Text, mapValue : BookCourse }
+
+in  { Author, Lecture, Course, BlogOutput, CourseMap, BlogMapOutput, BookCourse, BookCourseMap }

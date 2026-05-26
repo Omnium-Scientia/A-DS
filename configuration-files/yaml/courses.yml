@@ -4,138 +4,83 @@
     This semester is about core concepts of algorithms:
     You will learn about simple data structures, algorithms and also techniques to analyze them.
     The concepts you will learn this semester will be used multiple times across the next ones.
+  authors:
+  - contact: "contact@buzzybis.com"
+    id: 1
+    name: BuzzY_
+    organisation: null
   content:
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 1
     file: s01l01
     subtitle: null
     title: "Algorithm, Time complexity, Merge sort"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 2
     file: s01l02
     subtitle: null
     title: "Data structures, Binary heap, Heap sort"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 3
     file: s01l03
     subtitle: null
     title: "Quick-sort, Order statistics"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 4
     file: s01l04
     subtitle: null
     title: "Lower bound for sorting, Radix sort, Sorting networks"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 5
     file: s01l05
     subtitle: null
     title: Binary search
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 6
     file: s01l06
     subtitle: null
     title: "Stacks, Queues, Amortized costs"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 7
     file: s01l07
     subtitle: null
     title: "Linked list, Pointer machine"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 8
     file: s01l08
     subtitle: null
     title: "Disjoint sets (Union-Find)"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 9
     file: s01l09
     subtitle: null
     title: Fibonacci heap
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 10
     file: s01l10
     subtitle: null
     title: "Dynamic Programming — PART I"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 11
     file: s01l11
     subtitle: null
     title: "Dynamic Programming — PART II"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 12
     file: s01l12
     subtitle: null
     title: Knapsack
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 13
     file: s01l13
     subtitle: null
     title: "Dynamic programming on subsets, on profiles"
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 14
     file: s01l14
     subtitle: null
     title: Hash tables
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 15
     file: s01l15
     subtitle: null
@@ -148,12 +93,13 @@
     We will begin with trees, a lot of tree types to do many things,
     after that we will talk about when an algorithm needs external memory
     and finally a chapter on complexity classes.
+  authors:
+  - contact: "contact@buzzybis.com"
+    id: 1
+    name: BuzzY_
+    organisation: null
   content:
   - abstract: null
-    authors:
-    - contact: "contact@buzzybis.com"
-      name: BuzzY_
-      organisation: null
     chapter: 1
     file: s02l01
     subtitle: Generality

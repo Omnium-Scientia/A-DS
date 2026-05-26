@@ -7,7 +7,8 @@
     ```
     let nickname-ref
         : T.Author
-        = { name = "Your name / pseudo"
+        = { id = 1 -- Assign a unique natural number ID
+          , name = "Your name / pseudo"
           , contact = Some "the way to contact you" | None Text
           , organisation = Some "the organisation you are part of" | None Text
           }
@@ -23,7 +24,8 @@ let T = ./types.dhall
 
 let buzzy
     : T.Author
-    = { name = "BuzzY_"
+    = { id = 1
+      , name = "BuzzY_"
       , contact = Some "contact@buzzybis.com"
       , organisation = None Text
       }
