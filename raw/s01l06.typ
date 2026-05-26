@@ -3,17 +3,7 @@
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
 
-#import "../../template/lecture.typ": lesson
-
-#show: lesson.with(
-  semester: "1",
-  chapter_number: "6",
-  video_link: "https://www.youtube.com/watch?v=EU09CpPUrZc&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=7",
-  title: "Stacks, Queues, Amortized costs",
-)
-
-
-= Stacks, Queues, Amortized costs
+#cite(label("ads-s1-e6"), form: none)
 
 == Stack
 

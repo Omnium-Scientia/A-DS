@@ -3,16 +3,7 @@
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
 
-#import "../../template/lecture.typ": lesson
-
-#show: lesson.with(
-  semester: "1",
-  chapter_number: "10",
-  video_link: "https://www.youtube.com/watch?v=_jK_sJrvrkY&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=10",
-  title: "Dynamic Programming - PART I",
-)
-
-= Dynamic Programming - PART I
+#cite(label("ads-s1-e10"), form: none)
 
 Dynamic programming is one of the basic technique of algorithm theory. It is used in various algorithms to solve various type of problems.
 

@@ -1,6 +1,6 @@
-########################
-# Sources for s01l01.typ
-########################
+##########################
+# Sources for s01l01.typ #
+##########################
 
 ads-s1-e1: 
   type: video 
@@ -60,9 +60,9 @@ master-theo:
   url: https://doi.org/10.1145/1008861.1008865
 
 
-########################
-# Sources for s01l02.typ
-########################
+##########################
+# Sources for s01l02.typ #
+##########################
 
 ads-s1-e2: 
   type: video 
@@ -141,9 +141,165 @@ cache-in-sort:
   url: https://doi.org/10.1006/jagm.1998.0985
 
 
-########################
-# Sources for s02l01.typ
-########################
+##########################
+# Sources for s01l03.typ #
+##########################
+
+ads-s1-e3: 
+  type: video 
+  title: "A&DS S01E03. Quick-sort, Order statistics"
+  date: 2020-09-25
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/jHDgr-dKhgA?si=QemdMnYfbvFXnm6T
+
+
+##########################
+# Sources for s01l04.typ #
+##########################
+
+ads-s1-e4: 
+  type: video 
+  title: "A&DS S01E04. Lower bound for sorting, Radix sort, Sorting networks"
+  date: 2020-10-03
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/lJB_kwONQKY?si=A8nK9QnoCKP40HD4
+
+
+##########################
+# Sources for s01l05.typ #
+##########################
+
+ads-s1-e5: 
+  type: video 
+  title: "A&DS S01E05. Binary search"
+  date: 2020-10-09
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/GWj9PcBgyy4?si=ZobpOy-ZJXn1_siG
+
+
+##########################
+# Sources for s01l06.typ #
+##########################
+
+ads-s1-e6: 
+  type: video 
+  title: "A&DS S01E06. Stacks, Queues, Amortized costs"
+  date: 2020-10-16
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/EU09CpPUrZc?si=eTvK6UabTJmlzvqO
+
+
+##########################
+# Sources for s01l07.typ #
+##########################
+
+ads-s1-e7: 
+  type: video 
+  title: "A&DS S01E07. Linked list, Pointer machine"
+  date: 2020-10-23
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/16MvK6W1GwU?si=AhQFxh0jr3v3KOLe
+
+
+##########################
+# Sources for s01l08.typ #
+##########################
+
+ads-s1-e8: 
+  type: video 
+  title: "A&DS S01E08. Disjoint Sets"
+  date: 2020-10-30
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/vq5u09x2Kzo?si=Am7VgP7i3r0gRZbP
+
+
+##########################
+# Sources for s01l09.typ #
+##########################
+
+ads-s1-e9: 
+  type: video 
+  title: "A&DS S01E09. Fibonacci Heap"
+  date: 2020-11-14
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/Dt3LDjl4jEc?si=meg7H_-wRe3b9ifp
+
+
+##########################
+# Sources for s01l10.typ #
+##########################
+
+ads-s1-e10: 
+  type: video 
+  title: "A&DS S01E10. Dynamic programming — PART I"
+  date: 2020-11-20
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/_jK_sJrvrkY?si=ZoS5Cl0MJSRBq5CY
+
+
+##########################
+# Sources for s01l11.typ #
+##########################
+
+ads-s1-e11: 
+  type: video 
+  title: "A&DS S01E11. Dynamic programming — PART II"
+  date: 2020-11-27
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/kBtTT3fTSc8?si=M8bXD4PaLMk7rIJY
+
+
+##########################
+# Sources for s01l12.typ #
+##########################
+
+ads-s1-e12: 
+  type: video 
+  title: "A&DS S01E12. Knapsack Problem"
+  date: 2020-12-04
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/5C7JT8cVHDU?si=dkWPNJstY6ckvJJE
+
+
+##########################
+# Sources for s01l13.typ #
+##########################
+
+ads-s1-e13: 
+  type: video 
+  title: "A&DS S01E13. DP on subsets, DP on profiles"
+  date: 2020-12-12
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/0bnMHlFUM_o?si=B6FV-S86_1FfDcJ0
+
+
+##########################
+# Sources for s01l14.typ #
+##########################
+
+ads-s1-e14: 
+  type: video 
+  title: "A&DS S01E14. Hash tables"
+  date: 2020-12-19
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/QM_m5TfoQm4?si=Nmv6nuI5-b5rs6YY
+
+
+##########################
+# Sources for s01l15.typ #
+##########################
+
+ads-s1-e15: 
+  type: video 
+  title: "A&DS S01E15. Perfect hashing, cuckoo hashing, Bloom filter"
+  date: 2020-12-25
+  author: ["Pavel Marvin"]
+  url: https://youtu.be/YyqdxbwAIgA?si=NYKB-dWUarDrFwo0
+
+
+##########################
+# Sources for s02l01.typ #
+##########################
 
 ads-s2-e1: 
   type: video 
@@ -151,4 +307,3 @@ ads-s2-e1:
   date: 2021-02-13
   author: ["Pavel Marvin"]
   url: https://youtu.be/s3bnguhHttM
-

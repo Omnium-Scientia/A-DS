@@ -19,6 +19,136 @@ s01l02:
   file: s01l02
   subtitle: null
   title: "Data structures, Binary heap, Heap sort"
+s01l03:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 3
+  file: s01l03
+  subtitle: null
+  title: "Quick-sort, Order statistics"
+s01l04:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 4
+  file: s01l04
+  subtitle: null
+  title: "Lower bound for sorting, Radix sort, Sorting networks"
+s01l05:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 5
+  file: s01l05
+  subtitle: null
+  title: Binary search
+s01l06:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 6
+  file: s01l06
+  subtitle: null
+  title: "Stacks, Queues, Amortized costs"
+s01l07:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 7
+  file: s01l07
+  subtitle: null
+  title: "Linked list, Pointer machine"
+s01l08:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 8
+  file: s01l08
+  subtitle: null
+  title: "Disjoint sets (Union-Find)"
+s01l09:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 9
+  file: s01l09
+  subtitle: null
+  title: Fibonacci heap
+s01l10:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 10
+  file: s01l10
+  subtitle: null
+  title: "Dynamic Programming — PART I"
+s01l11:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 11
+  file: s01l11
+  subtitle: null
+  title: "Dynamic Programming — PART II"
+s01l12:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 12
+  file: s01l12
+  subtitle: null
+  title: Knapsack
+s01l13:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 13
+  file: s01l13
+  subtitle: null
+  title: "Dynamic programming on subsets, on profiles"
+s01l14:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 14
+  file: s01l14
+  subtitle: null
+  title: Hash tables
+s01l15:
+  abstract: null
+  authors:
+  - contact: "contact@buzzybis.com"
+    name: BuzzY_
+    organisation: null
+  chapter: 15
+  file: s01l15
+  subtitle: null
+  title: "Perfect & Cuckoo hasing, Bloom filters"
 s02l01:
   abstract: null
   authors:

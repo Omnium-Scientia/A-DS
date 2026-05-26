@@ -3,16 +3,7 @@
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
 
-#import "../../template/lecture.typ": lesson
-
-#show: lesson.with(
-  semester: "1",
-  chapter_number: "14",
-  video_link: "https://www.youtube.com/watch?v=QM_m5TfoQm4&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=14",
-  title: "Hash tables",
-)
-
-= Hash tables
+#cite(label("ads-s1-e14"), form: none)
 
 Hash tables are really important data structures. They are randomized and can cause problem in some situation. We will see when to use them and when not to.
 

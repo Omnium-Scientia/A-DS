@@ -2,19 +2,7 @@
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
 
-#import "../../template/lecture.typ": lesson
-
-#show: lesson.with(
-  semester: "1",
-  chapter_number: "4",
-  video_link: "https://www.youtube.com/watch?v=lJB_kwONQKY&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=4",
-  title: "Lower bound for sorting, Radix sort, Sorting networks",
-)
-
-
-= Lower bound for sorting, Radix sort, Sorting networks
-
-#linebreak()
+#cite(label("ads-s1-e4"), form: none)
 
 #set math.cases(reverse: true)
 $

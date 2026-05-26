@@ -37,7 +37,23 @@ let a-ds-s1
           You will learn about simple data structures, algorithms and also techniques to analyze them.
           The concepts you will learn this semester will be used multiple times across the next ones.
           ''
-      , content = [ L.s01l01, L.s01l02 ]
+      , content =
+        [ L.s01l01
+        , L.s01l02
+        , L.s01l03
+        , L.s01l04
+        , L.s01l05
+        , L.s01l06
+        , L.s01l07
+        , L.s01l08
+        , L.s01l09
+        , L.s01l10
+        , L.s01l11
+        , L.s01l12
+        , L.s01l13
+        , L.s01l14
+        , L.s01l15
+        ]
       }
 
 let a-ds-s2

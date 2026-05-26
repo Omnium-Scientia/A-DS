@@ -3,16 +3,7 @@
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
 
-#import "../../template/lecture.typ": lesson
-
-#show: lesson.with(
-  semester: "1",
-  chapter_number: "12",
-  video_link: "https://www.youtube.com/watch?v=5C7JT8cVHDU&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=12",
-  title: "Knapsack",
-)
-
-= Knapsack
+#cite(label("ads-s1-e12"), form: none)
 
 Knapsack problem is a fundamental problem in computer science. You can encounter it in many situation and real life problem.
 

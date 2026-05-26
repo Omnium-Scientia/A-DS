@@ -3,16 +3,7 @@
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.7": *
 
-#import "../../template/lecture.typ": lesson
-
-#show: lesson.with(
-  semester: "1",
-  chapter_number: "8",
-  video_link: "https://www.youtube.com/watch?v=vq5u09x2Kzo&list=PLrS21S1jm43igE57Ye_edwds_iL7ZOAG4&index=8",
-  title: "Disjoint sets (Union-Find)",
-)
-
-= Disjoint sets (Union-Find)
+#cite(label("ads-s1-e8"), form: none)
 
 == Definition
 
