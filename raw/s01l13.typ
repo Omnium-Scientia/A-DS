@@ -15,7 +15,7 @@ $
 
 We already talk a little about that on lecture 12.
 
-=== Traveling salesman problem
+=== Travelling salesman problem
 
 You have a graph, each vertices represent a town, each edge represent a road between two towns.
 
@@ -61,7 +61,7 @@ Example:
   ),
 )
 
-Goal: you start from #text(fill: red)[$S$] and you need to visit all the cities while minimizing your traveling distance.
+Goal: you start from #text(fill: red)[$S$] and you need to visit all the cities while minimising your travelling distance.
 
 #align(
   center,
@@ -103,9 +103,9 @@ Goal: you start from #text(fill: red)[$S$] and you need to visit all the cities 
   ),
 )
 
-Here our traveling distance is $26$.
+Here our travelling distance is $26$.
 
-This is a common graph problem. And it is know to be NP-Complete as the knapsack problem (again, we will talk about complexity classes in S02L15). But for now, we just keep in mind that it mean we do nt have an efficient solution.
+This is a common graph problem. And it is know to be NP-Complete as the knapsack problem (again, we will talk about complexity classes in S02L15). But for now, we just keep in mind that it mean we do not have an efficient solution.
 
 But, we can make a working algorithm with complexity of $Omicron(2^n)$ where $n$ is the number of vertices (which is much better than the naive algorithm working in $Omicron(n!)$) to find a solution. And we remember from the precedent lecture that algorithm with complexity of $Omicron(2^n)$ are usable with small $n$.
 
@@ -144,8 +144,6 @@ def traveling_salesman(S,graph)
 ```
 
 This is an example of problem that you can solve using dynamic programming on a subset. These kind of problems are represented by state of dynamic programming that are dependent of a subset of objects (here our visited vertices).
-
-#pagebreak()
 
 == Dynamic programming on profiles (Domino tilling)
 
@@ -361,7 +359,7 @@ Check that we can go from $p$ to $q$:
 
 If there is a solution, it is unique. But in some case we could not be able to put a tile, for example when we want to put a vertical tile, we need two consecutive bits to have the same configuration. If we do not have that we can go from $p$ to $q$.
 
-To achieve the `comp` function, we could iterate over the bits. But lets use bitwise operation to achieve that in constant time. Lets enumerate our possible state for the bits of $p$ and $q$ ($b_(i,p) eq.def "the" i^"th" "bit of profile" p$):
+To achieve the `comp` function, we could iterate over the bits. But lets use bit-wise operation to achieve that in constant time. Lets enumerate our possible state for the bits of $p$ and $q$ ($b_(i,p) eq.def "the" i^"th" "bit of profile" p$):
 - $b_(i,p) = b_(i,q) = 1$, we cannot go from $p$ to $q$.
   - to ensure that we do not have this state, we want $p \& q != 0$
 - $b_(i,p) = 1, b_(i,q) = 0$, we can go from $p$ to $q$ and we do not need to put a tile.
@@ -379,7 +377,7 @@ To achieve the `comp` function, we could iterate over the bits. But lets use bit
     x = 00111101100110
   $
 
-  Where a $1$ in $x$ mean that we have $b_(i,p) = 0, b_(i,q) = 0$. Now, we need to check if all our one can be splited by pair. The easiest way to do this is to divide $x$ by $3$. Because $11_2 = 3_10$.
+  Where a $1$ in $x$ mean that we have $b_(i,p) = 0, b_(i,q) = 0$. Now, we need to check if all our one can be split by pair. The easiest way to do this is to divide $x$ by $3$. Because $11_2 = 3_10$.
 
   $
       x & = 00111101100110 \
@@ -495,9 +493,9 @@ Our overall complexity is $Omicron(m dot 2^n)$
 
 These techniques are useful when you build a solution layer by layer only using the previous layer. Mostly in $2D$ grid problems that we fill row by row or column by column.
 
-Here we counted the number of way to fill the grid but we can imagine optimization problems too, where for example each square as a cost and the manner of filling it cost less or more.
+Here we counted the number of way to fill the grid but we can imagine optimisation problems too, where for example each square as a cost and the manner of filling it cost less or more.
 
-== A second problem on profile (Grid coloring)
+== A second problem on profile (Grid colouring)
 
 #align(center, grid(
   stroke: 0.5pt,
@@ -510,7 +508,7 @@ Here we counted the number of way to fill the grid but we can imagine optimizati
   [$$], [], [], [], [], [], [], [], [], [],
 ))
 
-We have an $n times m$ rectangle. We color each $1 times 1$ square in black or white in such way that neither of those pattern exist:
+We have an $n times m$ rectangle. We colour each $1 times 1$ square in black or white in such way that neither of those pattern exist:
 
 #grid(
   columns: (50%, 50%),
@@ -531,7 +529,7 @@ We have an $n times m$ rectangle. We color each $1 times 1$ square in black or w
   )),
 )
 
-Here, we can see that is we are coloring column by column, we only meed to know the state of the last colored column to fill the new one.
+Here, we can see that is we are colouring column by column, we only meed to know the state of the last coloured column to fill the new one.
 
 Using the broken profile approach, we do:
 
@@ -563,7 +561,7 @@ Using the broken profile approach, we do:
   ),
 )
 
-- If each adjacent square are the same color, then we have no other choice than coloring our current square with the other color.
+- If each adjacent square are the same colour, then we have no other choice than colouring our current square with the other colour.
 - Else, we can do both.
 
 The algorithm is basically the same but $p$ is of length $n+1$ because we need to keep track of the adjacent square of position $(i-1,j-1)$.

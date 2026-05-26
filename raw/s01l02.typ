@@ -1,6 +1,6 @@
 #import "@preview/fletcher:0.5.5": *
 #import "@preview/lovelace:0.3.1": line-label
-#import "../functions.typ": pseudocode-alg, pseudocode-alg-nt
+#import "../functions.typ": pseudocode-alg, pseudocode-alg-nt, c_red, c_blue
 
 #cite(label("ads-s1-e2"), form: none)
 
@@ -67,12 +67,12 @@ This way to analyse the capability of the data structures are in reality the sam
 
 ==== Heap properties and construction
 
-We take a complete binary tree, each layer is complete except for the last one that can be empty on the right-hand side. We index the tree from left to right and top to bottom --- purple in @bin-heap. \ 
-In order to get the wanted complexity for our operations, we keep the following property true: for a given element, its child are inferior or equal to it --- green in @bin-heap.
+We take a complete binary tree, each layer is complete except for the last one that can be empty on the right-hand side. We index the tree from left to right and top to bottom --- red in @bin-heap. \ 
+In order to get the wanted complexity for our operations, we keep the following property true: for a given element, its child are inferior or equal to it --- blue in @bin-heap.
 
-#let index(n) = text(fuchsia, $" "#n$)
-#let rules_l = text(rgb("#35BC20"), $gt.slant$)
-#let rules_r = text(rgb("#35BC20"), $lt.slant$)
+#let index(n) = text(c_red, $" "#n$)
+#let rules_l = text(c_blue, $gt.slant$)
+#let rules_r = text(c_blue, $lt.slant$)
 #let (N, H, I, Q, R, S, T, L, M, O) = (
       (0, 0),
       (-2, 1),
@@ -148,7 +148,7 @@ In order to insert a new element in the tree:
     node(L, $circle^index(7)$),
     node(M, $circle^index(8)$),
     node(O, $circle^index(9)$),
-    node(P, text(red, $circle^index(10)$)),
+    node(P, text(c_red, $circle^index(10)$)),
   
     edge(N, H, "-", label: rules_l, label-side: center, label-angle: left),
     edge(N, I, "-", label: rules_r, label-side: center, label-angle: right),
@@ -161,7 +161,7 @@ In order to insert a new element in the tree:
     edge(Q, L, "-", label: rules_l, label-side: center, label-angle: left),
     edge(Q, M, "-", label: rules_r, label-side: center, label-angle: right),
     edge(R, O, "-", label: rules_l, label-side: center, label-angle: left),
-    edge(R, P, "-", label: text(red, $gt.slant$), label-side: center, label-angle: right, stroke: red),
+    edge(R, P, "-", label: text(c_red, $gt.slant$), label-side: center, label-angle: right, stroke: c_red),
   ))
 ) <adding-elt>
 
@@ -174,7 +174,7 @@ In order to insert a new element in the tree:
     node(I, $circle^index(2)$),
   
     node(Q, $circle^index(3)$),
-    node(R, text(red, $circle^index(4)$)),
+    node(R, text(c_red, $circle^index(4)$)),
     node(S, $circle^index(5)$),
     node(T, $circle^index(6)$),
   
@@ -195,7 +195,7 @@ In order to insert a new element in the tree:
     edge(Q, M, "-", label: rules_r, label-side: center, label-angle: right),
     edge(R, O, "-", label: rules_l, label-side: center, label-angle: left),
     edge(R, P, "-", label: rules_r, label-side: center, label-angle: right),
-    edge(R, P, "<->", stroke: red, bend: -40deg),
+    edge(R, P, "<->", stroke: c_red, bend: -40deg),
   ))
 ) <swap>
 
@@ -344,13 +344,13 @@ Let's decompose why the complexity of this first for-loop is $Omicron(n log n)$ 
   edge(T, W, "--"),
   edge(T, Y, "--"),
 
-  node((1.5, -0.3), text(red, "For each node:")),
-  node((1.5, 0), text(red, $0 #text[call to `sift_up`]$)),
-  node((1.5, y), text(red, $1 "call "$)),
-  node((1.5, 2 * y), text(red, $2 "calls "$)),
-  node((1.5, 3 * y), text(red, $log n "calls "$)),
+  node((1.5, -0.3), text(c_red, "For each node:")),
+  node((1.5, 0), text(c_red, $0 #text[call to `sift_up`]$)),
+  node((1.5, y), text(c_red, $1 "call "$)),
+  node((1.5, 2 * y), text(c_red, $2 "calls "$)),
+  node((1.5, 3 * y), text(c_red, $log n "calls "$)),
 
-  edge((1.5, 2 * y), (1.5, 3 * y), "--", stroke: red),
+  edge((1.5, 2 * y), (1.5, 3 * y), "--", stroke: c_red),
 ))
 
 
@@ -399,13 +399,13 @@ To improve this complexity, we are going to use `sift_down` instead of `sift_up`
   edge(T, W, "--"),
   edge(T, Y, "--"),
 
-  node((1.5, -0.3), text(red, "For each node:")),
-  node((1.5, 0), text(red, $log n #text[call to `sift_down`]$)),
-  node((1.5, y), text(red, $log (n-1) "calls "$)),
-  node((1.5, 2 * y), text(red, $1 "calls "$)),
-  node((1.5, 3 * y), text(red, $0 "calls "$)),
+  node((1.5, -0.3), text(c_red, "For each node:")),
+  node((1.5, 0), text(c_red, $log n #text[call to `sift_down`]$)),
+  node((1.5, y), text(c_red, $log (n-1) "calls "$)),
+  node((1.5, 2 * y), text(c_red, $1 "calls "$)),
+  node((1.5, 3 * y), text(c_red, $0 "calls "$)),
 
-  edge((1.5, y), (1.5, 2 * y), "--", stroke: red),
+  edge((1.5, y), (1.5, 2 * y), "--", stroke: c_red),
 ))
 
 #linebreak()

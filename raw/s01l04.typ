@@ -83,8 +83,6 @@ $
 
 We have proved that in our comparison model, the lower bound for sorting is $Omicron(n log n)$.
 
-#pagebreak()
-
 == Counting sort
 
 === Version 1
@@ -254,7 +252,7 @@ $
   )
 $
 
-Let's schematize those call over the time:
+Let's schematise those call over the time:
 
 #linebreak()
 
@@ -383,9 +381,7 @@ Let's do it now with an array of 5 elements:
 
 Here we make #text(red, $Omicron(n^2)$) concurrent call.
 
-#pagebreak()
-
-We want to optimize 2 parameters here:
+We want to optimise 2 parameters here:
 - The number of comparator
 - The length of the network
 
@@ -696,7 +692,7 @@ Bitonic sort is a bitonic sort that is made to sort bitonic sequence.
 
 ==== Bitonic sequence
 
-A bitonic sequence is a sequence made of increasing and decreasing interval that can be splited in 2 parts, 1 increasing and 1 decreasing forming a cycle.
+A bitonic sequence is a sequence made of increasing and decreasing interval that can be split in 2 parts, 1 increasing and 1 decreasing forming a cycle.
 
 Example:
 

@@ -44,7 +44,7 @@ The difficulty here is to get the minimal possible list of changes that produces
 
 You want to fo from one word to another using the minimal number of operation.
 
-Our authorized operations are:
+Our authorised operations are:
 - change letter
 - add letter
 - remove letter
@@ -150,8 +150,6 @@ $
 
 To get $D[i,j]$, if $x = y$ then we take this solution, else we take the minimum between every other possibilities.
 
-#pagebreak()
-
 ```
 def levenshtein_dist(A,B)
     for i = 0..|A|
@@ -241,7 +239,7 @@ The change-log can be interpreted as the path from the beginning to the end. We 
 
 To do that when we make our if, we save what transition we used.
 
-_Note: The levensthein distance is symmetrical, the distance to get $A$ from $B$ or $B$ from $A$ is the same._
+_Note: The Levenshtein distance is symmetrical, the distance to get $A$ from $B$ or $B$ from $A$ is the same._
 
 === Levenshtein distance between 2 files
 
@@ -337,7 +335,7 @@ We have a big gap after word 5. What we want is to justify the text to not have 
 
 First we need to define a measurement to know if the text is good. For example, if we call our end gap $x$, we have: $"badness" = x^3$.
 
-Our badness function does not change the code this function need to be found by experimenting. We want to minimize the total badness ($min(sum "badness")$) of our text.
+Our badness function does not change the code this function need to be found by experimenting. We want to minimise the total badness ($min(sum "badness")$) of our text.
 
 What we want is to take our word array and split it in segment representing our lines.
 

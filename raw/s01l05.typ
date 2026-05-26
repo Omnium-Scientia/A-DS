@@ -66,8 +66,6 @@ $
 
 We have our algorithm.
 
-#pagebreak()
-
 ```
 def bin_search(a, x)
     l = 0, r = n - 1
@@ -127,8 +125,6 @@ To get around, we "add" $2$ more elements in the array:
 This is a common work around when we try to find element with properties.
 
 Note that we do not actually put the elements in the array, but imagine $l$ and $r$ to have this value. (In some case we can put the elements, but not in here). It does not matter since we will never access these values.
-
-#pagebreak()
 
 ```
 def bin_search(a, x)
@@ -198,7 +194,7 @@ We know then that our property to satisfy for $l$ and $r$ is:
 - $"good"(l) = 0$
 - $"good"(r) = 1$
 
-We now need to find to what values initialize our two pointers.
+We now need to find to what values initialise our two pointers.
 
 Here we can chose $l = 0$ and $r = max(h, w) * n$.
 
@@ -334,7 +330,7 @@ def bin_search()
 
 === Example
 
-Imagine you are given a function that you want to maximize. This function is of $x$.
+Imagine you are given a function that you want to maximise. This function is of $x$.
 
 #align(center, diagram(
   render: (grid, nodes, edges, options) => {
@@ -371,7 +367,7 @@ Imagine you are given a function that you want to maximize. This function is of 
   },
 ))
 
-On the interval where we want to maximize $f$, the function can be separated in 2 intervals, 1 where the function increase, the other one where the function decrease.
+On the interval where we want to maximise $f$, the function can be separated in 2 intervals, 1 where the function increase, the other one where the function decrease.
 
 If at each point we can check if the function is increasing or not, then this check become our good function and we use the previous binary search example.
 

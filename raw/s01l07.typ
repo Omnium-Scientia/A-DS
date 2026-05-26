@@ -1164,7 +1164,7 @@ def remove()
 
 == Why pointer machine?
 
-Sometime when we use simpler computational model, it is simpler to analyze it.
+Sometime when we use simpler computational model, it is simpler to analyse it.
 
 It is easier to check what part of the data structure is affected by the algorithm.
 
@@ -2040,7 +2040,7 @@ There are various way to solve this problem:
   Let's use that:
   - You can take 2 persistent stack and it will solve the problem.
 
-  But it will be slow because our queue made of 2 stacks as a constant amortized time complexity only and when you have a constant amortized time complexity, you cannot just make a persistent data structure of constant amortized time complexity.
+  But it will be slow because our queue made of 2 stacks as a constant amortised time complexity only and when you have a constant amortised time complexity, you cannot just make a persistent data structure of constant amortised time complexity.
 
   Indeed, for example if you are at a version $v.i$ and you want to make an operation:
 
@@ -2090,7 +2090,7 @@ There are various way to solve this problem:
 
   #linebreak()
 
-  Hence the amortized time cannot be compensated by $phi.alt$.
+  Hence the amortised time cannot be compensated by $phi.alt$.
 
   The way to solve this problem is to make queue out of stacks with a real constant complexity. // Add link to 6 stacks queue when done.
 
@@ -2100,7 +2100,7 @@ A data structure is said to be partially persistent when you can access to all t
 
 ==== Partially persistent linked lists
 
-The authorized operations are:
+The authorised operations are:
 - $"add_after"(x,y)$
 - $"remove"(x)$
 - $"iterate"()$
@@ -2355,8 +2355,6 @@ How to apply this idea in a real pointer machine?
   node((0.75, 1.5), [data 2 \ prev 2 \ next 2]),
   node((0.75, 2.25), [version]),
 ))
-
-#pagebreak()
 
 - With 2 $X$ nodes and a version node:
 
@@ -2721,8 +2719,6 @@ This gives us the following result:
   edge((3.25, 0.17 - 2), (3.5, 0.17 - 2), "->", stroke: red),
   edge((2.5, 0.33 - 2), (2.75, 0.33 - 2), "<-", stroke: red),
 ))
-
-#pagebreak()
 
 *Time complexity:*
 

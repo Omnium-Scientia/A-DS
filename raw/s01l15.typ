@@ -46,7 +46,7 @@ And what data structure allows us to find in constant time? Yes hash table. Inst
 
 We will use small hash tables inside a big hash table.
 
-We need a different hash function between the big and small hash tables. If not, our optimization would be useless. And will use a different hash function for each small hash table.
+We need a different hash function between the big and small hash tables. If not, our optimisation would be useless. And will use a different hash function for each small hash table.
 
 $
   a[i] - "hash table with hash function " g_i
@@ -179,7 +179,7 @@ def equal_x(y)
     return x == y
 ```
 
-To optimize the memory, we do not store $x$ but $h_x$ which is the hash of $x$.
+To optimise the memory, we do not store $x$ but $h_x$ which is the hash of $x$.
 
 ```
 def equal_x(y)
@@ -239,7 +239,7 @@ And from definition we have: $PP("false positive") = epsilon$
 
 - From that, we fix $k = log 1/epsilon$
 
-Again, we clearly see the dependance between memory usage and number of error.
+Again, we clearly see the dependence between memory usage and number of error.
 
 Example:
 
@@ -273,8 +273,6 @@ $
   h_1(x) = "hash"(x) \ h_2(x) = h_1(x) plus.o "hash"(x')
 $
 
-#pagebreak()
-
 With this:
 - If we go from $a_1 -> a_2$:
   - we know the value of $h_1(x)$ because it is the value of the index of $A'$ in $a_1$.
@@ -293,4 +291,4 @@ $
 
 _Note 1: It is really difficult to make a bloom or a cuckoo filter that allow to remove elements._
 
-_Note 2: We have skipped some math in this lecture (especially in the cuckoo sections), this is because the mathematics behind this are pretty hardcore and require deep knowledge._
+_Note 2: We have skipped some mathematics in this lecture (especially in the cuckoo sections), this is because the mathematics behind this are pretty hardcore and require deep knowledge._

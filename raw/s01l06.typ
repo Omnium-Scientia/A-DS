@@ -235,7 +235,7 @@ This data structure is just like a queue but we can add and remove from both end
 
 == Dynamic array
 
-Ths problem with finite array:
+The problem with finite array:
 - As we can see, there is a problem, in all the implementation using "infinite array", which is not really possible.
 
 Workaround, for stack and queue, we can work with finite size array.
@@ -382,11 +382,11 @@ To prevent this state, we shrink the array by 2 when the three quarter of the st
 
 Again our worst complexity is big ($Omicron(n)$).
 
-For the push and the pop function we now have a worst complexity that is linear. But this complexity is not linear each time. We want to analyze what is average number of computation.
+For the push and the pop function we now have a worst complexity that is linear. But this complexity is not linear each time. We want to analyse what is average number of computation.
 
-This is the amortized analysis.
+This is the amortised analysis.
 
-== Amortized analysis
+== Amortised analysis
 
 $
   T(op) " " dash.em "real time" \
@@ -413,7 +413,7 @@ $
   tilde(T)("push") = c = Omicron(1)
 $
 
-There is multiple ways to analyze amortized costs:
+There is multiple ways to analyse amortised costs:
 - The naive idea is to use the definition
 - The second method is the potential function method
 - The last one is the accounting method
@@ -456,7 +456,7 @@ $
              & <= 3 dot m
 $
 
-Per the definition of amortized cost, we proved that:
+Per the definition of amortised cost, we proved that:
 
 $
   tilde(T)("push") = Omicron(1)
@@ -512,8 +512,6 @@ Each time we make an operation, $phi.alt$ changes value.
 2 properties:
 - $phi.alt_0 = 0$
 - $phi.alt_i >= 0$
-
-#pagebreak()
 
 when $phi.alt$ is fixed:
 
@@ -607,7 +605,7 @@ $
 
 With this definition, $T = n => Delta phi.alt = -n$.
 
-Then if we take our relation between amortized costs, real costs and the potential function we have:
+Then if we take our relation between amortised costs, real costs and the potential function we have:
 
 $
   tilde(T) & = T + Delta phi.alt \
@@ -615,7 +613,7 @@ $
            & = Omicron(1)
 $
 
-Sometimes we can have a null or negative result, if this appends, it means that our amortized cost is constant.
+Sometimes we can have a null or negative result, if this appends, it means that our amortised cost is constant.
 
 This is a very powerful technique but it require some insight on how to define the potential function.
 
@@ -712,8 +710,6 @@ We have proven multiple times that $tilde(T)("push") = Omicron(1)$, lets now pro
 
 We need to save coins to create our new array while popping. We are going to save them when we do our fast pop.
 
-#pagebreak()
-
 ```
 def pop()
     ans = stack[--n]
@@ -779,7 +775,7 @@ def pop()
 
 $tilde(T)("pop") = 2 = Omicron(1)$
 
-We also have constant amortized cost.
+We also have constant amortised cost.
 
 Sometime we have more coins than necessary and $tilde(T)$ become negative, this is not a problem, just like for the potential function it means that $tilde(T) = Omicron(1)$.
 
@@ -860,8 +856,6 @@ To make this append, we split our queue in 2. 1 half is $S_1$ the other one is $
   node((-1, 2.25), $S_1$),
   node((1, 2.25), $S_2$),
 ))
-
-#pagebreak()
 
 To add element, we push in $S_2$:
 

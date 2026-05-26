@@ -1,6 +1,6 @@
 #import "@preview/fletcher:0.5.5": *
 #import "@preview/lovelace:0.3.1": line-label
-#import "../functions.typ": pseudocode-alg, pseudocode-alg-nt
+#import "../functions.typ": pseudocode-alg, pseudocode-alg-nt, c_red, c_lblue
 
 #cite(label("ads-s1-e1"), form: none)
 
@@ -265,14 +265,14 @@ A recursive function $f$ is a function that call itself, to compute its complexi
     edge(T, W, "--"),
     edge(T, Y, "--"),
   
-    edge((1.5, 0), (1.5, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right),
+    edge((1.5, 0), (1.5, 3), "<->", stroke: c_red, label: text(c_red, $H = log_2 n$), label-side: left, label-angle: right),
 
-    node((-4.5, 0), text(red, $1 "call "$)),
-    node((-4.5, 1), text(red, $2 "calls "$)),
-    node((-4.5, 2), text(red, $4 "calls "$)),
-    node((-4.5, 3), text(red, $2^H "calls "$)),
+    node((-4.5, 0), text(c_red, $1 "call "$)),
+    node((-4.5, 1), text(c_red, $2 "calls "$)),
+    node((-4.5, 2), text(c_red, $4 "calls "$)),
+    node((-4.5, 3), text(c_red, $2^H "calls "$)),
 
-    edge((-4.5, 2), (-4.5, 3), "--", stroke: red),
+    edge((-4.5, 2), (-4.5, 3), "--", stroke: c_red),
   ))
 ) <call-2>
 
@@ -373,7 +373,7 @@ A recursive function $f$ is a function that call itself, to compute its complexi
     edge(F, (-3.75 + 8 * y + dx, 3), "--"),
     edge(X, (-3.75 + 7 * y + dx, 3), "--"),
   
-    edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right),
+    edge((2.75, 0), (2.75, 3), "<->", stroke: c_red, label: text(c_red, $H = log_2 n$), label-side: left, label-angle: right),
   ))
 ) <call-3>
 
@@ -400,7 +400,7 @@ The principle is easy, to sort the element $A_i$, we swap $A_i$ with the previou
   figure( 
   caption: [Insertion sort for $A[3,1,4,2]$],
     align(center, diagram(
-      node-stroke: 1pt + red,
+      node-stroke: 1pt + c_red,
       node-shape: rect,
     
       let (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p) = (
@@ -422,25 +422,25 @@ The principle is easy, to sort the element $A_i$, we swap $A_i$ with the previou
         (1.5, 3),
       ),
     
-      node(a, $3$, stroke: green),
+      node(a, $3$, stroke: c_lblue),
       node(b, $1$),
       node(c, $4$),
       node(d, $2$),
     
-      node(e, $1$, stroke: green),
-      node(f, $3$, stroke: green),
+      node(e, $1$, stroke: c_lblue),
+      node(f, $3$, stroke: c_lblue),
       node(g, $4$),
       node(h, $2$),
     
-      node(i, $1$, stroke: green),
-      node(j, $3$, stroke: green),
-      node(k, $4$, stroke: green),
+      node(i, $1$, stroke: c_lblue),
+      node(j, $3$, stroke: c_lblue),
+      node(k, $4$, stroke: c_lblue),
       node(l, $2$),
     
-      node(m, $1$, stroke: green),
-      node(n, $2$, stroke: green),
-      node(o, $3$, stroke: green),
-      node(p, $4$, stroke: green),
+      node(m, $1$, stroke: c_lblue),
+      node(n, $2$, stroke: c_lblue),
+      node(o, $3$, stroke: c_lblue),
+      node(p, $4$, stroke: c_lblue),
     
       edge(b, a, "<->", bend: +90deg),
       edge((1, 1.5), g, "->"),
@@ -552,7 +552,7 @@ To achieve this, we use the two pointer technique#footnote[#two-pointer], let's 
 
 #align(center, diagram(
   node(a, $A |$),
-  node(a1, $cancel(1, stroke: #(paint: red, thickness: 1pt))$),
+  node(a1, $cancel(1, stroke: #(paint: c_red, thickness: 1pt))$),
   node(a2, $5$),
   node(a3, $10$),
   node(b, $B |$),
@@ -576,11 +576,11 @@ To achieve this, we use the two pointer technique#footnote[#two-pointer], let's 
 
 #align(center, diagram(
   node(a, $A |$),
-  node(a1, $cancel(1, stroke: #(paint: red, thickness: 1pt))$),
+  node(a1, $cancel(1, stroke: #(paint: c_red, thickness: 1pt))$),
   node(a2, $5$),
   node(a3, $10$),
   node(b, $B |$),
-  node(b1, $cancel(2, stroke: #(paint: red, thickness: 1pt))$),
+  node(b1, $cancel(2, stroke: #(paint: c_red, thickness: 1pt))$),
   node(b2, $4$),
   node(b3, $6$),
 
@@ -698,16 +698,16 @@ A proof using call-tree:
   edge(T, W, "--"),
   edge(T, Y, "--"),
 
-  node((1.5, 0), text(red, $n "operations"$)),
-  node((1.5, 1), text(red, $n "operations"$)),
-  node((1.5, 2), text(red, $n "operations"$)),
-  node((1.5, 3), text(red, $n "operations"$)),
+  node((1.5, 0), text(c_red, $n "operations"$)),
+  node((1.5, 1), text(c_red, $n "operations"$)),
+  node((1.5, 2), text(c_red, $n "operations"$)),
+  node((1.5, 3), text(c_red, $n "operations"$)),
 
-  edge((1.5, 2), (1.5, 3), "--", stroke: red),
+  edge((1.5, 2), (1.5, 3), "--", stroke: c_red),
 
-  edge((2.75, 0), (2.75, 3), "<->", stroke: red, label: text(red, $H = log_2 n$), label-side: left, label-angle: right),
+  edge((2.75, 0), (2.75, 3), "<->", stroke: c_red, label: text(c_red, $H = log_2 n$), label-side: left, label-angle: right),
 
-  node((1.5, 3.5), text(red, $"Overall complexity" = n dot log n$)),
+  node((1.5, 3.5), text(c_red, $"Overall complexity" = n dot log n$)),
 ))
 
 Another proof:

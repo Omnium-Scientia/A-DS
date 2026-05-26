@@ -117,9 +117,7 @@ Before going onto the Fibonacci heap, we are going to talk about binomial trees 
 
 #linebreak()
 
-Number of nodes in $B_k = 2^k$.
-
-#pagebreak()
+Number of nodes in $B_k = 2^k$.=
 
 == Binomial heap
 
@@ -200,8 +198,6 @@ For a given number of element, the tree structure will be the same. And it will 
 Two consequences:
 + All the ranks are different because if 2 trees have the same rank, we can use the superior power of binomial tree.
 + number of trees $<= log n$.
-
-#pagebreak()
 
 === Add
 
@@ -547,8 +543,6 @@ From this:
   edge(n9, n10, "-"),
 ))
 
-#pagebreak()
-
 We end up with this:
 
 #align(center, diagram(
@@ -594,7 +588,7 @@ We end up with this:
 
 // Add transition schema
 
-At the end of this clean up, all the tree have different rank. There is at most $log n$ tree, we can iterate overthem to find the new minimum.
+At the end of this clean up, all the tree have different rank. There is at most $log n$ tree, we can iterate over them to find the new minimum.
 
 The cost of this clean up will define the cost of the remove minimum function.
 
@@ -655,7 +649,7 @@ When the value of our node break the heap property:
   edge(n1, n4),
 ))
 
-We have a problem, because the structure of the binomial tree is to rigid to achieve constant amortized time for the decrease key function.
+We have a problem, because the structure of the binomial tree is to rigid to achieve constant amortised time for the decrease key function.
 
 For now, our tree look like:
 
@@ -677,8 +671,6 @@ For now, our tree look like:
   edge(n1, n3),
   edge(n1, n4),
 ))
-
-#pagebreak()
 
 Lets change the tree structure to:
 
@@ -863,4 +855,4 @@ $
 
 We decrease key in constant time.
 
-Thats it we have our Fibonacci heap with the desired complexity for each function.
+That's it we have our Fibonacci heap with the desired complexity for each function.

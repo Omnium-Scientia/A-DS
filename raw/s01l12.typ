@@ -7,7 +7,7 @@
 
 Knapsack problem is a fundamental problem in computer science. You can encounter it in many situation and real life problem.
 
-It is then an important thing to know how to recognize those problems and know what are the options to solve it.
+It is then an important thing to know how to recognise those problems and know what are the options to solve it.
 
 == Problem statement
 
@@ -17,7 +17,7 @@ Each items has a weight and a cost: $forall i in bracket.stroked.l 0,n-1 bracket
 
 You also have a knapsack of capacity $S$.
 
-Your objective is to put items in the knapsack in order to maximize its cost while not exciding its capacity:
+Your objective is to put items in the knapsack in order to maximise its cost while not exciding its capacity:
 
 $
   sum_i w_i <= S \ sum_i c_i "is maximized"
@@ -83,9 +83,9 @@ $
   + = "true" \/ - = "false"
 $
 
-To maximize the weight, we take the rightmost element in the last row.
+To maximise the weight, we take the rightmost element in the last row.
 
-To get what we put in our maximized set, we retrace our steps.
+To get what we put in our maximised set, we retrace our steps.
 
 == Cost, all integers
 
@@ -227,7 +227,7 @@ $
 
 The $i^"th"$ bit of    our number should be equal to one $i$ at least one of the $i^"th"$ bit of our two sets we want to make the vision of is set at once.
 
-This is the bitwise or:
+This is the bit-wise or:
 $
   x union y <-> x bar.v y
 $
@@ -238,7 +238,7 @@ $
   x inter y <-> x \& y
 $
 
-Elements that in $x$ and $y$. The $i^"th"$    bit of our resulting set is set to $1$ if both $i^"th"$ bit are set to $1$ for $x$ and $y$. This is the bitwise and.
+Elements that in $x$ and $y$. The $i^"th"$    bit of our resulting set is set to $1$ if both $i^"th"$ bit are set to $1$ for $x$ and $y$. This is the bit-wise and.
 
 === Difference
 
@@ -248,7 +248,7 @@ In the general case: $x \\ y <-> x \& (tilde y)$
 
 If $forall y subset x$: $x \\ y <-> x - y "or" x hat y$
 
-=== Appartenance of an element to the subset
+=== Element belonging to the subset
 
 $
   i in x <-> x \& (1<<i) > 0 "or" (x>>i) \& 1 > 0
@@ -271,9 +271,9 @@ def knapsack(w,c,S)
     return ans
 ```
 
-Our complexity here is $Omicron(2^n dot n)$. We want to optimize that complexity (the $2^n$ part especially).
+Our complexity here is $Omicron(2^n dot n)$. We want to optimise that complexity (the $2^n$ part especially).
 
-=== Meet in the middle optimization
+=== Meet in the middle optimisation
 
 $
   underbrace(underbracket(#text(fill: blue)[$0$] " " 0 " " #text(fill: blue)[$0$] " " #text(fill: blue)[$0$] " " ., n/2).underbracket(. " " 0 " " #text(fill: red)[$0$] " " 0 " " #text(fill: red)[$0$], n/2), n) : #text(fill: blue)[$X$] ; #text(fill: red)[$Y$]
@@ -288,7 +288,7 @@ $
   )
 $
 
-We do not want to iterate over all $x$ and $y$ or our optimization will be worth nothing.
+We do not want to iterate over all $x$ and $y$ or our optimisation will be worth nothing.
 
 We want the optimal $y$ for each $x$.
 
@@ -311,7 +311,7 @@ We can find this prefix using binary search.
 
 Then we take the max value of $sum_(i in y) c_i$ from this prefix.
 
-With this optimization, our complexity is now $Omicron(2^(n/2) dot n)$.
+With this optimisation, our complexity is now $Omicron(2^(n/2) dot n)$.
 
 == Multi-knapsack
 
@@ -319,7 +319,7 @@ $
   n - "items" \ "weights": w_i \ S
 $
 
-We want to minimize the number of knapsacks to all items.
+We want to minimise the number of knapsacks to all items.
 
 Example:
 
@@ -363,7 +363,7 @@ def multi_knapsack(w,S)
 
 This algorithm runs in $Omicron(n^4)$. Which is bad.
 
-Lets optimize our algorithm by iterating only over the $Y$ that are a subset of $X$.
+Lets optimise our algorithm by iterating only over the $Y$ that are a subset of $X$.
 
 ```
 def multi_knapsack(w,S)
@@ -382,7 +382,7 @@ We only have 3 possible cases:
 - the element is in $X$ and $Y$
 We then have only $Omicron(n^3)$ possibilities to go through.
 
-With this optimization, our complexity goes from $Omicron(n^4)$ to $Omicron(n^3)$.
+With this optimisation, our complexity goes from $Omicron(n^4)$ to $Omicron(n^3)$.
 
 The idea to iterate over all the subset of $X$ is to begin with $X = Y$ and then by decreasing $Y$ from $X$ to $0$, we get all the its subset.
 
@@ -440,7 +440,7 @@ $
   D[X] eq.def (A,B)
 $
 
-- Here, we want to optimize both $A$ and $B$. Usually this is not possible. It is here because we want to minimize the pair. We optimize $A$ and then $B$.
+- Here, we want to optimise both $A$ and $B$. Usually this is not possible. It is here because we want to minimise the pair. We optimise $A$ and then $B$.
 
   Compare $(A_1,B_1)$ and $(A_2,B_2)$:
   - $A_1 <= A_2, B_1 <= B_2 => (A_1,B_1) <= (A_2,B_2)$
@@ -448,7 +448,7 @@ $
   - Because $(A_1,B_1) <= (A_1 + 1, 0) <= (A_2,B_2)$
   // Do the schema
 
-  In short, we have two parameters to optimize but they do not have the same priority.
+  In short, we have two parameters to optimise but they do not have the same priority.
 
 In our transition we go from set $X \\ {i} -> X$:
 - If $(B + w_i) <= S$

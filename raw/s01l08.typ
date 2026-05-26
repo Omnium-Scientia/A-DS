@@ -79,8 +79,6 @@ Imagine that you have objects and these objects are separated in disjoint sets, 
   - $"find"(2) -> 5$
   Element of the same set return the same result for find.
 
-#pagebreak()
-
 == Basic implementation
 
 For this simple representation, we make an array of size $n$. For each object, we store in the array the representative element of his set:
@@ -155,9 +153,9 @@ So we can compute the cost of all our union calls.
 
 For this union function: $T("total union") = Omicron(n^2)$.
 
-=== Union optimization
+=== Union optimisation
 
-To optimize the union function, we are going to maintain $n$ list each list are going to store all the element that the object is the referent of.
+To optimise the union function, we are going to maintain $n$ list each list are going to store all the element that the object is the referent of.
 
 In our previous example we would have:
 
@@ -309,7 +307,7 @@ $
   T("total union") = sum T = Omicron(n log n)
 $
 
-This is a simple yet important technique if you want to make a mergable data structure. You want to put the smallest of the two element by element in the second, which will give $Omicron(n log n)$ total moves.
+This is a simple yet important technique if you want to make a mergeable data structure. You want to put the smallest of the two element by element in the second, which will give $Omicron(n log n)$ total moves.
 
 == Efficient implementation (rank & path compression)
 
@@ -478,7 +476,7 @@ Lets prove by induction that if we use this union function, find function has an
 
 Our introduction property is that a set with a reference element $X$ of rank $r[X]$ has at least $2^r[X]$ elements.
 
-*Initialization:*
+*Initialisation:*
 - $r[X] = 0 ->$ then our set a only 1 element. $1 > 2^0$ so property is true for $r[X] = 0$.
 
 *After union operation:*
@@ -498,7 +496,7 @@ Since a tree as at least $2^r[X]$ element, we have $r[X] <= log n$.
 
 === Path compressing
 
-We want to optimize our find even more.
+We want to optimise our find even more.
 
 The first time we call find, we follow this path:
 
@@ -556,7 +554,7 @@ Path compression costs: $tilde(T)("find") = Omicron(log n)$
 
 Path compression + rank heuristics costs:
 $ tilde(T)("find") = Omicron(alpha(m, n)) $ where:
-- $alpha$ is the reverse Ackerman function
+- $alpha$ is the reverse Ackermann function
 - $n$ is the size of the tree (i.e. the number of element in the set).
 - $m$ is the number of finds call.
 
@@ -665,8 +663,6 @@ $
   sum_r "cnt"[r] dot 1.9^r <= n dot underbrace(sum (1.9 / 2)^r, = Omicron(n))
 $
 
-#pagebreak()
-
 So:
 
 $
@@ -678,4 +674,4 @@ since $m = n$ by hypothesis.
 
 We have proved that $tilde(T)("find") = Omicron(n log^* n)$
 
-This structure can be modified to compute function on the tree, this is wht it is such an important data structure.
+This structure can be modified to compute function on the tree, this is why it is such an important data structure.

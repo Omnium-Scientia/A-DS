@@ -12,4 +12,4 @@
 )
 
 
-= Time comlexity of Union-find (inverse Ackermann function)
+= Time complexity of Union-find (inverse Ackermann function)

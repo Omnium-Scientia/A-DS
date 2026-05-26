@@ -5,7 +5,7 @@
 
 #cite(label("ads-s1-e14"), form: none)
 
-Hash tables are really important data structures. They are randomized and can cause problem in some situation. We will see when to use them and when not to.
+Hash tables are really important data structures. They are randomised and can cause problem in some situation. We will see when to use them and when not to.
 
 There are 2 major data structures that are based on hash tables:
 - `set`: as the name suggest, this is a set of objects. Its base operations are:
@@ -68,8 +68,6 @@ def get(k)
     return a[h(k)]
 ```
 
-#pagebreak()
-
 Example:
 
 $
@@ -123,7 +121,7 @@ def get(k)
 
 Both of our function have a worst case linear complexity.
 
-Since our function $h$ is really simple, the data is not really randomized and we can end in a situation where most of our value have the same index.
+Since our function $h$ is really simple, the data is not really randomised and we can end in a situation where most of our value have the same index.
 
 If we want to avoid collision, we need to increase our array size. Indeed, we have $n$ elements so the number of pair is of the order of $n^2$. Each pair have the same probability to be putted in our hash table. Since our hash table array as a length of $m$, if we want the length of our collision list to be of $Omicron(1)$ length, we want the probability of choosing a cell to be the same as the one of a pair. The probability to chose a cell at random is $1/m$. Which mean that we need
 
@@ -292,8 +290,6 @@ Why use open addressing when the previous technique seems to work just fine?
 
 In practice this technique can be more efficient than the first one.
 
-#pagebreak()
-
 == Hash tables poisoning
 
 The only random point that ensure the working of our algorithms is the moment we chose a hash function randomly from our set.
@@ -310,4 +306,4 @@ In practice, we rarely know how many element we are going to put in our hash tab
 
 To make it grow, we use the same idea we use to deal against poisoning. when we detect that our table is to little (one list of cell has become too big), we pick a function & recreate the hash map bigger.
 
-Just like the array, our worst case complexity will become $Omicron(n)$ but the amortized one will stay $Omicron(1)$.
+Just like the array, our worst case complexity will become $Omicron(n)$ but the amortised one will stay $Omicron(1)$.

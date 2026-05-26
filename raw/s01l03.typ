@@ -4,9 +4,7 @@
 
 #cite(label("ads-s1-e3"), form: none)
 
-== Randomized algorithms
-
-#linebreak()
+== Randomised algorithms
 
 #align(center, diagram(
   node((0, 0), $"Input data"$, name: <I>),
@@ -135,7 +133,7 @@ We then make the recursion on the part 1 and 2
 
 === Time complexity
 
-Since our algorithm is randomized, we will compute our complexity differently. We take the expected value of our time complexity.
+Since our algorithm is randomised, we will compute our complexity differently. We take the expected value of our time complexity.
 
 $
   EE(T(n)) = sum_X X dot PP(T(n) = X)
@@ -183,13 +181,13 @@ Can be done with a heap #text(red, $Omicron(n log k)$)
 
 === Linear solution
 
-Sometimes randomized algorithm are faster than non-randomized ones. But sometimes they are not.
+Sometimes randomised algorithm are faster than non-randomised ones. But sometimes they are not.
 
 Here we are going to present two technique that work in linear time for this problem. The objective here is not to compare the asymptotic difference but the difference in the complexity of the algorithm.
 
-Because this is another reason to chose randomized algorithm, they can be as fast as the other ones but simpler.
+Because this is another reason to chose randomised algorithm, they can be as fast as the other ones but simpler.
 
-==== Randomized: using quick-sort
+==== Randomised: using quick-sort
 
 Basically the idea is to do a quick-sort but instead of recursing on all array sub-part, we do it only on the part that contain k until we find it.
 
@@ -382,4 +380,4 @@ $
   T(n) & <= n + c n/5 + c (7n)/10 & = n (1 + 9/10 c) & = Omicron(n)
 $
 
-The algorithm is indeed working as fast as the randomized one but is far more complex put in motion.
+The algorithm is indeed working as fast as the randomised one but is far more complex put in motion.

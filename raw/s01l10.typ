@@ -99,9 +99,9 @@ An exponential complexity is not usable in real life. Lets try to understand why
 
 As we can see, we are computing the same value multiple time (red and blue nodes for example). Our objective is that our next implementation compute each value only one time.
 
-In order to do that, we will use memoization. We save the Fibonacci number for each $n$. When we will have to use again that number, we will get it from our saved array instead of computing it again.
+In order to do that, we will use memoisation. We save the Fibonacci number for each $n$. When we will have to use again that number, we will get it from our saved array instead of computing it again.
 
-=== Memoization
+=== Memoisation
 
 The objective here is to    save the Fibonacci number for each $n$. When we will have to use again that number, we will get it from our saved array instead of computing it again.
 
@@ -172,7 +172,7 @@ def F(n)
     return res[n]
 ```
 
-_Note 1: if you want you can make this function keeping only the 2 previous result to achieve the computation of $F_n$ in order to optimize the memory usage. But it is not the object of this session._
+_Note 1: if you want you can make this function keeping only the 2 previous result to achieve the computation of $F_n$ in order to optimise the memory usage. But it is not the object of this session._
 
 _Note 2: Fibonacci sequence is well know and we can achieve even better complexity to compute it. If you want to see cool technique to do that such as fast Fourier transform and other things, see the video $->$ #link("https://www.youtube.com/watch?v=KzT9I1d-LlQ&t=1333s", [One second to compute the largest Fibonacci number I can])._
 
@@ -270,8 +270,6 @@ def grasshopper(n)
         D[i] = D[i-1] + D[i-2]
     return D[n]
 ```
-
-#pagebreak()
 
 Example answer:
 
@@ -625,7 +623,7 @@ Now that we now the cost of the optimal path, we want to get the path itself.
 
 The idea is to start from the $n^("th")$ cell and check where are we coming from. Then we repeat that for our result until we arrive on the first cell.
 
-Analyzing that, we see that we are just running the algorithm backward. So what we want to do is to maintain an other array. Lets call it $P$. Where:
+Analysing that, we see that we are just running the algorithm backward. So what we want to do is to maintain an other array. Lets call it $P$. Where:
 
 $
   P[n] eq.def "the last cell on the path"
@@ -766,8 +764,6 @@ def grasshopper_path(n,k,c)
     return D[n], reverse(path)
 ```
 
-#pagebreak()
-
 == Turtle on a $2D$ grid
 
 #align(
@@ -891,4 +887,4 @@ def grasshopper(n,k)
 
 Here we have $Omicron(n^3)$ but we can improve to $Omicron(n^2)$.
 
-The same algorithm construction can be made for any optimization problem of minimal cost.
+The same algorithm construction can be made for any optimisation problem of minimal cost.
